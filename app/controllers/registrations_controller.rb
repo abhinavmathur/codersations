@@ -1,4 +1,4 @@
-class RegistrationsController < Device::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController
   private
   def sign_up_params
     params.require(:user).permit(:name, :description, :email, :password, :password_confirmation,
