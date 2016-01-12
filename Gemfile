@@ -40,5 +40,10 @@ group :development do
 end
 
 #My Gems
-
-
+gem 'devise'
+gem 'twitter-bootstrap-rails'
+gem 'simple_form'
+gem 'pg'
+gem 'annotate'
+gem 'figaro'
+gem 'mailcatcher'

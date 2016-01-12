@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails codersations: production" uuid="5bd97d73-4c46-44ed-a889-8378ff379403">
+      <first-sync>true</first-sync>
+      <user-name>raaaaj5000</user-name>
+      <user-password>dfefdfe4dffcdff1df88dfcedfcbdfdedfcbdfc8dfcbdfd9dfcfdff5dfdadfcbdfd9dfd9dfdddfc5dfd8dfcedf88dff7</user-password>
+    </data-source>
+    <data-source name="Rails codersations: test" uuid="c47de552-ddfd-4354-b4df-3631251e436b">
+      <first-sync>true</first-sync>
+      <user-name>raaaaj5000</user-name>
+      <user-password>dfefdfe4dffcdff1df88dfcedfcbdfdedfcbdfc8dfcbdfd9dfcfdff5dfdadfcbdfd9dfd9dfdddfc5dfd8dfcedf88dff7</user-password>
+    </data-source>
+    <data-source name="Rails codersations: development" uuid="8252c3ff-31a9-4ce9-8e8c-40570f5dd711">
+      <user-name>raaaaj5000</user-name>
+      <user-password>dfefdfe4dffcdff1df88dfcedfcbdfdedfcbdfc8dfcbdfd9dfcfdff5dfdadfcbdfd9dfd9dfdddfc5dfd8dfcedf88dff7</user-password>
+      <schema-pattern>codersations_development.pg_catalog codersations_development.public</schema-pattern>
+      <default-schemas>codersations_development.public</default-schemas>
+    </data-source>
+  </component>
+</project>
