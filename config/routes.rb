@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  root 'pages#index'
 
   namespace :admin do
     root 'dashboard#index'
     resources :categories, except: [:show]
     resources :dashboards, only: [:index]
+    resources :users
   end
 
 

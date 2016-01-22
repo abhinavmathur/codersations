@@ -7,9 +7,10 @@
       <user-password>dfefdfe4dffcdff1df88dfcedfcbdfdedfcbdfc8dfcbdfd9dfcfdff5dfdadfcbdfd9dfd9dfdddfc5dfd8dfcedf88dff7</user-password>
     </data-source>
     <data-source name="Rails codersations: test" uuid="c47de552-ddfd-4354-b4df-3631251e436b">
-      <first-sync>true</first-sync>
       <user-name>raaaaj5000</user-name>
       <user-password>dfefdfe4dffcdff1df88dfcedfcbdfdedfcbdfc8dfcbdfd9dfcfdff5dfdadfcbdfd9dfd9dfdddfc5dfd8dfcedf88dff7</user-password>
+      <schema-pattern>codersations_test.pg_catalog codersations_test.public</schema-pattern>
+      <default-schemas>codersations_test.public</default-schemas>
     </data-source>
     <data-source name="Rails codersations: development" uuid="8252c3ff-31a9-4ce9-8e8c-40570f5dd711">
       <user-name>raaaaj5000</user-name>
