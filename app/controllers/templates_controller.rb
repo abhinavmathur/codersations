@@ -42,7 +42,7 @@ class TemplatesController < ApplicationController
 
   private
   def set_template
-    @template = Template.find(params[:id])
+    @template = Template.friendly.find(params[:id])
   end
 
   def template_params

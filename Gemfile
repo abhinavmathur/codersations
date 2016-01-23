@@ -51,3 +51,4 @@ gem 'annotate'
 gem 'figaro'
 gem 'mailcatcher'
 gem 'friendly_id'
+gem "select2-rails"
