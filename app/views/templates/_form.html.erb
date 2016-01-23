@@ -1,0 +1,7 @@
+<%= simple_form_for @template do |f| %>
+    <%= f.association :category %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :points_covered %>
+    <%= f.button :submit %>
+<% end %>
