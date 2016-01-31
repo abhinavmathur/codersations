@@ -51,4 +51,5 @@ gem 'annotate'
 gem 'figaro'
 gem 'mailcatcher'
 gem 'friendly_id'
-gem "select2-rails"
+gem 'select2-rails'
+gem 'gravatarify', '~> 3.0.0'
