@@ -1,2 +1,7 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<% @categories.each do |category| %>
+    <h1><%= category.name.titleize %></h1>
+    <p>Templates in this category:-</p>
+    <% category.templates.each do |template| %>
+        <li><%= link_to template.name, category_template_path(category, template) %></li>
+    <% end %>
+<% end %>

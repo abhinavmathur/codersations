@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
 
-  resources :categories, only: [:index, :show]
-  resources :templates, except: :index
+  resources :categories, only: [:index, :show] do
+    resources :templates, except: :index
+  end
+
   devise_for :users, controllers: { registrations: 'registrations' }
 end
