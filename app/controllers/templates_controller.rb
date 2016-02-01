@@ -1,18 +1,35 @@
+# == Schema Information
+#
+# Table name: templates
+#
+#  id             :integer          not null, primary key
+#  category_id    :integer
+#  name           :string
+#  description    :text
+#  points_covered :text
+#  repo_link      :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  author_id      :integer
+#  slug           :string
+#
+
 class TemplatesController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_category
   before_action :set_template, only: [:show, :edit, :update, :destroy]
 
   def new
-    @template = Template.new
+    @template = @category.templates.new
   end
 
   def create
-    @template = Template.create(template_params)
+    @template = @category.templates.create(template_params)
     @template.author = current_user
     if @template.save
       flash[:success] = 'Template has been created successfully'
-      redirect_to template_path(@template)
+      redirect_to category_template_path(@category, @template)
     else
       flash.now[:danger] = 'Template was not created'
       render :new
@@ -25,10 +42,10 @@ class TemplatesController < ApplicationController
   end
 
   def update
-    @template = Template.update(template_params)
+    @template = @category.templates.build(template_params)
     if @template.save
       flash[:success] = 'Template has been updated successfully'
-      redirect_to template_path(@template)
+      redirect_to category_template_path(@category, @template)
     else
       flash.now[:danger] = 'Template was not updated'
       render :edit
@@ -36,13 +53,18 @@ class TemplatesController < ApplicationController
   end
 
   def destroy
-    @template.destroy
+    @category.templates.destroy
     redirect_to root_path
   end
 
   private
+
+  def set_category
+    @category = Category.friendly.find(params[:category_id])
+  end
+
   def set_template
-    @template = Template.friendly.find(params[:id])
+    @template = @category.templates.friendly.find(params[:id])
   end
 
   def template_params

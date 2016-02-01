@@ -1,7 +1,7 @@
-<%= simple_form_for @template do |f| %>
+<%= simple_form_for [@category,@template] do |f| %>
     <%= f.association :category %>
     <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :points_covered %>
+    <%= f.input :description,  :input_html => {:class => 'redactor'}%>
+    <%= f.input :points_covered, :input_html => {:class => 'redactor'}%>
     <%= f.button :submit %>
 <% end %>

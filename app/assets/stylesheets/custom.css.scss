@@ -25,3 +25,14 @@
   color: #468847;
   text-align: left;
 }
+.fix-box {
+  margin-top: 110px;
+  .redactor-box {
+    #redactor-toolbar-2 {
+      display: none;
+    }
+    .redactor-box {
+      margin-top: -110px;
+    }
+  }
+}
