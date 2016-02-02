@@ -42,8 +42,9 @@ class TemplatesController < ApplicationController
   end
 
   def update
-    @template = @category.templates.build(template_params)
-    if @template.save
+    @category = Category.friendly.find(params[:category_id])
+    @template = @category.templates.friendly.find(params[:id])
+    if @template.update(template_params)
       flash[:success] = 'Template has been updated successfully'
       redirect_to category_template_path(@category, @template)
     else

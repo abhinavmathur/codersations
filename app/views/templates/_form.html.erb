@@ -1,5 +1,5 @@
 <%= simple_form_for [@category,@template] do |f| %>
-    <%= f.association :category %>
+    <%= f.association :category, include_blank: false %>
     <%= f.input :name %>
     <%= f.input :description,  :input_html => {:class => 'redactor'}%>
     <%= f.input :points_covered, :input_html => {:class => 'redactor'}%>
