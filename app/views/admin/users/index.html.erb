@@ -6,6 +6,7 @@
     <th>Name</th>
     <th>Email</th>
     <th>Options</th>
+    <th>Is an Admin ?</th>
   </tr>
   </thead>
   <tbody>
@@ -18,6 +19,13 @@
           <%= link_to 'User Page', admin_user_path(user), class: 'btn btn-sm btn-primary' %>
           <%= link_to 'Edit User', edit_admin_user_path(user), class: 'btn btn-sm btn-info' %>
           <%= link_to 'Delete User', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?'},class: 'btn btn-sm btn-danger' %>
+        </th>
+        <th>
+          <% if user.admin %>
+              <%= 'YES' %>
+          <% else %>
+              <%= 'NO' %>
+          <% end %>
         </th>
       </tr>
   <% end %>
