@@ -1,2 +1,18 @@
 <h1><%= @user.name %></h1>
 <%= gravatar_tag @user.email, size: 100, d: :identicon %>
+<table>
+  <thead>
+  <tr>
+    <th>Template created by this author</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @templates.each do |t| %>
+  <tr>
+    <th><%= link_to t.name, category_template_path(t.category, t) %></th>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
