@@ -1,4 +1,4 @@
-class Admin::UsersController < ApplicationController
+class Admin::UsersController < Admin::DashboardController
 
   before_action :set_users, only: [:show, :edit, :update, :destroy]
 
@@ -30,8 +30,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def update
-    @user = User.update(user_params)
-    if @user.update
+    if @user.update(user_params)
       flash[:success] = "User has been successfully updated."
       redirect_to admin_user_path(@user)
     else
@@ -48,7 +47,7 @@ class Admin::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :admin)
   end
 
   def set_users

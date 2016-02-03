@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::DashboardController
 
   before_action :set_category, only: [:edit, :update, :destroy]
 
