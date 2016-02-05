@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202223104) do
+ActiveRecord::Schema.define(version: 20160205002518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,30 @@ ActiveRecord::Schema.define(version: 20160202223104) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "infopages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "template_id"
+    t.integer  "category_id"
+    t.string   "slug"
+  end
+
+  add_index "infopages", ["category_id"], name: "index_infopages_on_category_id", using: :btree
+  add_index "infopages", ["template_id"], name: "index_infopages_on_template_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "template_id"
+    t.string   "slug"
+  end
+
+  add_index "pages", ["template_id"], name: "index_pages_on_template_id", using: :btree
 
   create_table "redactor_assets", force: :cascade do |t|
     t.string   "asset_file_name"
@@ -96,6 +120,9 @@ ActiveRecord::Schema.define(version: 20160202223104) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "infopages", "categories"
+  add_foreign_key "infopages", "templates"
+  add_foreign_key "pages", "templates"
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
 end

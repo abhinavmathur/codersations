@@ -1,5 +1,7 @@
 <%= @template.category.name %>
 <%= link_to @template.author.name, user_path(@template.author) %>
+<br>
+<%= link_to 'Create new page', new_category_template_infopage_path(@category, @template) %>
 <h1><%= @template.name %></h1>
 <h2>Description</h2>
 <p><%= simple_format(@template.description)%></p>

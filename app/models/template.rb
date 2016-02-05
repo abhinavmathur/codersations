@@ -19,4 +19,5 @@ class Template < ActiveRecord::Base
   friendly_id :name, use: :slugged
   belongs_to :category
   belongs_to :author, class_name: 'User'
+  has_many :infopages
 end

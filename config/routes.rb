@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'pages#index'
+  root 'static#index'
 
   namespace :admin do
     root 'dashboard#index'
@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
 
   resources :categories, only: [:index, :show] do
-    resources :templates, except: :index
+    resources :templates, except: :index do
+      resources :infopages, except: :index
+    end
   end
 
   devise_for :users, controllers: { registrations: 'registrations' }

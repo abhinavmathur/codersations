@@ -8,3 +8,5 @@
 3.times do |t|
   Category.create!(name: "Ruby 0.#{t}")
 end
+
+User.create!(name: 'Abhinav Mathur', email: 'raaaaj5000@yahoo.co.in', password: 'password', admin: true)

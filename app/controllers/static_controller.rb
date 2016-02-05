@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class StaticController < ApplicationController
   def index
     @categories = Category.all
   end
