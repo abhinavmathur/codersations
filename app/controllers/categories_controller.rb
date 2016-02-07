@@ -17,5 +17,6 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.friendly.find(params[:id])
     @templates = @category.templates.all
+    @tutorials = @category.tutorials.all
   end
 end

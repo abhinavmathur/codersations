@@ -9,6 +9,7 @@
 #  updated_at  :datetime         not null
 #  template_id :integer
 #  category_id :integer
+#  slug        :string
 #
 
 FactoryGirl.define do

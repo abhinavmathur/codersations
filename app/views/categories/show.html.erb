@@ -1,4 +1,12 @@
-<h1>Tutorials in <%= @category.name %> category</h1>
+<h1>Tutorials and Templates in <%= @category.name %> category</h1>
+<h3>Templates</h3>
 <% @templates.each do |template| %>
     <%= link_to template.name, category_template_path(@category, template) %>
+<% end %>
+
+<br>
+
+<h3>Tutorials</h3>
+<% @tutorials.each do |tutorial| %>
+    <%= link_to tutorial.title, category_tutorial_path(@category, tutorial) %>
 <% end %>

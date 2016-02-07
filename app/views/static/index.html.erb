@@ -4,4 +4,8 @@
     <% category.templates.each do |template| %>
         <li><%= link_to template.name, category_template_path(category, template) %></li>
     <% end %>
+    <p>Tutorials in this category</p>
+    <% category.tutorials.each do |tutorial| %>
+        <l1><%= link_to tutorial.title, category_tutorial_path(category, tutorial) %></l1>
+    <% end %>
 <% end %>

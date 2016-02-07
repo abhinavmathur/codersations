@@ -14,5 +14,18 @@
   <% end %>
   </tbody>
 </table>
-
+<table>
+  <thead>
+  <tr>
+    <th>Tutorials created by this author</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tutorials.each do |t| %>
+      <tr>
+        <th><%= link_to t.title, category_tutorial_path(t.category, t) %></th>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
 

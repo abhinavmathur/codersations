@@ -15,6 +15,7 @@ class Category < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z]+\z/, message: 'Must be lowercase' }
   has_many :templates
+  has_many :tutorials
 
 
 end

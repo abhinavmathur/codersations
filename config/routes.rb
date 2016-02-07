@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories, only: [:index, :show] do
+    resources :tutorials, except: :index
+  end
+
+
   devise_for :users, controllers: { registrations: 'registrations' }
   resources :users, only: :show
 end

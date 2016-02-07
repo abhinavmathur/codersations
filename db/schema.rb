@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205002518) do
+ActiveRecord::Schema.define(version: 20160207060040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,23 @@ ActiveRecord::Schema.define(version: 20160205002518) do
   add_index "templates", ["author_id"], name: "index_templates_on_author_id", using: :btree
   add_index "templates", ["category_id"], name: "index_templates_on_category_id", using: :btree
 
+  create_table "tutorials", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.text     "description"
+    t.text     "points_covered"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.string   "link_to_repo"
+    t.string   "slug"
+    t.integer  "author_id"
+  end
+
+  add_index "tutorials", ["author_id"], name: "index_tutorials_on_author_id", using: :btree
+  add_index "tutorials", ["category_id"], name: "index_tutorials_on_category_id", using: :btree
+  add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                    default: "",    null: false
     t.string   "encrypted_password",       default: "",    null: false
@@ -125,4 +142,7 @@ ActiveRecord::Schema.define(version: 20160205002518) do
   add_foreign_key "pages", "templates"
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
+  add_foreign_key "tutorials", "categories"
+  add_foreign_key "tutorials", "users"
+  add_foreign_key "tutorials", "users", column: "author_id"
 end

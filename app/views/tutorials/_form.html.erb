@@ -1,0 +1,7 @@
+<%= simple_form_for [@category, @tutorial] do |f| %>
+    <%= f.input :title, required: true %>
+    <%= f.input :description %>
+    <%= f.input :points_covered %>
+    <%= f.input :link_to_repo %>
+    <%= f.button :submit, class: 'btn btn-success' %>
+<% end %>
