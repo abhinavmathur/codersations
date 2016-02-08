@@ -18,7 +18,7 @@
 class TutorialsController < ApplicationController
 
   before_action :set_category
-  before_action :set_tutorial, only: [:show, :edit, :update, :destroy]
+  before_action :set_tutorial, only: [:show, :edit, :update, :destroy, :add_member, :remove_member]
   before_action :authenticate_user!, except: :show
 
   def new
@@ -57,6 +57,14 @@ class TutorialsController < ApplicationController
 
   def destroy
     @tutorial.destroy
+  end
+
+  def add_member
+
+  end
+
+  def remove_member
+
   end
 
   private

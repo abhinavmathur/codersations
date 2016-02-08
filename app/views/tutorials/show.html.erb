@@ -1,2 +1,3 @@
 <h1><%= @tutorial.title %></h1>
 <p>By:- <%= link_to @tutorial.author.name, user_path(@tutorial.author) %> in category: <%= @tutorial.category.name %></p>
+<p><%= @tutorial.description.html_safe %></p>

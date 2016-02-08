@@ -1,3 +1,5 @@
+<body <%= "data-no-turbolinks='true'".html_safe if controller_name=="templates" %>>
+
 <%= simple_form_for [@category,@template] do |f| %>
     <% if action_name == 'edit' %>
         <p><bold><%= @category.name %></bold></p>

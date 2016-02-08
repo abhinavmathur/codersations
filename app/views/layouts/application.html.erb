@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body <%= "data-no-turbolinks='true'".html_safe if controller_name=="categories" %>>
 <div class="container-fluid">
   <br>
   <br>

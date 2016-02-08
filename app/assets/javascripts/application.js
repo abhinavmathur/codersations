@@ -12,10 +12,14 @@
 //
 
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require twitter/bootstrap
+//= require bootstrap-sprockets
 //= require redactor-rails/config
 //= require redactor-rails/redactor.min
 //= require redactor-rails/plugins
 //= require select2
+//= require summernote
 //= require_tree .
+//= require turbolinks
+

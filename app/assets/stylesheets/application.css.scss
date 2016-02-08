@@ -16,3 +16,10 @@
  *= require redactor-rails
  *= require_self
   */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "summernote";
+@import "codemirror";
+@import "codemirror/themes/solarized";

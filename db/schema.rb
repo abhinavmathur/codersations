@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207060040) do
+ActiveRecord::Schema.define(version: 20160207071636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,17 @@ ActiveRecord::Schema.define(version: 20160207060040) do
   end
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
+
+  create_table "contributors", force: :cascade do |t|
+    t.integer  "tutorial_id"
+    t.boolean  "access",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "member_id"
+  end
+
+  add_index "contributors", ["member_id"], name: "index_contributors_on_member_id", using: :btree
+  add_index "contributors", ["tutorial_id"], name: "index_contributors_on_tutorial_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -137,6 +148,8 @@ ActiveRecord::Schema.define(version: 20160207060040) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "contributors", "tutorials"
+  add_foreign_key "contributors", "users", column: "member_id"
   add_foreign_key "infopages", "categories"
   add_foreign_key "infopages", "templates"
   add_foreign_key "pages", "templates"

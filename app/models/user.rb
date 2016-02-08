@@ -42,4 +42,8 @@ class User < ActiveRecord::Base
   has_many :templates
   has_many :tutorials
 
+  has_many :members, foreign_key: :member_id
+  has_many :tutorials, through: :contributors
+
+
 end

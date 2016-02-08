@@ -31,7 +31,6 @@ group :development, :test do
   gem 'capybara'
   gem 'byebug'
   gem 'factory_girl_rails'
-
 end
 
 group :development do
@@ -45,8 +44,8 @@ end
 
 #My Gems
 gem 'devise'
-gem 'twitter-bootstrap-rails'
 gem 'simple_form'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'pg'
 gem 'annotate'
 gem 'figaro'
@@ -56,3 +55,9 @@ gem 'select2-rails'
 gem 'gravatarify', '~> 3.0.0'
 gem 'paperclip'
 gem 'redactor-paperclip', github: 'DynamoMTL/redactor-paperclip'
+gem 'markable', github: 'chrome/markable'
+gem 'jquery-turbolinks'
+gem 'summernote-rails', github: 'summernote/summernote-rails'
+gem 'font-awesome-rails' # required
+gem 'codemirror-rails'
+

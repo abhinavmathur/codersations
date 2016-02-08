@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show] do
-    resources :tutorials, except: :index
+    resources :tutorials, except: :index do
+      member do
+        put '/add_member' => 'tutorials#add_member'
+        put '/remove_member' => 'tutorials#remove_member'
+      end
+    end
   end
 
 
