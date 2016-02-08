@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207071636) do
+ActiveRecord::Schema.define(version: 20160208102250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(version: 20160207071636) do
 
   add_index "infopages", ["category_id"], name: "index_infopages_on_category_id", using: :btree
   add_index "infopages", ["template_id"], name: "index_infopages_on_template_id", using: :btree
+
+  create_table "marks", id: false, force: :cascade do |t|
+    t.integer  "marker_id"
+    t.string   "marker_type"
+    t.integer  "markable_id"
+    t.string   "markable_type"
+    t.string   "mark",          limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "marks", ["markable_id", "markable_type", "mark"], name: "index_marks_on_markable_id_and_markable_type_and_mark", using: :btree
+  add_index "marks", ["marker_id", "marker_type", "mark"], name: "index_marks_on_marker_id_and_marker_type_and_mark", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title"

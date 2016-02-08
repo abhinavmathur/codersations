@@ -35,10 +35,25 @@
 
 class UsersController < ApplicationController
 
+  before_action :set_user, only: [:show, :follow, :unfollow]
+
   def show
-    @user = User.find(params[:id])
     @templates = Template.where(author_id: @user.id).all
     @tutorials = Tutorial.where(author: @user).all
+  end
 
+  def follow
+    current_user.follow_users << @user
+    redirect_to user_path(@user)
+  end
+
+  def unfollow
+    current_user.follow_users.delete @user
+    redirect_to user_path(@user)
+  end
+
+  private
+  def set_user
+    @user = User.find(params[:id])
   end
 end

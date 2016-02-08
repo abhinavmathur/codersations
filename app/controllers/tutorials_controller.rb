@@ -18,7 +18,7 @@
 class TutorialsController < ApplicationController
 
   before_action :set_category
-  before_action :set_tutorial, only: [:show, :edit, :update, :destroy, :add_member, :remove_member]
+  before_action :set_tutorial, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :like, :dislike]
   before_action :authenticate_user!, except: :show
 
   def new
@@ -65,6 +65,16 @@ class TutorialsController < ApplicationController
 
   def remove_member
 
+  end
+
+  def like
+    current_user.favorite_tutorials << @tutorial
+    redirect_to category_tutorial_path(@category, @tutorial)
+  end
+
+  def dislike
+    current_user.favorite_tutorials.delete @tutorial
+    redirect_to category_tutorial_path(@category, @tutorial)
   end
 
   private

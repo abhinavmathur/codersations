@@ -1,3 +1,8 @@
 <h1><%= @tutorial.title %></h1>
+<% if @tutorial.marked_as_favorite? by: current_user %>
+    <%= link_to 'Remove from bookmarks', dislike_category_tutorial_path(@category, @tutorial), method: :put %>
+    <% else %>
+    <%= link_to 'Add to bookmarks', like_category_tutorial_path(@category, @tutorial), method: :put %>
+    <% end %>
 <p>By:- <%= link_to @tutorial.author.name, user_path(@tutorial.author) %> in category: <%= @tutorial.category.name %></p>
 <p><%= @tutorial.description.html_safe %></p>

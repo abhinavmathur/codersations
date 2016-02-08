@@ -16,10 +16,12 @@
 #
 
 class Tutorial < ActiveRecord::Base
+  markable_as :favorite
   extend FriendlyId
   friendly_id :title, use: :slugged
   belongs_to :category
   belongs_to :author, class_name: 'User'
   has_many :contributors
   has_many :members, through: :contributors
+
 end
