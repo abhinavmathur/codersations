@@ -23,6 +23,7 @@ class Tutorial < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   has_many :contributors
   has_many :members, through: :contributors
+  has_many :infos
 
   validates :title, :description, :points_covered, presence: true
 

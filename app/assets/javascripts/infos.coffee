@@ -1,16 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
 
 # to set summernote object
 # You should change '#post_content' to your textarea input id
-  summer_note = $('#tutorial_description')
+  summer_note = $('#info_content')
 
   # to call summernote editor
   summer_note.summernote
 # to set options
     height:500
+    lang: 'ko-KR'
     toolbar: [
       [
         'style'

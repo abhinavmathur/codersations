@@ -1,5 +1,7 @@
 <%= simple_form_for [@category, @template, @infopage] do |f| %>
     <%= f.input :title %>
-    <%= f.input :content %>
+    <div class="form-group">
+      <%= f.input :content, class:'summernote' %>
+    </div>
     <%= f.button :submit %>
 <% end %>

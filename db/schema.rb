@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160208102250) do
+ActiveRecord::Schema.define(version: 20160209074008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,25 @@ ActiveRecord::Schema.define(version: 20160208102250) do
     t.integer  "template_id"
     t.integer  "category_id"
     t.string   "slug"
+    t.integer  "tutorial_id"
   end
 
   add_index "infopages", ["category_id"], name: "index_infopages_on_category_id", using: :btree
   add_index "infopages", ["template_id"], name: "index_infopages_on_template_id", using: :btree
+  add_index "infopages", ["tutorial_id"], name: "index_infopages_on_tutorial_id", using: :btree
+
+  create_table "infos", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "tutorial_id"
+    t.integer  "category_id"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "infos", ["category_id"], name: "index_infos_on_category_id", using: :btree
+  add_index "infos", ["tutorial_id"], name: "index_infos_on_tutorial_id", using: :btree
 
   create_table "marks", id: false, force: :cascade do |t|
     t.integer  "marker_id"
@@ -164,6 +179,9 @@ ActiveRecord::Schema.define(version: 20160208102250) do
   add_foreign_key "contributors", "users", column: "member_id"
   add_foreign_key "infopages", "categories"
   add_foreign_key "infopages", "templates"
+  add_foreign_key "infopages", "tutorials"
+  add_foreign_key "infos", "categories"
+  add_foreign_key "infos", "tutorials"
   add_foreign_key "pages", "templates"
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
