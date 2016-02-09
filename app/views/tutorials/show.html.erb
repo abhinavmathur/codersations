@@ -5,11 +5,17 @@
     <%= link_to 'Add to bookmarks', like_category_tutorial_path(@category, @tutorial), method: :put %>
 <% end %>
 
-<% if @tutorial.author == current_user %>
-    <% @tutorial.contributors.each do |c| %>
-        <%= User.find_by_id(c.member_id).email %>
-    <% end %>
+<h3>Contributors</h3>
+<%arr = [] %>
+<% @tutorial.contributors.each do |c| %>
+    <% arr.push  User.find_by_id(c.member_id).email %>
 <% end %>
+<% arr = arr.uniq %>
+<%= arr.map { |a| a.to_s}.join(', ') %>
+
+
+
+
 
 <% if has_access?(current_user, @tutorial) %>
     <h1>YES I HAVE ACCESS TO THIS TUTORIAL !!</h1>
