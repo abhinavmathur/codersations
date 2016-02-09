@@ -16,4 +16,7 @@
 #
 
 module TutorialsHelper
+  def has_access?(user, tutorial)
+    user.admin || tutorial.author == user || tutorial.contributors.exists?(member: user, tutorial: tutorial, access: true)
+  end
 end

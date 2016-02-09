@@ -177,8 +177,9 @@
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.11.2, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.6.7.2, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, rbenv: 2.2.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="paperclip (v4.3.4, rbenv: 2.2.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="paperclip (v4.3.5, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="pg (v0.18.4, rbenv: 2.2.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="pundit (v1.1.0, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.6.4, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-protection (v1.5.3, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, rbenv: 2.2.3) [gem]" level="application" />
@@ -188,7 +189,7 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.0.3, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.2.5, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.5.0, rbenv: 2.2.3) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.2.1, rbenv: 2.2.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.2.2, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="redactor-paperclip (v0.0.3@9574c6, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v2.1.1, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rspec-core (v3.4.2, rbenv: 2.2.3) [gem]" level="application" />
@@ -207,6 +208,7 @@
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v3.5.2, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.0.1, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.11, rbenv: 2.2.3) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="summernote-rails (v0.7.1.0@7f7e7e, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thin (v1.5.1, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.19.1, rbenv: 2.2.3) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.5, rbenv: 2.2.3) [gem]" level="application" />

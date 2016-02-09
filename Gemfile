@@ -59,5 +59,5 @@ gem 'markable', github: 'chrome/markable'
 gem 'jquery-turbolinks'
 gem 'summernote-rails', github: 'summernote/summernote-rails'
 gem 'font-awesome-rails' # required
-gem 'codemirror-rails'
+gem 'pundit'
 

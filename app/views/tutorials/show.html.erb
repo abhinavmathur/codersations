@@ -1,8 +1,39 @@
 <h1><%= @tutorial.title %></h1>
 <% if @tutorial.marked_as_favorite? by: current_user %>
     <%= link_to 'Remove from bookmarks', dislike_category_tutorial_path(@category, @tutorial), method: :put %>
-    <% else %>
+<% else %>
     <%= link_to 'Add to bookmarks', like_category_tutorial_path(@category, @tutorial), method: :put %>
+<% end %>
+
+<% if @tutorial.author == current_user %>
+    <% @tutorial.contributors.each do |c| %>
+        <%= User.find_by_id(c.member_id).email %>
     <% end %>
+<% end %>
+
+<% if has_access?(current_user, @tutorial) %>
+    <h1>YES I HAVE ACCESS TO THIS TUTORIAL !!</h1>
+<% end %>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <h3>Users to add to tutorial</h3>
+    <% if @tutorial.author == current_user %>
+        <% current_user.users_have_marked_as_follow.each do |user| %>
+            <br>
+            <%= link_to user.email, user_path(user) %>
+            <% if Contributor.exists?(tutorial: @tutorial, member: user, access: true) %>
+                <%= link_to 'Remove member', remove_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-danger' %>
+            <% else %>
+                <%= link_to 'Add member', add_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-success' %>
+            <% end %>
+            <br>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="col-md-6"></div>
+</div>
+
 <p>By:- <%= link_to @tutorial.author.name, user_path(@tutorial.author) %> in category: <%= @tutorial.category.name %></p>
 <p><%= @tutorial.description.html_safe %></p>

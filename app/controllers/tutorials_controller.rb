@@ -28,6 +28,7 @@ class TutorialsController < ApplicationController
   def create
     @tutorial = @category.tutorials.create(tutorial_params)
     @tutorial.update(author: current_user)
+    Contributor.create!(tutorial: @tutorial, access: true, member: current_user)
     if @tutorial.save
       flash[:success] = 'Tutorial has been created successfully'
       redirect_to category_tutorial_path(@category, @tutorial)
@@ -60,12 +61,28 @@ class TutorialsController < ApplicationController
   end
 
   def add_member
-
+    user = params[:user].to_i
+    temp_user = User.find_by_id(user)
+    if @tutorial.members.include? temp_user
+      flash[:danger] = 'User once denied cannot be added again. Sorry'
+    else
+      Contributor.create!(tutorial: @tutorial, access: true, member: temp_user)
+      @tutorial.members << temp_user
+      flash[:success] = 'User has been added to tutorial'
+    end
+    redirect_to category_tutorial_path(@category, @tutorial)
   end
 
   def remove_member
-
+    user = params[:user].to_i
+    temp_user = User.find_by_id(user)
+    con = Contributor.where(tutorial: @tutorial, member: temp_user, access: true).first
+    con.access = false
+    con.save
+    flash[:success] = 'User access has been revoked'
+    redirect_to category_tutorial_path(@category, @tutorial)
   end
+
 
   def like
     current_user.favorite_tutorials << @tutorial
@@ -89,4 +106,5 @@ class TutorialsController < ApplicationController
   def set_tutorial
     @tutorial = @category.tutorials.friendly.find(params[:id])
   end
+
 end
