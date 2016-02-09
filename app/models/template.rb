@@ -20,4 +20,6 @@ class Template < ActiveRecord::Base
   belongs_to :category
   belongs_to :author, class_name: 'User'
   has_many :infopages
+
+  validates :category_id, :name, :description, :points_covered, presence: true
 end

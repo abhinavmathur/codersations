@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         put '/remove_member' => 'tutorials#remove_member'
         put '/like', to: 'tutorials#like'
         put '/dislike', to: 'tutorials#dislike'
+        put '/admin_remove_member', to: 'tutorials#admin_remove_member'
       end
     end
   end

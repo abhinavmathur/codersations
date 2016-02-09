@@ -8,13 +8,14 @@
 <h3>Contributors</h3>
 <%arr = [] %>
 <% @tutorial.contributors.each do |c| %>
-    <% arr.push  User.find_by_id(c.member_id).email %>
+    <% arr.push  User.find_by_id(c.member_id).name %>
 <% end %>
 <% arr = arr.uniq %>
-<%= arr.map { |a| a.to_s}.join(', ') %>
-
-
-
+<% arr.delete(@tutorial.author.name) %>
+<% arr.each do |user| %>
+    <% user = User.find_by_name(user) %>
+    <%= link_to user.name, user_path(user) %>
+<%end %>
 
 
 <% if has_access?(current_user, @tutorial) %>
@@ -35,6 +36,9 @@
                 <%= link_to 'Add member', add_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-success' %>
             <% end %>
             <br>
+            <% if current_user.admin %>
+            <%= link_to 'Revoke User Access', admin_remove_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-warning' %>
+            <% end %>
         <% end %>
     <% end %>
   </div>

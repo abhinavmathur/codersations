@@ -48,4 +48,15 @@ class User < ActiveRecord::Base
   has_many :tutorials, through: :contributors
 
 
+  def display_bitbucket?
+    display_bitbucket
+  end
+
+  def display_github?
+    display_github
+  end
+
+  def display_personal_website?
+    display_personal_website
+  end
 end

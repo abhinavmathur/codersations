@@ -18,7 +18,7 @@
 class TutorialsController < ApplicationController
 
   before_action :set_category
-  before_action :set_tutorial, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :like, :dislike]
+  before_action :set_tutorial, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :like, :dislike, :admin_remove_member]
   before_action :authenticate_user!, except: :show
 
   def new
@@ -64,7 +64,7 @@ class TutorialsController < ApplicationController
     user = params[:user].to_i
     temp_user = User.find_by_id(user)
     if @tutorial.members.include? temp_user
-      flash[:danger] = 'User once denied cannot be added again. Sorry'
+      flash[:danger] = 'User once denied cannot be added again. Sorry.'
     else
       Contributor.create!(tutorial: @tutorial, access: true, member: temp_user)
       @tutorial.members << temp_user
@@ -91,6 +91,14 @@ class TutorialsController < ApplicationController
 
   def dislike
     current_user.favorite_tutorials.delete @tutorial
+    redirect_to category_tutorial_path(@category, @tutorial)
+  end
+
+  def admin_remove_member
+    user = params[:user].to_i
+    temp_user = User.find_by_id(user)
+    @tutorial.members.delete temp_user
+    flash[:success] = 'User access has been reset'
     redirect_to category_tutorial_path(@category, @tutorial)
   end
 

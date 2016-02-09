@@ -24,4 +24,6 @@ class Tutorial < ActiveRecord::Base
   has_many :contributors
   has_many :members, through: :contributors
 
+  validates :title, :description, :points_covered, presence: true
+
 end

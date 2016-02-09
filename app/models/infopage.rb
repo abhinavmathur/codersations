@@ -17,4 +17,5 @@ class Infopage < ActiveRecord::Base
   friendly_id :title, use: :slugged
   belongs_to :category
   belongs_to :template
+  validates :title, :content, presence: true
 end
