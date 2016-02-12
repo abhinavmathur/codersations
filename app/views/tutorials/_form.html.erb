@@ -1,9 +1,9 @@
 <%= simple_form_for [@category, @tutorial] do |f| %>
     <%= f.input :title, required: true %>
     <div class="form-group">
-      <%= f.input :description, class:'summernote' %>
+      <%= f.input :description, as: :wysihtml5 %>
     </div>
-    <%= f.input :points_covered %>
+    <%= f.input :points_covered, as: :wysihtml5 %>
     <%= f.input :link_to_repo %>
     <%= f.button :submit, class: 'btn btn-success' %>
 <% end %>

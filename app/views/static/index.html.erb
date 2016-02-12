@@ -1,11 +1,8 @@
-<% @categories.each do |category| %>
-    <h1><%= category.name.titleize %></h1>
-    <p>Templates in this category:-</p>
-    <% category.templates.each do |template| %>
-        <li><%= link_to template.name, category_template_path(category, template) %></li>
+<% @tutorials.each do |tutorial| %>
+    <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %> |
+    <%= link_to tutorial.category.name, category_path(tutorial.category) %> |
+    <% if tutorial.author %>
+        <%= link_to tutorial.author.name, user_path(tutorial.author) %>
     <% end %>
-    <p>Tutorials in this category</p>
-    <% category.tutorials.each do |tutorial| %>
-        <l1><%= link_to tutorial.title, category_tutorial_path(category, tutorial) %></l1>
-    <% end %>
+    <br>
 <% end %>

@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
   def index
-    @categories = Category.all
+    @tutorials = Tutorial.limit(10).order("RANDOM()")
   end
 end

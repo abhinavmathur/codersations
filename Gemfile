@@ -61,4 +61,6 @@ gem 'summernote-rails', github: 'summernote/summernote-rails'
 gem 'codemirror-rails'
 gem 'font-awesome-rails' # required
 gem 'pundit'
+gem 'bootstrap-wysihtml5-rails'
+gem 'faker'
 

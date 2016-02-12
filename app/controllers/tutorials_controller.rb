@@ -39,7 +39,7 @@ class TutorialsController < ApplicationController
   end
 
   def show
-
+    @infos = @tutorial.infos.all
   end
 
   def edit
