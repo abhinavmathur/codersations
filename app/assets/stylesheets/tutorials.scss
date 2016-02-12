@@ -1,3 +1,64 @@
-// Place all the styles related to the tutorials controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//colors
+$color_alto_approx: #ddd;
+$color_tundora_approx: #444;
+$color_gallery_approx: #eee;
+$color_salmon_approx: #fa8072;
+$white_50: rgba(255,255,255,.5);
+
+//fonts
+$font_0: trebuchet MS;
+$font_1: lucida sans;
+
+ol {
+  counter-reset: li;
+  list-style: none;
+  *list-style: decimal;
+  font: 15px $font_0, $font_1;
+  padding: 0;
+  margin-bottom: 4em;
+  text-shadow: 0 1px 0 $white_50;
+  ol {
+    margin: 0 0 0 2em;
+  }
+}
+
+.rectangle-list a {
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em .8em;
+  margin: .5em 0 .5em 2.5em;
+  background: $color_alto_approx;
+  color: $color_tundora_approx;
+  text-decoration: none;
+  transition: all .3s ease-out;
+  &:hover {
+    background: $color_gallery_approx;
+    &:after {
+      left: -.5em;
+      border-left-color: $color_salmon_approx;
+    }
+  }
+  &:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: $color_salmon_approx;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+  }
+}

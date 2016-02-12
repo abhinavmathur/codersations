@@ -39,7 +39,7 @@ class TutorialsController < ApplicationController
   end
 
   def show
-    @infos = @tutorial.infos.all
+    @infos = @tutorial.infos.order('created_at ASC').all
   end
 
   def edit

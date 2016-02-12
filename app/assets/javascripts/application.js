@@ -39,6 +39,7 @@
 //= require bootstrap-wysihtml5
 //= require select2
 //= require custom
+//= require sisyphus
 //= require_tree .
 //= require turbolinks
 
