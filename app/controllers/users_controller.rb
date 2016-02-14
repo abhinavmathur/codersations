@@ -54,6 +54,11 @@ class UsersController < ApplicationController
 
   private
   def set_user
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = 'The user you were looking for could not be found'
+      redirect_to root_path
+    end
   end
 end

@@ -18,12 +18,20 @@
 class Tutorial < ActiveRecord::Base
   markable_as :favorite
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :slug_candidates, use: :slugged
+
+  def slug_candidates
+    [
+        :title,
+        [:title, :id]
+    ]
+  end
+
   belongs_to :category
   belongs_to :author, class_name: 'User'
   has_many :contributors
   has_many :members, through: :contributors
-  has_many :infos
+  has_many :infos, dependent: :delete_all
 
   validates :title, :description, :points_covered, presence: true
 

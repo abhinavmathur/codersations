@@ -43,10 +43,11 @@ class TutorialsController < ApplicationController
   end
 
   def edit
-
+    authorize @tutorial, :edit?
   end
 
   def update
+    authorize @tutorial, :edit?
     if @tutorial.update(tutorial_params)
       flash[:success] = 'Tutorial has been updated successfully'
       redirect_to category_tutorial_path(@category, @tutorial)
@@ -57,7 +58,10 @@ class TutorialsController < ApplicationController
   end
 
   def destroy
+    authorize @tutorial, :destroy?
     @tutorial.destroy
+    redirect_to root_path
+    flash[:success] = 'Tutorial has been successfully deleted'
   end
 
   def add_member
@@ -112,7 +116,12 @@ class TutorialsController < ApplicationController
   end
 
   def set_tutorial
-    @tutorial = @category.tutorials.friendly.find(params[:id])
+    begin
+      @tutorial = @category.tutorials.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = 'The tutorial you searched for could not be found'
+      redirect_to root_path
+    end
   end
 
 end

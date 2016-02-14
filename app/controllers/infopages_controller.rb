@@ -68,7 +68,12 @@ class InfopagesController < ApplicationController
   end
 
   def set_infopage
-    @infopage = @template.infopages.friendly.find(params[:id])
+    begin
+      @infopage = @template.infopages.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = 'The page you searched for could not be found'
+      redirect_to root_path
+    end
   end
 
   def infopage_params

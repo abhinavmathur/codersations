@@ -10,13 +10,25 @@
 #
 
 class CategoriesController < ApplicationController
+
+  before_action :set_category, only: :show
+
   def index
     @categories = Category.all
   end
 
   def show
-    @category = Category.friendly.find(params[:id])
     @templates = @category.templates.all
     @tutorials = @category.tutorials.all
+  end
+
+  private
+  def set_category
+    begin
+      @category = Category.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = 'The category you searched could not be found'
+      redirect_to root_path
+    end
   end
 end

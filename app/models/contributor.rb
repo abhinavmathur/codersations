@@ -12,7 +12,7 @@
 
 class Contributor < ActiveRecord::Base
   belongs_to :member, class_name: 'User'
-  belongs_to :tutorial
+  belongs_to :tutorial, dependent: :destroy
 
   #validations
   validates :member_id, :tutorial_id, presence: true

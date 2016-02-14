@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-6 text-center">
-    <h3>By <%= link_to @tutorial.author.name, user_path(@tutorial.author) %> in category <%= @tutorial.category.name %></h3>
+    <h3>By <%= link_to @tutorial.author.name, user_path(@tutorial.author) %> in category <%= link_to @tutorial.category.name, category_path(@tutorial.category) %></h3>
   </div>
   <div class="col-md-6 text-center">
     <% if @tutorial.marked_as_favorite? by: current_user %>
@@ -48,22 +48,24 @@
     </ol>
   </div>
 </div>
-<hr>
-<div class="row">
-  <h3>Users to add to tutorial</h3>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>People who follow you</th>
-      <th>Add or Remove</th>
-      <% if current_user.admin %>
-          <th>Revoke user access</th>
-      <% end %>
-    </tr>
-    </thead>
-    <tbody>
-    <% if @tutorial.author == current_user %>
+
+<% if @tutorial.author == current_user %>
+    <hr>
+    <div class="row">
+      <h3>Users to add to tutorial</h3>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>People who follow you</th>
+          <th>Add or Remove</th>
+          <% if current_user.try(:admin) %>
+              <th>Revoke user access</th>
+          <% end %>
+        </tr>
+        </thead>
+        <tbody>
+
         <% current_user.users_have_marked_as_follow.each do |user| %>
             <tr>
               <th>#</th>
@@ -82,11 +84,14 @@
               <% end %>
             </tr>
         <% end %>
-    <% end %>
-    </tbody>
-  </table>
-
-</div>
+        </tbody>
+      </table>
+    </div>
+<% end %>
 <% if has_access?(current_user, @tutorial) %>
     <%= link_to 'Add an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-success' %>
+<% end %>
+
+<% if policy(@tutorial).destroy? %>
+    <%= link_to 'Delete tutorial', category_tutorial_path(@category, @tutorial), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-lg' %>
 <% end %>

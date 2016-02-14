@@ -20,7 +20,6 @@ class InfosController < ApplicationController
   end
 
   def show
-
   end
 
   def edit
@@ -54,7 +53,12 @@ class InfosController < ApplicationController
   end
 
   def set_info
-    @info = @tutorial.infos.friendly.find(params[:id])
+    begin
+      @info = @tutorial.infos.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = 'The page you searched for could not be found'
+      redirect_to root_path
+    end
   end
 
   def info_params

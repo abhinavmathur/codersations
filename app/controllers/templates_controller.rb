@@ -66,7 +66,12 @@ class TemplatesController < ApplicationController
   end
 
   def set_template
-    @template = @category.templates.friendly.find(params[:id])
+    begin
+      @template = @category.templates.friendly.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      flash[:danger] = 'The template you were looking for could not be found'
+      redirect_to root_path
+    end
   end
 
   def template_params
