@@ -40,6 +40,8 @@
 //= require select2
 //= require custom
 //= require sisyphus
+//= require nprogress
+//= require nprogress-turbolinks
 //= require_tree .
 //= require turbolinks
 

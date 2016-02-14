@@ -64,4 +64,5 @@ gem 'pundit'
 gem 'bootstrap-wysihtml5-rails'
 gem 'faker'
 gem 'sisyphus-rails'
+gem 'nprogress-rails'
 
