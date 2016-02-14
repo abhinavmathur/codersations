@@ -47,7 +47,7 @@ class Admin::UsersController < Admin::DashboardController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :admin)
+    params.require(:user).permit(:name, :email, :password, :admin, :creator, :manager)
   end
 
   def set_users

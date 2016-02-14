@@ -88,6 +88,7 @@
       </table>
     </div>
 <% end %>
+
 <% if has_access?(current_user, @tutorial) %>
     <%= link_to 'Add an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-success' %>
 <% end %>

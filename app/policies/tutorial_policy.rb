@@ -6,9 +6,13 @@ class TutorialPolicy < ApplicationPolicy
     end
   end
 
-  def edit?
+  def create?
+    user.try(:admin) || user.try(:creator)
+  end
+
+  def update?
     #record.contributors.exists?(member_id: user.id, tutorial_id: record.id, access: true) || user.try(:admin) || record.author == user
-    user.try(:admin) || record.author == user
+    user.try(:admin) || record.author == user || user.try(:manager)
   end
 
   def destroy?

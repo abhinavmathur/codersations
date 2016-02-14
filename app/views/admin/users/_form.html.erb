@@ -3,5 +3,7 @@
     <%= f.input :email, required: true %>
     <%= f.input :password, required: true %>
     <%= f.input :admin, label: 'Tick box to make user an admin' %>
+    <%= f.input :manager, label: 'Tick box to make user a manager' %>
+    <%= f.input :creator, label: 'Tick box to make user a content creator' %>
     <%= f.button :submit %>
 <% end %>

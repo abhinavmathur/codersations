@@ -59,7 +59,7 @@ gem 'markable', github: 'chrome/markable'
 gem 'jquery-turbolinks'
 gem 'summernote-rails', github: 'summernote/summernote-rails'
 gem 'codemirror-rails'
-gem 'font-awesome-rails' # required
+gem 'font-awesome-rails'
 gem 'pundit'
 gem 'bootstrap-wysihtml5-rails'
 gem 'faker'

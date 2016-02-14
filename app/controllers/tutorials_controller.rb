@@ -23,10 +23,12 @@ class TutorialsController < ApplicationController
 
   def new
     @tutorial = Tutorial.new
+    authorize @tutorial, :create?
   end
 
   def create
     @tutorial = @category.tutorials.create(tutorial_params)
+    authorize @tutorial, :create?
     @tutorial.update(author: current_user)
     Contributor.create!(tutorial: @tutorial, access: true, member: current_user)
     if @tutorial.save
@@ -43,11 +45,11 @@ class TutorialsController < ApplicationController
   end
 
   def edit
-    authorize @tutorial, :edit?
+    authorize @tutorial, :update?
   end
 
   def update
-    authorize @tutorial, :edit?
+    authorize @tutorial, :update?
     if @tutorial.update(tutorial_params)
       flash[:success] = 'Tutorial has been updated successfully'
       redirect_to category_tutorial_path(@category, @tutorial)

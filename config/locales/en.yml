@@ -20,4 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  pundit:
+     default: 'You are not authorized to perform this action'
+     tutorial_policy:
+       update?: 'Access forbidden ! Only the tutorial author and contributors can edit the tutorial '
+       create?: 'You need to be a verified content creator to create a tutorial'
+
+
