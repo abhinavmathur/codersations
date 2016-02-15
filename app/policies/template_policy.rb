@@ -1,7 +1,7 @@
 class TemplatePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      return scope.all if user.admin || user.manager
+      return scope.all if user.try(:admin) || user.try(:manager)
       return scope.where(publish: true)
     end
   end
@@ -11,7 +11,7 @@ class TemplatePolicy < ApplicationPolicy
   end
 
   def show?
-    record.publish
+    record.publish || user.try(:admin) || user.try(:manager) || record.author == user
   end
 
   def update?

@@ -20,10 +20,12 @@ class InfopagesController < ApplicationController
 
   def new
     @infopage = Infopage.new
+    authorize @infopage, :create?
   end
 
   def create
     @infopage = @template.infopages.create(infopage_params)
+    authorize @infopage, :create?
     if @infopage.save
       flash[:success] = 'Page was successfully created'
       redirect_to category_template_infopage_path(@category, @template, @infopage)
@@ -34,14 +36,15 @@ class InfopagesController < ApplicationController
   end
 
   def show
-
+    authorize @infopage, :show?
   end
 
   def edit
-
+    authorize @infopage, :update?
   end
 
   def update
+    authorize @infopage, :update?
     if @infopage.update(infopage_params)
       flash[:success] = 'Page was successfully updated'
       redirect_to category_template_infopage_path(@category, @template, @infopage)
@@ -52,6 +55,7 @@ class InfopagesController < ApplicationController
   end
 
   def destroy
+    authorize @infopage, :destroy?
     @infopage.destroy
     flash[:success] = 'Page was successfully deleted'
     redirect_to template_path(@template)

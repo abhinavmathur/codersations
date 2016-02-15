@@ -18,7 +18,7 @@ class TemplatesController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_category
-  before_action :set_template, only: [:show, :edit, :update, :destroy]
+  before_action :set_template, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
 
   def new
     @template = @category.templates.new
@@ -65,6 +65,17 @@ class TemplatesController < ApplicationController
     redirect_to root_path
   end
 
+  def publish
+    @template.publish = true
+    @template.save
+    redirect_to category_template_path(@category, @template)
+  end
+
+  def unpublish
+    @template.update(publish: false)
+    redirect_to category_template_path(@category, @template)
+  end
+
   private
 
   def set_category
@@ -81,6 +92,6 @@ class TemplatesController < ApplicationController
   end
 
   def template_params
-    params.require(:template).permit(:name, :category_id, :description, :points_covered)
+    params.require(:template).permit(:name, :category_id, :description, :points_covered, :publish)
   end
 end

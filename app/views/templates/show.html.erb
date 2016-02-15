@@ -1,3 +1,8 @@
+<% if @template.publish %>
+    <%= link_to 'Hide Template', unpublish_category_template_path(@category, @template), class: 'btn btn-danger', method: :put%>
+<% else %>
+    <%= link_to 'Publish Template', publish_category_template_path(@category, @template), class: 'btn btn-success', method: :put%>
+<% end %>
 <%= @template.category.name %>
 <%= link_to @template.author.name, user_path(@template.author) %>
 <br>

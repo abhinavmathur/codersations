@@ -1,7 +1,7 @@
 class TutorialPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      return scope.all if user.admin || user.manager
+      return scope.all if user.try(:admin) || user.try(:manager)
       return scope.where(publish: true)
     end
   end

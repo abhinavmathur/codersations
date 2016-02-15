@@ -1,3 +1,11 @@
+<% if @tutorial.author == current_user %>
+    <% if @tutorial.publish %>
+        <%= link_to 'Hide Tutorial', unpublish_category_tutorial_path(@category, @tutorial), class: 'btn btn-danger', method: :put%>
+    <% else %>
+        <%= link_to 'Publish Tutorial', publish_category_tutorial_path(@category, @tutorial), class: 'btn btn-success', method: :put%>
+    <% end %>
+<% end %>
+
 <h1 class="text-primary text-center"><bold><%= @tutorial.title %></bold></h1>
 
 <div class="row">

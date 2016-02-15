@@ -18,7 +18,10 @@
 class TutorialsController < ApplicationController
 
   before_action :set_category
-  before_action :set_tutorial, only: [:show, :edit, :update, :destroy, :add_member, :remove_member, :like, :dislike, :admin_remove_member]
+  before_action :set_tutorial, only: [:show, :edit, :update,
+                                      :destroy, :add_member,
+                                      :remove_member, :like,
+                                      :dislike, :admin_remove_member, :publish, :unpublish]
   before_action :authenticate_user!, except: :show
 
   def new
@@ -65,6 +68,16 @@ class TutorialsController < ApplicationController
     @tutorial.destroy
     redirect_to root_path
     flash[:success] = 'Tutorial has been successfully deleted'
+  end
+
+  def publish
+    @tutorial.update(publish: true)
+    redirect_to category_tutorial_path(@category, @tutorial)
+  end
+
+  def unpublish
+    @tutorial.update(publish: false)
+    redirect_to category_tutorial_path(@category, @tutorial)
   end
 
   def add_member

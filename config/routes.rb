@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show] do
     resources :templates, except: :index do
+      member do
+        put '/publish' => 'templates#publish'
+        put '/unpublish' => 'templates#unpublish'
+      end
       resources :infopages, except: :index
     end
   end
@@ -24,6 +28,8 @@ Rails.application.routes.draw do
         put '/like', to: 'tutorials#like'
         put '/dislike', to: 'tutorials#dislike'
         put '/admin_remove_member', to: 'tutorials#admin_remove_member'
+        put '/publish' => 'tutorials#publish'
+        put '/unpublish' => 'tutorials#unpublish'
       end
     end
   end

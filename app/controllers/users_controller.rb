@@ -38,8 +38,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :follow, :unfollow]
 
   def show
-    @templates = Template.where(author_id: @user.id).all
-    @tutorials = Tutorial.where(author: @user).all
+    @templates = policy_scope Template.where(author_id: @user.id).all
+    @tutorials = policy_scope Tutorial.where(author: @user).all
   end
 
   def follow
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   def set_user
     begin
       @user = User.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound
       flash[:danger] = 'The user you were looking for could not be found'
       redirect_to root_path
     end
