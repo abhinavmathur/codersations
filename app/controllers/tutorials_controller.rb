@@ -41,6 +41,7 @@ class TutorialsController < ApplicationController
   end
 
   def show
+    authorize @tutorial, :show?
     @infos = @tutorial.infos.order('created_at ASC').all
   end
 

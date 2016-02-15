@@ -18,8 +18,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @templates = @category.templates.all
-    @tutorials = @category.tutorials.all
+    @templates = policy_scope @category.templates.all
+    @tutorials = policy_scope @category.tutorials.all
   end
 
   private

@@ -22,10 +22,12 @@ class TemplatesController < ApplicationController
 
   def new
     @template = @category.templates.new
+    authorize @template, :create?
   end
 
   def create
     @template = @category.templates.create(template_params)
+    authorize @template, :create?
     @template.author = current_user
     if @template.save
       flash[:success] = 'Template has been created successfully'
@@ -36,14 +38,17 @@ class TemplatesController < ApplicationController
     end
   end
   def show
+    authorize @template, :show?
   end
 
   def edit
+    authorize @template, :update?
   end
 
   def update
     @category = Category.friendly.find(params[:category_id])
     @template = @category.templates.friendly.find(params[:id])
+    authorize @template, :update?
     @template.author = current_user
     if @template.update(template_params)
       flash[:success] = 'Template has been updated successfully'
@@ -55,6 +60,7 @@ class TemplatesController < ApplicationController
   end
 
   def destroy
+    authorize @template, :destroy?
     @category.templates.destroy
     redirect_to root_path
   end

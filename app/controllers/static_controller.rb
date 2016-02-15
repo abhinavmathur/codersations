@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
   def index
-    @tutorials = Tutorial.limit(10).order("RANDOM()")
+    @tutorials = policy_scope(Tutorial.limit(10).order("RANDOM()"))
   end
 end

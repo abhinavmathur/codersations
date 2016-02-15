@@ -23,7 +23,10 @@ en:
   pundit:
      default: 'You are not authorized to perform this action'
      tutorial_policy:
-       update?: 'Access forbidden ! Only the tutorial author and contributors can edit the tutorial '
+       update?: 'Access forbidden ! Only the tutorial author and contributors can edit the tutorial'
        create?: 'You need to be a verified content creator to create a tutorial'
-
-
+       show?: 'The tutorial is under construction :)'
+     template_policy:
+       update?: 'Access forbidden ! Only the template author can edit the tutorial'
+       create?: 'You need to be a verified content creator to create a template'
+       show?: 'The template is under construction :)'

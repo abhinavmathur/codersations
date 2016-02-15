@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214223230) do
+ActiveRecord::Schema.define(version: 20160214233616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,10 +113,11 @@ ActiveRecord::Schema.define(version: 20160214223230) do
     t.text     "description"
     t.text     "points_covered"
     t.string   "repo_link"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "author_id"
     t.string   "slug"
+    t.boolean  "publish",        default: false
   end
 
   add_index "templates", ["author_id"], name: "index_templates_on_author_id", using: :btree
@@ -127,12 +128,13 @@ ActiveRecord::Schema.define(version: 20160214223230) do
     t.string   "title"
     t.text     "description"
     t.text     "points_covered"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
     t.string   "link_to_repo"
     t.string   "slug"
     t.integer  "author_id"
+    t.boolean  "publish",        default: false
   end
 
   add_index "tutorials", ["author_id"], name: "index_tutorials_on_author_id", using: :btree
