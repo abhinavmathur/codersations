@@ -19,7 +19,7 @@ class Template < ActiveRecord::Base
   friendly_id :name, use: :slugged
   belongs_to :category
   belongs_to :author, class_name: 'User'
-  has_many :infopages
+  has_many :infopages, dependent: :delete_all
 
   validates :category_id, :name, :description, :points_covered, presence: true
 end

@@ -27,8 +27,8 @@ class TemplatesController < ApplicationController
 
   def create
     @template = @category.templates.create(template_params)
-    authorize @template, :create?
     @template.author = current_user
+    authorize @template, :create?
     if @template.save
       flash[:success] = 'Template has been created successfully'
       redirect_to category_template_path(@category, @template)

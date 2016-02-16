@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214233616) do
+ActiveRecord::Schema.define(version: 20160216223739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,10 +135,12 @@ ActiveRecord::Schema.define(version: 20160214233616) do
     t.string   "slug"
     t.integer  "author_id"
     t.boolean  "publish",        default: false
+    t.integer  "template_id"
   end
 
   add_index "tutorials", ["author_id"], name: "index_tutorials_on_author_id", using: :btree
   add_index "tutorials", ["category_id"], name: "index_tutorials_on_category_id", using: :btree
+  add_index "tutorials", ["template_id"], name: "index_tutorials_on_template_id", using: :btree
   add_index "tutorials", ["user_id"], name: "index_tutorials_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -190,6 +192,7 @@ ActiveRecord::Schema.define(version: 20160214233616) do
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
   add_foreign_key "tutorials", "categories"
+  add_foreign_key "tutorials", "templates"
   add_foreign_key "tutorials", "users"
   add_foreign_key "tutorials", "users", column: "author_id"
 end

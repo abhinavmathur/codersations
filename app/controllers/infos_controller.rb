@@ -5,11 +5,13 @@ class InfosController < ApplicationController
   before_action :set_info, only: [:show, :edit, :update, :destroy]
 
   def new
-    @info = Info.new
+    @info = @tutorial.infos.new
+    authorize @info, :create?
   end
 
   def create
     @info = @tutorial.infos.create(info_params)
+    authorize @info, :create?
     if @info.save
       flash[:success] = 'Page was successfully created'
       redirect_to category_tutorial_info_path(@category, @tutorial, @info)
@@ -20,13 +22,15 @@ class InfosController < ApplicationController
   end
 
   def show
+    authorize @info, :show?
   end
 
   def edit
-
+    authorize @info, :update?
   end
 
   def update
+    authorize @info, :update?
     if @info.update(info_params)
       flash[:success] = 'Page was successfully updated'
       redirect_to category_tutorial_info_path(@category, @tutorial, @info)
@@ -37,9 +41,10 @@ class InfosController < ApplicationController
   end
 
   def destroy
+    authorize @info, :destroy?
     @info.destroy
     flash[:success] = 'Page was successfully deleted'
-    redirect_to category_tutorial_path(@tutorial)
+    redirect_to category_path(@category)
   end
 
   private
@@ -55,7 +60,7 @@ class InfosController < ApplicationController
   def set_info
     begin
       @info = @tutorial.infos.friendly.find(params[:id])
-    rescue ActiveRecord::RecordNotFound => e
+    rescue ActiveRecord::RecordNotFound
       flash[:danger] = 'The page you searched for could not be found'
       redirect_to root_path
     end

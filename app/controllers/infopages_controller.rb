@@ -19,7 +19,7 @@ class InfopagesController < ApplicationController
   before_action :set_infopage, only: [:show, :edit, :update, :destroy]
 
   def new
-    @infopage = Infopage.new
+    @infopage = @template.infopages.build
     authorize @infopage, :create?
   end
 
@@ -58,7 +58,7 @@ class InfopagesController < ApplicationController
     authorize @infopage, :destroy?
     @infopage.destroy
     flash[:success] = 'Page was successfully deleted'
-    redirect_to template_path(@template)
+    redirect_to category_path(@category)
   end
 
   private

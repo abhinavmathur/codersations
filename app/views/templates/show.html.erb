@@ -1,14 +1,25 @@
-<% if @template.publish %>
-    <%= link_to 'Hide Template', unpublish_category_template_path(@category, @template), class: 'btn btn-danger', method: :put%>
-<% else %>
-    <%= link_to 'Publish Template', publish_category_template_path(@category, @template), class: 'btn btn-success', method: :put%>
+<% if policy(@template).update? %>
+    <% if @template.publish %>
+        <%= link_to 'Hide Template', unpublish_category_template_path(@category, @template), class: 'btn btn-danger', method: :put%>
+    <% else %>
+        <%= link_to 'Publish Template', publish_category_template_path(@category, @template), class: 'btn btn-success', method: :put%>
+    <% end %>
 <% end %>
-<%= @template.category.name %>
+
+<%= link_to @template.category.name, category_template_path(@category, @template) %>
 <%= link_to @template.author.name, user_path(@template.author) %>
 <br>
-<%= link_to 'Create new page', new_category_template_infopage_path(@category, @template) %>
+<% if policy(@category.templates.new).create? %>
+    <%= link_to 'Create new page', new_category_template_infopage_path(@category, @template) %>
+<% end %>
 <h1><%= @template.name %></h1>
 <h2>Description</h2>
-<p><%= simple_format(@template.description) %></p>
+<p><%= @template.description.html_safe %></p>
 <h2>Points Covered</h2>
-<p><%= simple_format(@template.points_covered) %></p>
+<p><%= @template.points_covered.html_safe %></p>
+<% if @template.infopages.any? %>
+    <h2>Pages in this tutorial</h2>
+    <% @template.infopages.each do |infopage| %>
+        <%= link_to infopage.title, category_template_infopage_path(@category, @template, infopage) %>
+    <% end %>
+<% end %>

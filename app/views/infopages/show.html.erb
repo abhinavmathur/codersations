@@ -1,3 +1,9 @@
-<%= link_to 'Edit Page', edit_category_template_infopage_path(@category, @template, @infopage) %>
+<%= link_to 'Back to template', category_template_path(@category, @template) %>
+<% if policy(@infopage).update? %>
+    <%= link_to 'Edit Page', edit_category_template_infopage_path(@category, @template, @infopage), class: 'btn btn-info' %>
+<% end %>
+<% if policy(@infopage).destroy? %>
+    <%= link_to 'Delete Page', category_template_infopage_path(@category, @template, @infopage), method: :delete, data: {confirm: 'Are you sure ?'}, class: 'btn btn-danger' %>
+<% end %>
 <%= @infopage.title %>
-<%= @infopage.content %>
+<%= @infopage.content.html_safe %>

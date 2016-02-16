@@ -1,2 +1,11 @@
+<% if policy(@info).update? %>
+    <%= link_to 'Edit this page', edit_category_tutorial_info_path(@category, @tutorial, @info),
+                class: 'btn btn-success' %>
+<% end %>
+<% if policy(@info).destroy? %>
+    <%= link_to 'Delete this page', category_tutorial_info_path(@category, @tutorial, @info),
+                method: :delete, data: {confirm: 'Are you sure you want to delete this page ?'}%>
+<% end %>
+
 <%= @info.title %>
 <%= @info.content.html_safe %>

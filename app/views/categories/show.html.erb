@@ -1,4 +1,12 @@
 <h1>Tutorials and Templates in <%= @category.name %> category</h1>
+<% if policy(@category.templates.new).create? %>
+    <%= link_to 'Create a Template', new_category_template_path(@category) %>
+<% end %>
+<% if policy(Tutorial.new).create? %>
+    <%= link_to 'Create a Tutorial', new_category_tutorial_path(@category) %>
+<% end %>
+
+
 <h3>Templates</h3>
 <% @templates.each do |template| %>
     <%= link_to template.name, category_template_path(@category, template) %>

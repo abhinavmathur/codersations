@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :users, controllers: { registrations: 'registrations' }
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   resources :users, only: :show do
     resources :blogs
     member do

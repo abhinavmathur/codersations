@@ -21,4 +21,10 @@ class TutorialPolicy < ApplicationPolicy
   def destroy?
     user.try(:admin) || record.author == user
   end
+
+  def add_member?
+    user.try(:admin) || record.author == user
+  end
+
+
 end

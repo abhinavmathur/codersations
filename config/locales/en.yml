@@ -27,6 +27,9 @@ en:
        create?: 'You need to be a verified content creator to create a tutorial'
        show?: 'The tutorial is under construction :)'
      template_policy:
-       update?: 'Access forbidden ! Only the template author can edit the tutorial'
+       update?: 'Access forbidden ! Only the template author can edit the template'
        create?: 'You need to be a verified content creator to create a template'
        show?: 'The template is under construction :)'
+     infopage_policy:
+       update?: 'Access forbidden ! Only the author and contributors can edit this page'
+       create?: 'You need to be a verified content creator to create a page'

@@ -5,7 +5,7 @@ production:
   # note that lower case singular is used
   # exclude_models: user,post
   # models to include from the default disbaled state
-  # include_models: user,post
+  #include_models: user,post
 
 development:
   sisyphus_enabled: true
