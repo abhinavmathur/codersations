@@ -100,6 +100,18 @@
 <% if policy(@tutorial.infos.new).create? %>
     <%= link_to 'Add an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-success' %>
 <% end %>
+<% if policy(@tutorial).destroy? %>
+    <% if @template == nil %>
+        <%= link_to 'Add a template', add_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm' %>
+    <% else %>
+        <%= show_template_name(@template) do %>
+            <%= link_to @template.name, category_template_path(@category, @template)%>
+            <%= link_to 'Replace this template', add_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', class: 'btn btn-success btn-sm' %>
+            <%= link_to 'Remove this template', remove_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', class: 'btn btn-success btn-sm', method: :put %>
+        <% end %>
+    <% end %>
+<% end %>
+
 
 <% if policy(@tutorial).destroy? %>
     <%= link_to 'Delete tutorial', category_tutorial_path(@category, @tutorial), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-lg' %>

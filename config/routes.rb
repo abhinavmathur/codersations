@@ -30,6 +30,9 @@ Rails.application.routes.draw do
         put '/admin_remove_member', to: 'tutorials#admin_remove_member'
         put '/publish' => 'tutorials#publish'
         put '/unpublish' => 'tutorials#unpublish'
+        get '/add_template' => 'tutorials#add_template'
+        put '/add_this_template' => 'tutorials#add_this_template'
+        put '/remove_template' => 'tutorials#remove_template'
       end
     end
   end

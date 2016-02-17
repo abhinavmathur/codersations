@@ -1,0 +1,6 @@
+<h1>Add a template</h1>
+<% @templates.each do |template| %>
+    <%= link_to template.name, category_template_path(@category, template) %>
+    <%= link_to 'Add this template', add_this_template_category_tutorial_path(@category, @tutorial, template: template.id), class: 'btn btn-success btn-sm', method: :put %>
+    <br>
+<% end %>

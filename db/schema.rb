@@ -192,7 +192,6 @@ ActiveRecord::Schema.define(version: 20160216223739) do
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
   add_foreign_key "tutorials", "categories"
-  add_foreign_key "tutorials", "templates"
   add_foreign_key "tutorials", "users"
   add_foreign_key "tutorials", "users", column: "author_id"
 end

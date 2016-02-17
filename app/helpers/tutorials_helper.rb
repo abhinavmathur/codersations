@@ -29,4 +29,8 @@ module TutorialsHelper
     contributors_list.delete(tutorial.author.name)
     contributors_list
   end
+
+  def show_template_name(template,&block)
+    block.call if template != nil
+  end
 end
