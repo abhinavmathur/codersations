@@ -16,13 +16,17 @@
  *= require nprogress
  *= require nprogress-bootstrap
  *= require redactor-rails
+ *= require bootstrap.min
+ *= require style
  *= require_self
   */
 
 @import "bootstrap-sprockets";
-@import "bootstrap";
 @import "font-awesome";
 @import "summernote";
 @import "codemirror";
 @import "codemirror/themes/solarized";
 @import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+/* *= require bootstrap.min */
+/* *= require style
+*/

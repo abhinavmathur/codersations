@@ -1,8 +1,40 @@
 <% @tutorials.each do |tutorial| %>
-    <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %> |
-    <%= link_to tutorial.category.name, category_path(tutorial.category) %> |
-    <% if tutorial.author %>
-        <%= link_to tutorial.author.name, user_path(tutorial.author) %>
-    <% end %>
-    <br>
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <ul class="breadcrumb">
+            <li><a href="#">Category /</a>
+            </li>
+            <%= link_to tutorial.category.name, category_path(tutorial.category) %>
+            </li>
+          </ul>
+
+          <h3 class="text-primary text-primary">
+            <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %>
+          </h3>
+          <div class="authors">
+            <div>
+              <p>Author: </p>
+              <% if tutorial.author %>
+                  <%= gravatar_tag tutorial.author.email, size: 30, d: :identicon %>
+                  <%= link_to tutorial.author.name, user_path(tutorial.author) %>
+              <% end %>
+            </div>
+            <div>
+              <% if list_contributors(tutorial.contributors, tutorial).count > 0 %>
+                  <p>Contributor:</p>
+              <% end %>
+              <% list_contributors(tutorial.contributors, tutorial).each do |contributor| %>
+                  <% contributor = User.find_by_name(contributor) %>
+                  <%= gravatar_tag contributor.email, size: 30, d: :identicon %>
+                  <%= link_to contributor.name, user_path(contributor) %>
+              <% end %>
+
+            </div>
+          </div>
+          <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could </p>
+        </li>
+      </ul>
+    </div>
+    </div>
 <% end %>

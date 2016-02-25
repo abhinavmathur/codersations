@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'static#index'
+  resources :subscriptions
 
   namespace :admin do
     root 'dashboard#index'
@@ -7,6 +8,7 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
     resources :users
   end
+
 
 
   resources :categories, only: [:index, :show] do

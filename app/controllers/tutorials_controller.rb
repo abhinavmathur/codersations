@@ -13,6 +13,8 @@
 #  link_to_repo   :string
 #  slug           :string
 #  author_id      :integer
+#  publish        :boolean          default(FALSE)
+#  template_id    :integer
 #
 
 class TutorialsController < ApplicationController
@@ -26,7 +28,7 @@ class TutorialsController < ApplicationController
 
   def new
     @tutorial = Tutorial.new
-    @@template = params[:template].to_i
+    @@template = params[:template].to_i || nil
     authorize @tutorial, :create?
   end
 
@@ -34,8 +36,10 @@ class TutorialsController < ApplicationController
     @tutorial = @category.tutorials.create(tutorial_params)
     authorize @tutorial, :create?
     @tutorial.update(author: current_user)
-    @tutorial.template_id = @@template
-    Contributor.create!(tutorial: @tutorial, access: true, member: current_user)
+    if Template.find_by_id @@template != nil
+      @tutorial.template_id = @@template
+    end
+    #Contributor.create!(tutorial: @tutorial, access: true, member: current_user)
     if @tutorial.save
       flash[:success] = 'Tutorial has been created successfully'
       redirect_to category_tutorial_path(@category, @tutorial)
@@ -48,13 +52,7 @@ class TutorialsController < ApplicationController
   def show
     authorize @tutorial, :show?
     @infos = @tutorial.infos.order('created_at ASC').all
-    template_id = @tutorial.template_id if @tutorial.template_id != nil
-    if template_id == nil
-      return
-    else
-      @template = Template.find_by_id template_id
-    end
-
+    @template = Template.find_by_id @tutorial.template_id
   end
 
   def edit

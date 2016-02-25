@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 gem 'sqlite3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'brakeman'
   gem 'byebug'
   gem 'factory_girl_rails'
 end
@@ -65,4 +66,6 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'faker'
 gem 'sisyphus-rails'
 gem 'nprogress-rails'
+gem "rails_best_practices"
+gem 'stripe'
 

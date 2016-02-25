@@ -3,17 +3,15 @@
 <head>
   <title>Codersations</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css">
-  <script src=" https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+  <%= javascript_include_tag 'application', 'https://js.stripe.com/v2/', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    Stripe.setPublishableKey("pk_test_vd5yGjvO43VGegoJulVCh9cl");
+  </script>
 </head>
-<body <%= "data-no-turbolinks='true'".html_safe if controller_name=="categories" %>>
+<body>
+<%= render 'layouts/navbar' %>
 <div class="container-fluid">
-  <br>
-  <br>
-  <br>
-  <%= render 'layouts/navbar' %>
   <%= render 'layouts/messages' %>
   <%= yield %>
 </div>

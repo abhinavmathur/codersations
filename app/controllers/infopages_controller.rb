@@ -10,6 +10,7 @@
 #  template_id :integer
 #  category_id :integer
 #  slug        :string
+#  tutorial_id :integer
 #
 
 class InfopagesController < ApplicationController

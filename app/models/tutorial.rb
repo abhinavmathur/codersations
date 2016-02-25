@@ -13,6 +13,8 @@
 #  link_to_repo   :string
 #  slug           :string
 #  author_id      :integer
+#  publish        :boolean          default(FALSE)
+#  template_id    :integer
 #
 
 class Tutorial < ActiveRecord::Base

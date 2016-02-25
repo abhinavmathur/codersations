@@ -42,6 +42,14 @@
 //= require sisyphus
 //= require nprogress
 //= require nprogress-turbolinks
+//= require subscription
+//= require script
 //= require_tree .
 //= require turbolinks
 
+//NProgress bar settings
+NProgress.configure({
+    showSpinner: true,
+    ease: 'ease',
+    speed: 500
+});
