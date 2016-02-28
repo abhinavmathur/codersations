@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static#index'
-  resources :subscriptions
-
+  resource :subscriptions
+  resource :card
   namespace :admin do
     root 'dashboard#index'
     resources :categories, except: [:show]

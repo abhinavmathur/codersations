@@ -1,7 +1,16 @@
 <h1>Subscribe !</h1>
+<script type="text/javascript" charset="utf-8">
+  function getURLParameter(name) {
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+  }
+
+</script>
+
 
 <%= form_tag subscriptions_path, :id=> 'payment-form' do %>
 <span class="payment-errors"></span>
+    <script>$("input[name='plan']").val(getURLParameter('plan'));</script>
+    <input type="hidden" name="plan" value="">
 
 <div class="form-row">
   <label>
@@ -28,3 +37,4 @@
 
 <button type="submit">Submit Payment</button>
 <% end %>
+

@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   acts_as_marker
   markable_as :follow, :by => :user
+  after_save :update_stripe_account_email
+
   validates :name, presence: true
   has_many :templates
   has_many :tutorials
@@ -55,5 +57,21 @@ class User < ActiveRecord::Base
 
   def subscribed?
     stripe_subscription_id?
+  end
+
+  def update_stripe_email(user)
+    if user.stripe_id?
+      customer = Stripe::Customer.retrieve(user.stripe_id)
+      customer.email = user.email
+      customer.save
+    end
+  end
+
+  def update_stripe_account_email
+    if self.stripe_id?
+      customer = Stripe::Customer.retrieve(self.stripe_id)
+      customer.email = self.email
+      customer.save
+    end
   end
 end

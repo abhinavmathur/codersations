@@ -23,10 +23,7 @@ class Tutorial < ActiveRecord::Base
   friendly_id :slug_candidates, use: :slugged
 
   def slug_candidates
-    [
-        :title,
-        [:title, :id]
-    ]
+    [:id, :title]
   end
 
   belongs_to :category

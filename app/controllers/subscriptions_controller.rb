@@ -6,29 +6,39 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    customer = if current_user.stripe_id?
-                 Stripe::Customer.retrieve(current_user.stripe_id)
+    begin
+      obj = CreateSubscriptions.new(current_user)
+      customer = obj.find_or_register_user
+      if params[:plan] == ""
+        flash[:danger] = 'Please select a plan'
+        redirect_to subscriptions_path and return
+      end
+      if current_user.subscribed?
+        if customer.subscriptions.retrieve(current_user.stripe_subscription_id).plan.id == params[:plan].to_s
+          flash[:danger] = 'You cannot subscribe to the same plan again'
+          redirect_to subscriptions_path and return
+        end
+        customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
+      end
 
-               else
-                 Stripe::Customer.create(email: current_user.email)
-               end
-    subscription = customer.subscriptions.create(
-        source: params[:stripeToken],
-        plan: 'monthly'
-    )
-    current_user.update(
-        stripe_id: customer.id,
-        stripe_subscription_id: subscription.id,
-        card_last4: params[:card_last4],
-        card_exp_month: params[:card_exp_month],
-        card_exp_year: params[:card_exp_year],
-        card_type: params[:card_type]
-    )
+      subscription = customer.subscriptions.create(
+          source: params[:stripeToken],
+          plan: params[:plan]
+      )
+      current_user.update(
+          stripe_id: customer.id,
+          stripe_subscription_id: subscription.id,
+          card_last4: params[:card_last4],
+          card_exp_month: params[:card_exp_month],
+          card_exp_year: params[:card_exp_year],
+          card_type: params[:card_type]
+      )
+    rescue Stripe::CardError => e
+      flash[:danger] = e.to_s
+      redirect_to root_path and return
+    end
     if current_user.save
       flash[:success] = 'Your subscription was successful !'
-      redirect_to root_path
-    else
-      flash[:danger] = 'Your subscription was not created. Contact the admin for details.'
       redirect_to root_path
     end
   end
@@ -38,7 +48,11 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-
+    customer = Stripe::Customer.retrieve(current_user.stripe_id)
+    customer.subscriptions.retrieve(current_user.stripe_subscription_id).delete
+    current_user.update(stripe_subscription_id: nil)
+    flash[:success] = 'Your subscription has been canceled successfully'
+    redirect_to root_path
   end
 
   private

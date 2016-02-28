@@ -1,1 +1,10 @@
 <%= @user.name %>
+<br>
+<% if @user.stripe_id %>
+    <%= " Stripe Email: #{Stripe::Customer.retrieve(@user.stripe_id).email}" %>
+<% end %>
+<br>
+<% if @user.stripe_subscription_id? %>
+    <% customer = Stripe::Customer.retrieve(@user.stripe_id) %>
+    <%= "Subscription plan: #{customer.subscriptions.retrieve(@user.stripe_subscription_id).plan.id}"%>
+<% end %>
