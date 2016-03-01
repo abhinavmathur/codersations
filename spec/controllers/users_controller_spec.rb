@@ -36,6 +36,10 @@
 #  card_exp_month         :integer
 #  card_exp_year          :integer
 #  card_type              :string
+#  stripe_account_id      :string
+#  publishable_key        :string
+#  secret_key             :string
+#  currency               :string
 #
 
 require 'rails_helper'

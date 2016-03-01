@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  get '/connect/oauth' => 'connect#oauth', as: 'stripe_oauth'
+  get '/connect/confirm' => 'connect#confirm', as: 'stripe_confirm'
 
 
   resources :categories, only: [:index, :show] do

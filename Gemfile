@@ -68,4 +68,5 @@ gem 'sisyphus-rails'
 gem 'nprogress-rails'
 gem "rails_best_practices"
 gem 'stripe'
+gem 'oauth2'
 
