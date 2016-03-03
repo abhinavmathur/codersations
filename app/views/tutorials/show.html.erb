@@ -1,4 +1,4 @@
-<% if @tutorial.author == current_user %>
+<% if @tutorial.author == current_user || current_user.try(:admin) %>
     <% if @tutorial.publish %>
         <%= link_to 'Hide Tutorial', unpublish_category_tutorial_path(@category, @tutorial), class: 'btn btn-danger', method: :put%>
     <% else %>

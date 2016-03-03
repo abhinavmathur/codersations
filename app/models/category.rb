@@ -12,6 +12,7 @@
 class Category < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
+  searchkick text_start: [:name]
   #validations
   validates :name, presence: true, uniqueness: true
   #validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z]+\z/, message: 'Must be lowercase' }

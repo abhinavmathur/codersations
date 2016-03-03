@@ -69,4 +69,7 @@ gem 'nprogress-rails'
 gem "rails_best_practices"
 gem 'stripe'
 gem 'oauth2'
-
+gem 'searchkick'
+gem 'jquery-ui-rails'
+gem 'kaminari'
+gem 'stripe_event'

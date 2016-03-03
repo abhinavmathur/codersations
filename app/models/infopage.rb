@@ -15,6 +15,7 @@
 
 class Infopage < ActiveRecord::Base
   extend FriendlyId
+  searchkick text_start: [:title, :content], batch_size: 200
   friendly_id :title, use: :slugged
   belongs_to :category
   belongs_to :template

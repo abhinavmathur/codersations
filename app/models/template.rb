@@ -18,9 +18,11 @@
 class Template < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
+  searchkick text_start: [:name, :description, :points_covered]
   belongs_to :category
   belongs_to :author, class_name: 'User'
   has_many :infopages, dependent: :delete_all
+
 
   validates :category_id, :name, :description, :points_covered, presence: true
 end

@@ -2,7 +2,7 @@ class InfopagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       return scope.all if user.try(:admin) || user.try(:manager)
-      scope.template.where(publish: true)
+      scope.joins(:templates).where(templates: {publish: true})
     end
   end
 

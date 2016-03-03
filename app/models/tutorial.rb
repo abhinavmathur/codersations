@@ -21,7 +21,7 @@ class Tutorial < ActiveRecord::Base
   markable_as :favorite
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
-
+  searchkick text_start: [:title, :description, :points_covered]
   def slug_candidates
     [:id, :title]
   end

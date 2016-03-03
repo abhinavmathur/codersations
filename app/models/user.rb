@@ -50,11 +50,11 @@ class User < ActiveRecord::Base
   acts_as_marker
   markable_as :follow, :by => :user
   after_save :update_stripe_account_email
+  searchkick text_start: [:name]
 
   validates :name, presence: true
   has_many :templates
   has_many :tutorials
-  has_one :blog
 
   has_many :members, foreign_key: :member_id
   has_many :tutorials, through: :contributors
@@ -77,5 +77,20 @@ class User < ActiveRecord::Base
       customer.email = self.email
       customer.save
     end
+  end
+
+  def first_name
+    name = self.name.split(" ")
+    name[0].to_s
+  end
+
+  def last_name
+    name = self.name.split(" ")
+    if name.count == 1
+      name = ''
+    else
+      name = name[name.length - 1].to_s
+    end
+    name
   end
 end

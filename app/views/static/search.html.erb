@@ -1,0 +1,34 @@
+<h1>Search Result</h1>
+<p>You searched for: <%= params[:q].to_s %></p>
+<p></p>
+<p>Search hits: <%= @all.count %></p>
+<hr>
+<% @all.each do |all| %>
+    <% if all.class.name == 'Category' %>
+        <%= link_to all.name, category_path(all) %>
+    <% elsif all.class.name == 'Tutorial' %>
+        <% if policy(all).show? %>
+            <%= link_to all.title, category_tutorial_path(all.category, all) %>
+        <% end %>
+    <% elsif all.class.name == 'Template' %>
+        <% if policy(all).show? %>
+            <%= link_to all.name, category_template_path(all.category, all) %>
+        <% end %>
+    <% elsif all.class.name == 'Info' %>
+        <% if policy(all).show? %>
+            <%= link_to all.title, category_tutorial_info_path(all.tutorial.category, all.tutorial, all ) %>
+        <% end %>
+    <% elsif all.class.name == 'InfoPage' %>
+        <% if policy(all).show? %>
+            <%= link_to all.title, category_template_path(all.template.category, all.template, all) %>
+        <% end %>
+    <% elsif all.class.name == 'User'%>
+        <%= link_to all.name, user_path(all) %>
+    <% else %>
+        <% @all.count == 0 %>
+        <p>No Results found</p>
+    <% end %>
+    <br>
+<% end %>
+<br><br>
+<%= paginate(@all) %>
