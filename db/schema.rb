@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301061238) do
+ActiveRecord::Schema.define(version: 20160304013753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,21 @@ ActiveRecord::Schema.define(version: 20160301061238) do
 
   add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true, using: :btree
 
+  create_table "charges", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "stripe_id"
+    t.integer  "amount"
+    t.string   "card_last4"
+    t.string   "card_type"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.string   "data_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true, using: :btree
+
   create_table "contributors", force: :cascade do |t|
     t.integer  "tutorial_id"
     t.boolean  "access",      default: false
@@ -35,6 +50,21 @@ ActiveRecord::Schema.define(version: 20160301061238) do
 
   add_index "contributors", ["member_id"], name: "index_contributors_on_member_id", using: :btree
   add_index "contributors", ["tutorial_id"], name: "index_contributors_on_tutorial_id", using: :btree
+
+  create_table "data", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.string   "card_last4"
+    t.string   "card_type"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.string   "stripe_id"
+    t.string   "data_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "data", ["stripe_id"], name: "index_data_on_stripe_id", unique: true, using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false

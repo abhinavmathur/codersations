@@ -55,6 +55,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   has_many :templates
   has_many :tutorials
+  has_many :charges
 
   has_many :members, foreign_key: :member_id
   has_many :tutorials, through: :contributors

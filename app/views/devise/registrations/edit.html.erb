@@ -1,44 +1,58 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2 class="text-center text-info">Settings</h2>
 
 
-
-<ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#info">Edit Information</a></li>
-  <li><a data-toggle="tab" href="#menu1">Subscription and Payments</a></li>
-  <li><a data-toggle="tab" href="#menu2">Credit Card Settings</a></li>
-</ul>
-
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="text-center">
+      <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#info">Edit Information</a></li>
+        <li><a data-toggle="tab" href="#menu1">Subscription and Payments</a></li>
+        <li><a data-toggle="tab" href="#menu2">Credit Card Settings</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
 <div class="tab-content">
   <div id="info" class="tab-pane fade in active">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <%= f.error_notification %>
-        <div class="form-inputs">
-          <%= f.input :name, required: true %>
-          <%= f.input :email, required: true, autofocus: true %>
+    <br>
+    <br>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 well">
+          <h3 class="text-center text-info">Edit your information</h3>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
+              <div class="form-inputs">
+                <%= f.input :name, required: true %>
+                <%= f.input :email, required: true, autofocus: true %>
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+                <% end %>
+
+                <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
+                <%= f.input :password_confirmation, required: false %>
+                <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+                <%= f.input :github, label: 'Github URL' %>
+                <%= f.input :bitbucket, label: 'BitBucket Url' %>
+                <%= f.input :personal_website, label: 'Your personal website address' %>
+              </div>
+
+
+              <div class="form-actions">
+                <%= f.button :submit, "Update" %>
+              </div>
+
           <% end %>
-
-          <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-          <%= f.input :password_confirmation, required: false %>
-          <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-          <%= f.input :github, label: 'Github URL' %>
-          <%= f.input :bitbucket, label: 'BitBucket Url' %>
-          <%= f.input :personal_website, label: 'Your personal website address' %>
         </div>
-
-
-        <div class="form-actions">
-          <%= f.button :submit, "Update" %>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <h3 class="text-center text-danger">Deactivate account</h3>
+          <p class="text-center">Unhappy? <%= link_to "Deactivate account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'text-muted' %></p>
         </div>
-    <% end %>
-
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-    <%= link_to "Back", :back %>
+      </div>
+    </div>
   </div>
   <div id="menu1" class="tab-pane fade">
     <% if current_user.stripe_subscription_id? %>
@@ -63,53 +77,77 @@
           </tr>
           </tbody>
         </table>
-<% else %>
-    <h3 class="text-info text-center">You dont have any subscriptions</h3>
+    <% else %>
+        <h3 class="text-info text-center">You dont have any subscriptions</h3>
     <% end %>
   </div>
   <div id="menu2" class="tab-pane fade">
-    <% if current_user.stripe_id?%>
+
+    <div class="row">
+      <div class="col-md-4">
+        <% if current_user.stripe_id?%>
 
 
-        <div class="well">
-          <h4>Card on file</h4>
-          <p><%= "#{current_user.card_type} **** **** **** #{current_user.card_last4}" %></p>
-          <p><%= "#{current_user.card_exp_month} / #{current_user.card_exp_year}" %></p>
-        </div>
-
-
-        <%= form_tag card_path, method: :put, :id=> 'payment-form' do %>
-            <span class="payment-errors"></span>
-
-            <div class="form-row">
-              <label>
-                <span>Card Number</span>
-                <input value="4242424242424242" type="text" size="20" data-stripe="number"/>
-              </label>
+            <div class="well">
+              <h4>Card on file</h4>
+              <p><%= "#{current_user.card_type} **** **** **** #{current_user.card_last4}" %></p>
+              <p><%= "#{current_user.card_exp_month} / #{current_user.card_exp_year}" %></p>
             </div>
 
-            <div class="form-row">
-              <label>
-                <span>CVC</span>
-                <input value="123" type="text" size="4" data-stripe="cvc"/>
-              </label>
-            </div>
+            <div class="container">
+              <%= form_tag card_path, method: :put, :id=> 'payment-form', class: 'form-horizontal' do %>
+                  <fieldset>
+                  <span class="payment-errors">
+                  </span>
 
-            <div class="form-row">
-              <label>
-                <span>Expiration (MM/YYYY)</span>
-                <input value="10" type="text" size="2" data-stripe="exp-month"/>
-              </label>
-              <span> / </span>
-              <input value="2017" type="text" size="4" data-stripe="exp-year"/>
-            </div>
+                    <div class="form-row form-group">
+                      <label>
+                        <span>Card Number</span>
+                        <input value="4242424242424242" type="text" size="20" data-stripe="number"/>
+                      </label>
+                    </div>
 
-            <button type="submit" class="btn btn-outline btn-default">Update Card</button>
+                    <div class="form-row form-group">
+                      <label>
+                        <span>CVC</span>
+                        <input value="123" type="text" size="4" data-stripe="cvc"/>
+                      </label>
+                    </div>
+
+                    <div class="form-row form-group">
+                      <label>
+                        <span>Expiration (MM/YYYY)</span>
+                        <input value="10" type="text" size="2" data-stripe="exp-month"/>
+                      </label>
+                      <span> / </span>
+                      <input value="2017" type="text" size="4" data-stripe="exp-year"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-outline btn-default">Update Card</button>
+                  </fieldset>
+              <% end %>
+            </div>
         <% end %>
-    <% end %>
+      </div>
+      <div class="col-md-4">
+        <% if current_user.charges.any? %>
+            <% current_user.charges.each do |charge| %>
+                <div class="well">
+                  <%= "Amount paid: USD $#{charge.amount.to_f/100}0" %>
+                  <br>
+                  <%= "#{charge.card_type} **** **** **** #{charge.card_last4}" %>
+                  <br>
+                  <%= "#{charge.card_exp_month} / #{charge.card_exp_year}" %>
+                </div>
+            <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-4">
+      </div>
+    </div>
+
   </div>
 </div>
-
 
 <well>
   <%= link_to 'Connect with Stripe', stripe_oauth_path %>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
     resources :users
   end
-
+  mount StripeEvent::Engine, at: '/stripe/webhook'
   get '/search' => 'static#search', as: 'search'
 
   get '/connect/oauth' => 'connect#oauth', as: 'stripe_oauth'
