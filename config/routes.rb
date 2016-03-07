@@ -14,7 +14,17 @@ Rails.application.routes.draw do
   get '/connect/oauth' => 'connect#oauth', as: 'stripe_oauth'
   get '/connect/confirm' => 'connect#confirm', as: 'stripe_confirm'
   resources :categories, only: [:index, :show] do
-    resources :snippets
+    resources :snippets do
+      member do
+        put '/like' => 'snippets#like'
+        put '/dislike' => 'snippets#dislike'
+        put '/publish' => 'snippets#publish'
+        put '/unpublish' => 'snippets#unpublish'
+        put '/bookmark' => 'snippets#bookmark'
+        put '/remove_bookmark' => 'snippets#remove_bookmark'
+        put '/feature' => 'snippets#feature'
+      end
+    end
   end
 
   resources :categories, only: [:index, :show] do

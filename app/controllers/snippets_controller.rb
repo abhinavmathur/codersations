@@ -17,7 +17,7 @@
 class SnippetsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_category
-  before_action :set_snippet, only: [:show, :edit, :update, :destroy]
+  before_action :set_snippet, except: [:new, :create, :index]
 
   def index
     @snippets = policy_scope @category.snippets.all
@@ -67,6 +67,39 @@ class SnippetsController < ApplicationController
     flash[:success] = 'The snippet was deleted successfully'
     redirect_to root_path
   end
+
+  def like
+
+  end
+
+  def dislike
+
+  end
+
+  def bookmark
+
+  end
+
+  def remove_bookmark
+
+  end
+
+  def feature
+
+  end
+
+  def publish
+    @snippet.update(publish: true)
+    flash[:success] = 'Snippet succcessfully published'
+    redirect_to [@category, @snippet]
+  end
+
+  def unpublish
+    @snippet.update(publish: false)
+    flash[:success] = 'Snippet is now hidden from public domain'
+    redirect_to [@category, @snippet]
+  end
+
 
   private
   def set_category

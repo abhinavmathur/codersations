@@ -3,10 +3,18 @@
 <small><%= @snippet.author.name %></small>
 <p><%= @snippet.content.html_safe %></p>
 <% if policy(@snippet).update? %>
-<%= link_to 'Edit Snippet', [:edit, @category, @snippet], class: 'btn btn-primary' %>
+    <%= link_to 'Edit Snippet', [:edit, @category, @snippet], class: 'btn btn-primary' %>
 <% end %>
 <% if policy(@snippet).destroy? %>
     <%= link_to 'Delete Snippet', [@category, @snippet],
                 class: 'btn btn-danger', method: :delete,
                 data: {confirm: 'Are you sure ?'} %>
 <% end %>
+
+<% if policy(@snippet).update? %>
+    <% if @snippet.publish? %>
+        <%= link_to 'Make Snippet go offline', unpublish_category_snippet_path(@category, @snippet), method: :put, class: 'btn btn-danger publish' %>
+    <% else %>
+        <%= link_to 'Publish', publish_category_snippet_path(@category, @snippet), method: :put, class: 'btn btn-success unpublish' %>
+    <% end  %>
+<% end  %>
