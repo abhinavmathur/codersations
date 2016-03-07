@@ -2,3 +2,11 @@
 <h2><%= @snippet.title %></h2>
 <small><%= @snippet.author.name %></small>
 <p><%= @snippet.content.html_safe %></p>
+<% if policy(@snippet).update? %>
+<%= link_to 'Edit Snippet', [:edit, @category, @snippet], class: 'btn btn-primary' %>
+<% end %>
+<% if policy(@snippet).destroy? %>
+    <%= link_to 'Delete Snippet', [@category, @snippet],
+                class: 'btn btn-danger', method: :delete,
+                data: {confirm: 'Are you sure ?'} %>
+<% end %>

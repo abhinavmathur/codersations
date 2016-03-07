@@ -5,7 +5,9 @@
 <% if policy(Tutorial.new).create? %>
     <%= link_to 'Create a Tutorial', new_category_tutorial_path(@category) %>
 <% end %>
-
+<% if policy(Snippet.new).create? %>
+    <%= link_to 'Create a Snippet', new_category_snippet_path(@category) %>
+<% end %>
 
 <h3>Templates</h3>
 <% @templates.each do |template| %>
@@ -17,4 +19,9 @@
 <h3>Tutorials</h3>
 <% @tutorials.each do |tutorial| %>
     <%= link_to tutorial.title, category_tutorial_path(@category, tutorial) %>
+<% end %>
+
+<h3>Snippets</h3>
+<% @snippets.each do |snippet|  %>
+<%= link_to snippet.title, category_snippet_path(@category, snippet) %>
 <% end %>

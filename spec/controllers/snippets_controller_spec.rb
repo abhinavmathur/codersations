@@ -10,6 +10,8 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  author_id   :integer
+#  publish     :boolean          default(FALSE)
+#  slug        :string
 #
 
 require 'rails_helper'

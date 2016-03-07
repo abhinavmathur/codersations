@@ -10,11 +10,15 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  author_id   :integer
+#  publish     :boolean          default(FALSE)
+#  slug        :string
 #
 
 class Snippet < ActiveRecord::Base
   belongs_to :category
   belongs_to :author, class_name: 'User'
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   validates :title, :content, presence: true
 end

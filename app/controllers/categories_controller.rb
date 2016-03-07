@@ -20,6 +20,7 @@ class CategoriesController < ApplicationController
   def show
     @templates = policy_scope @category.templates.all
     @tutorials = policy_scope @category.tutorials.all
+    @snippets = policy_scope @category.snippets.all
   end
 
   private

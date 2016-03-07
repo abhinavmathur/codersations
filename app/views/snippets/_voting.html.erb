@@ -1,0 +1,12 @@
+<div>
+  <div class="vote_count">
+    <%= @snippet.likes.size %>
+  </div>
+  <div class="votes">
+    <% if current_user.liked? @snippet %>
+        <%= link_to unlike_category_snippet_path(@category, @snippet), method: :put, remote: true, class: 'unlike_post' %>
+    <% else %>
+        <%= link_to like_category_snippet_path(@category, @snippet), method: :put, remote: true, class: 'like_post' %>
+    <% end %>
+  </div>
+</div>
