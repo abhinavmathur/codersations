@@ -1,0 +1,5 @@
+<% @templates.each do |template| %>
+    <%= link_to template.name, category_template_path(template.category, template) %>
+    <br>
+<% end %>
+<%= paginate @templates %>

@@ -1,0 +1,6 @@
+<% @tutorials.each do |tutorial| %>
+    <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %>
+    <br>
+<% end %>
+
+<%= paginate @tutorials %>

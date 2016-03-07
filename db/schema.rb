@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304013753) do
+ActiveRecord::Schema.define(version: 20160307004734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,31 @@ ActiveRecord::Schema.define(version: 20160304013753) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "impressions", force: :cascade do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "impressions", ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
+  add_index "impressions", ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
+  add_index "impressions", ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
+  add_index "impressions", ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", using: :btree
+  add_index "impressions", ["user_id"], name: "index_impressions_on_user_id", using: :btree
+
   create_table "infopages", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -137,6 +162,19 @@ ActiveRecord::Schema.define(version: 20160304013753) do
     t.datetime "asset_updated_at"
   end
 
+  create_table "snippets", force: :cascade do |t|
+    t.integer  "category_id"
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "featured"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "author_id"
+  end
+
+  add_index "snippets", ["author_id"], name: "index_snippets_on_author_id", using: :btree
+  add_index "snippets", ["category_id"], name: "index_snippets_on_category_id", using: :btree
+
   create_table "templates", force: :cascade do |t|
     t.integer  "category_id"
     t.string   "name"
@@ -158,14 +196,15 @@ ActiveRecord::Schema.define(version: 20160304013753) do
     t.string   "title"
     t.text     "description"
     t.text     "points_covered"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "user_id"
     t.string   "link_to_repo"
     t.string   "slug"
     t.integer  "author_id"
-    t.boolean  "publish",        default: false
+    t.boolean  "publish",           default: false
     t.integer  "template_id"
+    t.integer  "impressions_count", default: 0
   end
 
   add_index "tutorials", ["author_id"], name: "index_tutorials_on_author_id", using: :btree
@@ -226,6 +265,8 @@ ActiveRecord::Schema.define(version: 20160304013753) do
   add_foreign_key "infos", "categories"
   add_foreign_key "infos", "tutorials"
   add_foreign_key "pages", "templates"
+  add_foreign_key "snippets", "categories"
+  add_foreign_key "snippets", "users", column: "author_id"
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
   add_foreign_key "tutorials", "categories"

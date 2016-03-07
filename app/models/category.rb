@@ -19,6 +19,7 @@ class Category < ActiveRecord::Base
   #/validations
   has_many :templates
   has_many :tutorials
+  has_many :snippets
 
 
 end

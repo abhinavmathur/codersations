@@ -13,10 +13,12 @@ Rails.application.routes.draw do
 
   get '/connect/oauth' => 'connect#oauth', as: 'stripe_oauth'
   get '/connect/confirm' => 'connect#confirm', as: 'stripe_confirm'
-
+  resources :categories, only: [:index, :show] do
+    resources :snippets
+  end
 
   resources :categories, only: [:index, :show] do
-    resources :templates, except: :index do
+        resources :templates, except: :index do
       member do
         put '/publish' => 'templates#publish'
         put '/unpublish' => 'templates#unpublish'
