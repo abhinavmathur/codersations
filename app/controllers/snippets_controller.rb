@@ -32,7 +32,7 @@ class SnippetsController < ApplicationController
   def create
     @snippet = @category.snippets.create(snippet_params)
     @snippet.author = current_user
-    auhtorizr @snippet, :create?
+    authorize @snippet, :create?
     if @snippet.save
       flash[:success] = 'Snippet has been created successfully'
       redirect_to category_snippet_path(@category, @snippet)
@@ -44,7 +44,6 @@ class SnippetsController < ApplicationController
 
   def show
     authorize @snippet, :show?
-
   end
 
   def edit

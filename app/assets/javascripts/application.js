@@ -33,9 +33,6 @@
 //= require codemirror/modes/slim
 //= require codemirror/modes/php
 //= require summernote
-//= require redactor-rails/config
-//= require redactor-rails/redactor.min
-//= require redactor-rails/plugins
 //= require bootstrap-wysihtml5
 //= require select2
 //= require custom

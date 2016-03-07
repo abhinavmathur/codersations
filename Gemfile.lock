@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/DynamoMTL/redactor-paperclip.git
-  revision: 9574c636c80cadefe3903266d7f5da88dfa5e082
-  specs:
-    redactor-paperclip (0.0.3)
-      paperclip
-      rails (>= 4.0)
-
-GIT
   remote: git://github.com/chrome/markable.git
   revision: 6fece7b200e339b87e2abf3cad190ab10966e04b
   specs:
@@ -405,7 +397,6 @@ DEPENDENCIES
   pundit
   rails (= 4.2.5.1)
   rails_best_practices
-  redactor-paperclip!
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
