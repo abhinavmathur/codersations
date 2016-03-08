@@ -19,6 +19,7 @@ class Snippet < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   extend FriendlyId
   friendly_id :title, use: :slugged
-
+  markable_as :favorite
+  markable_as :like
   validates :title, :content, presence: true
 end

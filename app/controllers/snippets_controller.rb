@@ -69,19 +69,25 @@ class SnippetsController < ApplicationController
   end
 
   def like
-
+    current_user.like_snippets << @snippet
+    redirect_to [@category, @snippet]
   end
 
   def dislike
-
+    current_user.like_snippets.delete @snippet
+    redirect_to [@category, @snippet]
   end
 
   def bookmark
-
+    current_user.favorite_snippets << @snippet
+    flash[:success] = 'The snippet has been bookmarked !'
+    redirect_to [@category, @snippet]
   end
 
   def remove_bookmark
-
+    current_user.favorite_snippets.delete @snippet
+    flash[:success] = 'The snippet has been removed from bookmarks !'
+    redirect_to [@category, @snippet]
   end
 
   def feature

@@ -113,13 +113,9 @@ class TutorialsController < ApplicationController
 
 
   def like
-      current_user.favorite_tutorials << @tutorial
-      flash[:success] = 'Added to bookmarks !'
-      if request.xhr?
-        head :ok
-      else
-        redirect_to category_tutorial_path(@category, @tutorial)
-      end
+    current_user.favorite_tutorials << @tutorial
+    flash[:success] = 'Added to bookmarks !'
+    redirect_to category_tutorial_path(@category, @tutorial)
   end
 
   def dislike

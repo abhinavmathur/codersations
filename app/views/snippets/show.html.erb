@@ -18,3 +18,14 @@
         <%= link_to 'Publish', publish_category_snippet_path(@category, @snippet), method: :put, class: 'btn btn-success unpublish' %>
     <% end  %>
 <% end  %>
+
+<% if @snippet.marked_as_like? by: current_user %>
+    <%= link_to 'Liked', [:dislike, @category, @snippet], method: :put, class: 'btn btn-primary' %>
+<% else %>
+    <%= link_to 'Like', [:like, @category, @snippet], method: :put, class: 'btn btn-default' %>
+<% end %>
+<% if @snippet.marked_as_favorite? by: current_user %>
+    <%= link_to 'Remove bookmark', [:remove_bookmark, @category, @snippet], method: :put, class: 'btn btn-primary' %>
+<% else %>
+    <%= link_to 'Bookmark', [:bookmark, @category, @snippet], method: :put, class: 'btn btn-default' %>
+<% end %>
