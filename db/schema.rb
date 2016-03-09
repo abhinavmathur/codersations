@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307004734) do
+ActiveRecord::Schema.define(version: 20160308090624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -167,9 +167,11 @@ ActiveRecord::Schema.define(version: 20160307004734) do
     t.string   "title"
     t.text     "content"
     t.boolean  "featured"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.integer  "author_id"
+    t.boolean  "publish",     default: false
+    t.string   "slug"
   end
 
   add_index "snippets", ["author_id"], name: "index_snippets_on_author_id", using: :btree
@@ -191,6 +193,21 @@ ActiveRecord::Schema.define(version: 20160307004734) do
   add_index "templates", ["author_id"], name: "index_templates_on_author_id", using: :btree
   add_index "templates", ["category_id"], name: "index_templates_on_category_id", using: :btree
 
+  create_table "transfers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "date"
+    t.string   "token"
+    t.string   "destination"
+    t.string   "currency"
+    t.string   "failure_code"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "transfers", ["user_id"], name: "index_transfers_on_user_id", using: :btree
+
   create_table "tutorials", force: :cascade do |t|
     t.integer  "category_id"
     t.string   "title"
@@ -205,6 +222,7 @@ ActiveRecord::Schema.define(version: 20160307004734) do
     t.boolean  "publish",           default: false
     t.integer  "template_id"
     t.integer  "impressions_count", default: 0
+    t.integer  "price",             default: 0
   end
 
   add_index "tutorials", ["author_id"], name: "index_tutorials_on_author_id", using: :btree
@@ -257,6 +275,21 @@ ActiveRecord::Schema.define(version: 20160307004734) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+
   add_foreign_key "contributors", "tutorials"
   add_foreign_key "contributors", "users", column: "member_id"
   add_foreign_key "infopages", "categories"
@@ -269,6 +302,7 @@ ActiveRecord::Schema.define(version: 20160307004734) do
   add_foreign_key "snippets", "users", column: "author_id"
   add_foreign_key "templates", "categories"
   add_foreign_key "templates", "users", column: "author_id"
+  add_foreign_key "transfers", "users"
   add_foreign_key "tutorials", "categories"
   add_foreign_key "tutorials", "users"
   add_foreign_key "tutorials", "users", column: "author_id"

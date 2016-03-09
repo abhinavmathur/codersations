@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'static#index'
   resource :subscriptions
   resource :card
+  resource :charges
   namespace :admin do
     root 'dashboard#index'
     resources :categories, except: [:show]
@@ -51,6 +52,8 @@ Rails.application.routes.draw do
         get '/add_template' => 'tutorials#add_template'
         put '/add_this_template' => 'tutorials#add_this_template'
         put '/remove_template' => 'tutorials#remove_template'
+        get '/payment' => 'tutorials#payment', as: 'payment'
+        put '/buy' => 'tutorials#buy', as: 'buy'
       end
     end
   end

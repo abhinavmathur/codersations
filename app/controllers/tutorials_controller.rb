@@ -153,6 +153,40 @@ class TutorialsController < ApplicationController
     redirect_to category_tutorial_path(@category, @tutorial)
   end
 
+  def payment
+
+  end
+
+  def buy
+
+    begin
+    customer = Stripe::Customer.create(
+        :email => current_user.email,
+        :source  => params[:stripeToken]
+    )
+    charge = Stripe::Charge.create(
+        :customer    => customer.id,
+        :amount      => 5000,
+        :description => 'Tutorial from Codersations',
+        :currency    => 'usd'
+    )
+    current_user.update(
+        stripe_id: customer.id,
+        card_last4: params[:card_last4],
+        card_exp_month: params[:card_exp_month],
+        card_exp_year: params[:card_exp_year],
+        card_type: params[:card_type]
+    )
+      current_user.tutorials << @tutorial
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to payment_category_tutorial_path
+    end
+    flash[:success] = 'You successfully bought the tutorial'
+    redirect_to [@category, @tutorial]
+  end
+
   private
   def tutorial_params
     params.require(:tutorial).permit(:title, :description, :points_covered, :link_to_repo, :template)
