@@ -177,7 +177,6 @@ class TutorialsController < ApplicationController
         card_exp_year: params[:card_exp_year],
         card_type: params[:card_type]
     )
-      current_user.tutorials << @tutorial
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

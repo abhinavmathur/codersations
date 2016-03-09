@@ -4,7 +4,7 @@ jQuery(function($) {
 
         // Disable the submit button to prevent repeated clicks
         $form.find('button').prop('disabled', true);
-
+        $form.find('button').text('Processing Payment ').append('<i class="fa fa-cog fa-spin"></i>');
         Stripe.card.createToken($form, stripeResponseHandler);
 
         // Prevent the form from submitting with the default action
@@ -28,6 +28,6 @@ function stripeResponseHandler(status, response) {
         $form.append($('<input type="hidden" name="card_exp_year" />').val(response.card.exp_year));
         $form.append($('<input type="hidden" name="card_type" />').val(response.card.brand));
         // and submit
-        $form.get(0).submit();
+        //$form.get(0).submit();
     }
 };
