@@ -28,6 +28,6 @@ function stripeResponseHandler(status, response) {
         $form.append($('<input type="hidden" name="card_exp_year" />').val(response.card.exp_year));
         $form.append($('<input type="hidden" name="card_type" />').val(response.card.brand));
         // and submit
-        //$form.get(0).submit();
+        $form.get(0).submit();
     }
 };

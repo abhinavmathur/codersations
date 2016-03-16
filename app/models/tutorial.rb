@@ -23,6 +23,7 @@ class Tutorial < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
   searchkick text_start: [:title, :description, :points_covered]
+
   def slug_candidates
     [:id, :title]
   end
@@ -32,7 +33,9 @@ class Tutorial < ActiveRecord::Base
   has_many :contributors
   has_many :members, through: :contributors
   has_many :infos, dependent: :delete_all
+  has_many :purchases
 
   validates :title, :description, :points_covered, presence: true
+
 
 end

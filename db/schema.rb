@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308090624) do
+ActiveRecord::Schema.define(version: 20160309235033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,26 @@ ActiveRecord::Schema.define(version: 20160308090624) do
   end
 
   add_index "pages", ["template_id"], name: "index_pages_on_template_id", using: :btree
+
+  create_table "purchases", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.integer  "amount",              default: 0
+    t.string   "date"
+    t.string   "author_name"
+    t.string   "tutorial_name"
+    t.string   "guid"
+    t.string   "card_last4"
+    t.string   "card_exp_month"
+    t.string   "card_exp_year"
+    t.string   "card_type"
+    t.string   "balance_transaction"
+    t.integer  "user_id"
+    t.integer  "tutorial_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "charge_id"
+  end
 
   create_table "redactor_assets", force: :cascade do |t|
     t.string   "asset_file_name"

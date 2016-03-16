@@ -36,4 +36,16 @@ module TutorialsHelper
   def show_template_name(template,&block)
     block.call if template != nil
   end
+
+  def has_purchased?(tutorial)
+    if current_user.purchases.any?
+      current_user.purchases.each do |purchase|
+        if purchase.tutorial_name == tutorial.title
+          return true
+        end
+      end
+    end
+    false
+  end
+
 end

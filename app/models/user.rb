@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   has_many :tutorials
   has_many :charges
   has_many :snippets
+  has_many :purchases
 
   has_many :members, foreign_key: :member_id
   has_many :tutorials, through: :contributors

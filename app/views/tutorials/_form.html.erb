@@ -1,7 +1,14 @@
 <%= simple_form_for [@category, @tutorial] do |f| %>
-    <%= f.input :title, required: true %>
-    <%= f.input :description %>
+    <%= f.input :title, required: true, autofocus: true %>
+    <%= f.input :description, required: true %>
     <%= f.input :points_covered, class: 'summernote' %>
+    <% if current_user.stripe_account_id?%>
+        <%= f.input :price %>
+    <% else %>
+        <p class="text-muted">You need to register an account with Stripe and connect the Codersations
+          platform for receiving payments</p>
+        <%= f.input :price, disabled: true %>
+    <% end %>
     <%= f.input :link_to_repo %>
     <%= f.button :submit, class: 'btn btn-success' %>
 <% end %>

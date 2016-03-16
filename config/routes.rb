@@ -54,6 +54,7 @@ Rails.application.routes.draw do
         put '/remove_template' => 'tutorials#remove_template'
         get '/payment' => 'tutorials#payment', as: 'payment'
         put '/buy' => 'tutorials#buy', as: 'buy'
+        put '/quick_buy' => 'tutorials#quick_buy'
       end
     end
   end

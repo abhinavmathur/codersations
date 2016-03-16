@@ -20,12 +20,16 @@
 
 class TutorialsController < ApplicationController
 
+  APPLICATION_FEE = 0.3
   before_action :set_category
   before_action :set_tutorial, only: [:show, :edit, :update,
                                       :destroy, :add_member,
                                       :remove_member, :like,
-                                      :dislike, :admin_remove_member, :publish, :unpublish, :add_template, :add_this_template, :remove_template]
+                                      :dislike, :admin_remove_member, :publish,
+                                      :unpublish, :add_template, :add_this_template,
+                                      :remove_template, :buy, :quick_buy, :payment]
   before_action :authenticate_user!, except: :show
+  before_action :set_application_fee, only: [:buy, :quick_buy]
 
   def new
     @tutorial = Tutorial.new
@@ -160,35 +164,85 @@ class TutorialsController < ApplicationController
   def buy
 
     begin
-    customer = Stripe::Customer.create(
-        :email => current_user.email,
-        :source  => params[:stripeToken]
-    )
-    charge = Stripe::Charge.create(
-        :customer    => customer.id,
-        :amount      => 5000,
-        :description => 'Tutorial from Codersations',
-        :currency    => 'usd'
-    )
-    current_user.update(
-        stripe_id: customer.id,
-        card_last4: params[:card_last4],
-        card_exp_month: params[:card_exp_month],
-        card_exp_year: params[:card_exp_year],
-        card_type: params[:card_type]
-    )
+      customer = Stripe::Customer.create(
+          :email => current_user.email,
+          :source  => params[:stripeToken]
+      )
+      charge = Stripe::Charge.create(
+          :customer    => customer.id,
+          :amount      => @tutorial.price * 100,
+          :description => "You bought '#{@tutorial.title}' from Codersations",
+          :destination => @tutorial.author.stripe_account_id,
+          :currency    => @tutorial.author.currency,
+          :application_fee => (APPLICATION_FEE * @tutorial.price).to_i * 100
+      )
+      current_user.update(
+          stripe_id: customer.id,
+          card_last4: params[:card_last4],
+          card_exp_month: params[:card_exp_month],
+          card_exp_year: params[:card_exp_year],
+          card_type: params[:card_type]
+      )
+      current_user.purchases.create(
+          name: current_user.name,
+          email: current_user.email,
+          amount: charge.amount,
+          date: Time.zone.now.to_s,
+          author_name: @tutorial.author.name,
+          tutorial_name: @tutorial.title,
+          card_last4: params[:card_last4],
+          card_exp_month: params[:card_exp_month],
+          card_exp_year: params[:card_exp_year],
+          card_type: params[:card_type],
+          charge_id: charge.id,
+          balance_transaction: charge.balance_transaction,
+          tutorial_id: @tutorial.id,
+          user_id: current_user.id
+      )
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to payment_category_tutorial_path
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to payment_category_tutorial_path
     end
     flash[:success] = 'You successfully bought the tutorial'
     redirect_to [@category, @tutorial]
   end
 
+  def quick_buy
+    charge = Stripe::Charge.create(
+        :customer    => current_user.stripe_id,
+        :amount      => @tutorial.price * 100,
+        :description => "You bought '#{@tutorial.title}' from Codersations",
+        :destination => @tutorial.author.stripe_account_id,
+        :currency    => @tutorial.author.currency,
+        :application_fee => (APPLICATION_FEE * @tutorial.price).to_i * 100
+    )
+
+
+    current_user.purchases.create(
+        name: current_user.name,
+        email: current_user.email,
+        amount: charge.amount,
+        date: Time.zone.now.to_s,
+        author_name: @tutorial.author.name,
+        tutorial_name: @tutorial.title,
+        card_last4: params[:card_last4],
+        card_exp_month: params[:card_exp_month],
+        card_exp_year: params[:card_exp_year],
+        card_type: params[:card_type],
+        charge_id: charge.id,
+        balance_transaction: charge.balance_transaction,
+        tutorial_id: @tutorial.id,
+        user_id: current_user.id
+    )
+    flash[:success] = 'You successfully purchased this tutorial !'
+    redirect_to [@category, @tutorial]
+
+  end
+
   private
   def tutorial_params
-    params.require(:tutorial).permit(:title, :description, :points_covered, :link_to_repo, :template)
+    params.require(:tutorial).permit(:title, :description, :points_covered, :link_to_repo, :template, :price)
   end
 
   def set_category
@@ -202,6 +256,10 @@ class TutorialsController < ApplicationController
       flash[:danger] = 'The tutorial you searched for could not be found'
       redirect_to root_path
     end
+  end
+
+  def set_application_fee
+    @application_fee = (APPLICATION_FEE * @tutorial.price).to_i
   end
 
 end
