@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  tutorial_id :integer
-#  access      :boolean          default(FALSE)
+#  access      :boolean          default("false")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  member_id   :integer

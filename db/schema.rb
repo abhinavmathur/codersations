@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309235033) do
+ActiveRecord::Schema.define(version: 20160317033345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,6 +175,18 @@ ActiveRecord::Schema.define(version: 20160309235033) do
     t.string   "charge_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "tutorial_id"
+    t.boolean  "pinned",      default: false
+    t.boolean  "solved",      default: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "user_id"
+  end
+
+  add_index "questions", ["tutorial_id"], name: "index_questions_on_tutorial_id", using: :btree
+
   create_table "redactor_assets", force: :cascade do |t|
     t.string   "asset_file_name"
     t.string   "asset_content_type"
@@ -318,6 +330,7 @@ ActiveRecord::Schema.define(version: 20160309235033) do
   add_foreign_key "infos", "categories"
   add_foreign_key "infos", "tutorials"
   add_foreign_key "pages", "templates"
+  add_foreign_key "questions", "tutorials"
   add_foreign_key "snippets", "categories"
   add_foreign_key "snippets", "users", column: "author_id"
   add_foreign_key "templates", "categories"

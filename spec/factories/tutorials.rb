@@ -13,9 +13,10 @@
 #  link_to_repo      :string
 #  slug              :string
 #  author_id         :integer
-#  publish           :boolean          default(FALSE)
+#  publish           :boolean          default("false")
 #  template_id       :integer
-#  impressions_count :integer          default(0)
+#  impressions_count :integer          default("0")
+#  price             :integer          default("0")
 #
 
 FactoryGirl.define do

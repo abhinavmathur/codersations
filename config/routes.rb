@@ -38,8 +38,11 @@ Rails.application.routes.draw do
     end
   end
 
+
+
   resources :categories, only: [:index, :show] do
     resources :tutorials, except: :index do
+      resources :questions, shallow: true
       resources :infos, except: :index
       member do
         put '/add_member' => 'tutorials#add_member'

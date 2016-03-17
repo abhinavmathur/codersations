@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: contributors
+# Table name: questions
 #
 #  id          :integer          not null, primary key
+#  title       :string
 #  tutorial_id :integer
-#  access      :boolean          default("false")
+#  pinned      :boolean          default("false")
+#  solved      :boolean          default("false")
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  member_id   :integer
+#  user_id     :integer
 #
 
 require 'rails_helper'
 
-RSpec.describe Contributor, type: :model do
+RSpec.describe Question, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
 end

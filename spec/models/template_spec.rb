@@ -12,7 +12,7 @@
 #  updated_at     :datetime         not null
 #  author_id      :integer
 #  slug           :string
-#  publish        :boolean          default(FALSE)
+#  publish        :boolean          default("false")
 #
 
 require 'rails_helper'

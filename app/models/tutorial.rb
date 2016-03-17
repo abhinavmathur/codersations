@@ -13,9 +13,10 @@
 #  link_to_repo      :string
 #  slug              :string
 #  author_id         :integer
-#  publish           :boolean          default(FALSE)
+#  publish           :boolean          default("false")
 #  template_id       :integer
-#  impressions_count :integer          default(0)
+#  impressions_count :integer          default("0")
+#  price             :integer          default("0")
 #
 
 class Tutorial < ActiveRecord::Base
@@ -34,7 +35,7 @@ class Tutorial < ActiveRecord::Base
   has_many :members, through: :contributors
   has_many :infos, dependent: :delete_all
   has_many :purchases
-
+  has_many :questions
   validates :title, :description, :points_covered, presence: true
 
 
