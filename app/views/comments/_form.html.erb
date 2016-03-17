@@ -1,0 +1,4 @@
+<%= simple_form_for [@question, @comment], input_html: {class: 'form-horizontal'} do |f| %>
+    <%= f.input :comment, autofocus: true, required: true, class: 'form-control' %>
+    <%= f.button :submit %>
+<% end %>

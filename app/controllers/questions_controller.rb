@@ -26,17 +26,17 @@ class QuestionsController < ApplicationController
   end
 
   def show
-
+    @comments = @question.comments.order('created_at ASC')
   end
 
   def edit
-
+    @tutorial = @question.tutorial
   end
 
   def update
     if @question.update(question_params)
       flash[:success] = 'Your question was successfully updated !'
-      redirect_to redirect_to question_path(@question)
+      redirect_to question_path(@question)
     else
       flash[:danger] = 'Your question was not updated'
       render :edit
@@ -49,7 +49,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:title, :solved, :pinned)
+    params.require(:question).permit(:title, :solved, :pinned, :content)
   end
 
   def set_category
