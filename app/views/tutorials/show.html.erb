@@ -6,7 +6,11 @@
     <% end %>
 <% end %>
 
-<%= link_to 'Questions Page', category_tutorial_questions_path(@category, @tutorial) %>
+<% if current_user.purchases.exists?(tutorial_id: @tutorial.id) || current_user.stripe_subscription_id? || @tutorial.author == current_user%>
+    <%= link_to 'Questions Page', category_tutorial_questions_path(@category, @tutorial) %>
+<% else %>
+    <%= link_to 'Questions Page', subscriptions_path %>
+<% end %>
 
 <h1 class="text-primary text-center"><bold><%= @tutorial.title %></bold></h1>
 

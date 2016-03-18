@@ -1,7 +1,7 @@
 <%= simple_form_for [@category, @tutorial] do |f| %>
     <%= f.input :title, required: true, autofocus: true %>
     <%= f.input :description, required: true %>
-    <%= f.input :points_covered, class: 'summernote' %>
+    <%= f.input :points_covered %>
     <% if current_user.stripe_account_id?%>
         <%= f.input :price %>
     <% else %>

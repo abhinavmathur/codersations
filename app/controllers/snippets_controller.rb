@@ -27,12 +27,16 @@ class SnippetsController < ApplicationController
     s = Snippet.new
     authorize s, :create?
     @snippet = @category.snippets.new
+    @@template = params[:template].to_i || nil
   end
 
   def create
     @snippet = @category.snippets.create(snippet_params)
     @snippet.author = current_user
     authorize @snippet, :create?
+    if Template.find_by_id @@template != nil
+      @snippet.template_id = @@template
+    end
     if @snippet.save
       flash[:success] = 'Snippet has been created successfully'
       redirect_to category_snippet_path(@category, @snippet)
@@ -44,6 +48,9 @@ class SnippetsController < ApplicationController
 
   def show
     authorize @snippet, :show?
+    if @snippet.template_id?
+      @template = Template.find_by(id: @snippet.template_id)
+    end
   end
 
   def edit

@@ -36,6 +36,7 @@ class Tutorial < ActiveRecord::Base
   has_many :infos, dependent: :delete_all
   has_many :purchases
   has_many :questions
+  has_many :snippets
   validates :title, :description, :points_covered, presence: true
 
 

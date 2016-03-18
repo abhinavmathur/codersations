@@ -12,6 +12,8 @@
 #  author_id   :integer
 #  publish     :boolean          default("false")
 #  slug        :string
+#  template_id :integer
+#  tutorial_id :integer
 #
 
 require 'rails_helper'
