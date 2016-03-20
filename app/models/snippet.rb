@@ -21,6 +21,7 @@ class Snippet < ActiveRecord::Base
   belongs_to :author, class_name: 'User'
   belongs_to :tutorial
   belongs_to :template
+  searchkick text_start: ['title^10', :content], batch_size: 100
   extend FriendlyId
   friendly_id :title, use: :slugged
   markable_as :favorite

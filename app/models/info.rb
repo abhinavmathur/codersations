@@ -15,7 +15,7 @@
 class Info < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: :slugged
-  searchkick text_start: [:title,:content], batch_size: 200
+  searchkick text_start: ['title^10',:content], batch_size: 100
 
 
   belongs_to :tutorial

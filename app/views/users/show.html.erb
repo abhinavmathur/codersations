@@ -1,61 +1,80 @@
-<h1><%= @user.name %></h1>
-<%= gravatar_tag @user.email, size: 100, d: :identicon %>
-<% if @user != current_user %>
-    <% if @user.marked_as_follow? by: current_user %>
-        <%= link_to 'Unfollow', unfollow_user_path(@user), method: :put, class: 'btn btn-warning' %>
-    <% else %>
-        <%= link_to 'Follow', follow_user_path(@user), method: :put, class: 'btn btn-info' %>
-    <% end %>
-<% end %>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Template created by this author</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @templates.each do |t| %>
-      <tr>
-        <th><%= link_to t.name, category_template_path(t.category, t) %></th>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Tutorials created by this author</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @tutorials.each do |t| %>
-      <tr>
-        <th><%= link_to t.title, category_tutorial_path(t.category, t) %></th>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
-<div class="row">
-  <div class="col-md-4">
-    <h3>Users I follow</h3>
-    <% @user.follow_users.each do |user| %>
-        <br>
-        <%= link_to user.email, user_path(user) %>
-    <% end %>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <p class="text-center"><%= gravatar_tag @user.email, size: 200, d: :identicon, html: { class: 'img-circle'}%></p>
+      <h3 class="text-info text-center"><%= @user.name %></h3>
+      <p class="text-center">
+        <% if @user != current_user %>
+            <% if @user.marked_as_follow? by: current_user %>
+                <%= link_to 'Unfollow', unfollow_user_path(@user), method: :put, class: 'btn btn-warning' %>
+            <% else %>
+                <%= link_to 'Follow', follow_user_path(@user), method: :put, class: 'btn btn-info' %>
+            <% end %>
+        <% end %>
+      </p>
+      <p class="text-center"><%= "#{@user.follow_users.count} followers | #{@user.users_have_marked_as(:follow).count} following" %></p>
+      <h4 class="text-center">Bio</h4>
+      <p class="text-center"><%= @user.description %></p>
+      <h3 class="text-center">
+        <% if @user.github? %>
+            <a href="<%= "https://#{@user.github}" %>"><i class="fa fa-github-alt"></i></a>
+        <% end %>
+        <% if @user.linkedin? %>
+            <a href="<%= " https://#{@user.linkedin}" %>"><i class="fa fa-linkedin-square"></i></a>
+        <% end %>
+        <% if @user.bitbucket? %>
+            <a href="<%= "https://#{@user.bitbucket}"  %>"><i class="fa fa-bitbucket-square"></i></a>
+        <% end %>
+      </h3>
+    </div>
   </div>
-  <div class="col-md-4">
-    <h3>Users who follow me</h3>
-    <% @user.users_have_marked_as(:follow).each do |user| %>
-        <br>
-        <%= link_to user.email, user_path(user) %>
-    <% end %>
-  </div>
-  <div class="col-md-4">
-    <h3>Favorite Tutorials</h3>
-    <% @user.favorite_tutorials.each do |tutorial| %>
-        <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %>
-        <br>
-    <% end %>
+  <hr>
+  <% if @tutorials.count != 0 %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Tutorials created by this user</h3>
+            </div>
+            <div class="panel-body">
+              <% @tutorials.each do |tutorial| %>
+                  <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %>
+                  <br>
+              <% end %>
+            </div>
+          </div>
+        </div>
+  <% end %>
+  <% if @templates.count != 0 %>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Templates created by this user</h3>
+          </div>
+          <div class="panel-body">
+            <% @templates.each do |template| %>
+                <%= link_to template.name, category_template_path(template.category, template) %>
+                <br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  <% if @snippets.count != 0  %>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Snippets created by this user</h3>
+          </div>
+          <div class="panel-body">
+            <% @snippets.each do |snippet| %>
+                <%= link_to snippet.title, category_snippet_path(snippet.category, snippet) %>
+                <br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
   </div>
 </div>
-

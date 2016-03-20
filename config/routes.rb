@@ -9,11 +9,16 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
     resources :users
   end
+  #Stripe WebHook
   mount StripeEvent::Engine, at: '/stripe/webhook'
+
+  #Searchkick Search
   get '/search' => 'static#search', as: 'search'
 
+  #Stripe authentication
   get '/connect/oauth' => 'connect#oauth', as: 'stripe_oauth'
   get '/connect/confirm' => 'connect#confirm', as: 'stripe_confirm'
+
   resources :categories, only: [:index, :show] do
     resources :snippets do
       member do
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories, only: [:index, :show] do
-        resources :templates, except: :index do
+    resources :templates, except: :index do
       member do
         put '/publish' => 'templates#publish'
         put '/unpublish' => 'templates#unpublish'
@@ -43,7 +48,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :tutorials, except: :index do
       resources :questions, shallow: true do
-        resources :comments
+        resources :comments, except: :show
       end
       resources :infos, except: :index
       member do

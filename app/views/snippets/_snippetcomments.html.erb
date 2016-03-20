@@ -1,0 +1,7 @@
+<li class="comment">
+  <%= link_to snippetcomment.user.name, user_path(snippetcomment.user) %>
+  <span class="date"><%= time_ago_in_words(snippetcomment.created_at) %> ago</span>
+  <p>
+    <%= snippetcomment.comment %>
+  </p>
+</li>

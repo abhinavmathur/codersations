@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :set_question, only: [:index, :new, :create]
-  before_action :set_comment, only: [:show, :destroy, :update, :edit]
+  before_action :set_comment, only: [:destroy, :update, :edit]
 
 
   def index
@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = @question.comments.new
+
   end
 
   def create
@@ -25,10 +26,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
   def edit
 
   end
@@ -36,7 +33,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comments_params)
       flash[:success] = 'Your comment was successfully updated'
-      redirect_to comment_path(@comment)
+      redirect_to question_path(@comment.question)
     else
       flash[:danger] = 'Your comment was not updated'
       render :edit
@@ -45,6 +42,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
+    redirect_to question_path(@comment.question)
   end
 
   private

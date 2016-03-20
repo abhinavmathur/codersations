@@ -6,6 +6,8 @@ class StaticController < ApplicationController
   def search
     @categories = Category.search(params[:q]).to_a
     @users = User.search(params[:q]).to_a
+    snippet = policy_scope(Snippet)
+    @snippets = snippet.search(params[:q]).to_a
     tutorial = policy_scope(Tutorial)
     @tutorials = tutorial.search(params[:q]).to_a
     template = policy_scope(Template)
@@ -14,7 +16,7 @@ class StaticController < ApplicationController
     @infos = info.search(params[:q]).to_a
     infopage = policy_scope(Infopage)
     @infopages = infopage.search(params[:q]).to_a
-    all = @categories + @tutorials + @templates + @infopages + @infos + @users
+    all = @categories + @tutorials + @templates + @infopages + @infos + @users + @snippets
     @all = Kaminari.paginate_array(all).page(params[:page]).per(30)
   end
 end

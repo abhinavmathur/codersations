@@ -1,6 +1,5 @@
-<h1>Search Result</h1>
+<h2 class="text-center text-info">Search Result</h2>
 <p>You searched for: <%= params[:q].to_s %></p>
-<p></p>
 <p>Search hits: <%= @all.count %></p>
 <hr>
 <% @all.each do |all| %>
@@ -24,11 +23,11 @@
         <% end %>
     <% elsif all.class.name == 'User'%>
         <%= link_to all.name, user_path(all) %>
-    <% else %>
-        <% @all.count == 0 %>
-        <p>No Results found</p>
     <% end %>
-    <br>
+        <br>
+<% end %>
+<% if @all.count == 0 %>
+    <h3 class="text-center text-danger">No results found</h3>
 <% end %>
 <br><br>
 <%= paginate(@all) %>
