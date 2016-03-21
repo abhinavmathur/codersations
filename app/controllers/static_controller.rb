@@ -1,6 +1,7 @@
 class StaticController < ApplicationController
   def index
-    @tutorials = policy_scope(Tutorial.limit(10).order("RANDOM()"))
+    #@tutorials = policy_scope(Tutorial.limit(12).order("RANDOM()"))
+    @tutorials = Tutorial.where(author: User.first)
   end
 
   def search

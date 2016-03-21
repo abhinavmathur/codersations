@@ -19,3 +19,10 @@
 footer {
     margin-top: 20%;
 }
+.select-contributors {
+    overflow: scroll;
+}
+
+.box {
+    min-height: 280px;
+}

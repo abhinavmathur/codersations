@@ -1,40 +1,55 @@
-<% @tutorials.each do |tutorial| %>
-    <div class="col-md-6">
-      <ul class="list-group">
-        <li class="list-group-item">
-          <ul class="breadcrumb">
-            <li><a href="#">Category /</a>
-            </li>
-            <%= link_to tutorial.category.name, category_path(tutorial.category) %>
-            </li>
-          </ul>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="jumbotron">
+      <h1 class="text-center">Welcome to Codersations <i class="fa fa-smile-o"></i>
+      </h1>
+      <h4 class="text-primary text-center">Codersations is a new education platform where experienced programmers along with expert teachers come together and make the best programming tutorials to enrich and enhance your coding skills.</h4>
+      <h3 class="text-center text-info">Codersations is currently in beta</h3>
+    </div>
+  </div>
+  <hr>
+  <div class="row-fluid">
+    <h3 class="text-primary text-center"> Check out some of the tutorials !</h3>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="tutorials">
+      <% @tutorials.each do |tutorial| %>
+          <div class="col-md-3">
+            <div class="panel panel-default box">
 
-          <h3 class="text-primary text-primary">
-            <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %>
-          </h3>
-          <div class="authors">
-            <div>
-              <p>Author: </p>
-              <% if tutorial.author %>
-                  <%= gravatar_tag tutorial.author.email, size: 30, d: :identicon %>
-                  <%= link_to tutorial.author.name, user_path(tutorial.author) %>
-              <% end %>
-            </div>
-            <div>
-              <% if list_contributors(tutorial.contributors, tutorial).count > 0 %>
-                  <p>Contributor:</p>
-              <% end %>
-              <% list_contributors(tutorial.contributors, tutorial).each do |contributor| %>
-                  <% contributor = User.find_by_name(contributor) %>
-                  <%= gravatar_tag contributor.email, size: 30, d: :identicon %>
-                  <%= link_to contributor.name, user_path(contributor) %>
-              <% end %>
-
+              <span class="label label-success pull-left template-tag">Tutorial</span>
+              <span class="label label-danger pull-right category-tag"><%= tutorial.category.name %></span>
+              <div class="panel-body">
+                <h4 class="text-center text-info"><%= link_to tutorial.title, [tutorial.category, tutorial] %></h4>
+                <br>
+                <small class="text-info">
+                  Author - <%= gravatar_tag tutorial.author.email, size: 20, d: :identicon, html: { class: 'img-circle'} %>
+                  <a href="<%= user_path(tutorial.author)%>"><%= tutorial.author.name %></a>
+                </small>
+                <br>
+                <% if tutorial.contributors.any? %>
+                    <small class="text-info text-center">Contributors/Editors -
+                      <% count = 0 %>
+                      <% tutorial.contributors.each do |contributor| %>
+                          <% count = count + 1 %>
+                          <% if count == tutorial.contributors.count - 1 %>
+                              <%= gravatar_tag contributor.member.email, size: 20, d: :identicon, html: { class: 'img-circle'} %>
+                              <%= link_to contributor.member.name, user_path(contributor.member) %>,
+                          <% else %>
+                              <%= gravatar_tag contributor.member.email, size: 20, d: :identicon, html: { class: 'img-circle'} %>
+                              <%= link_to contributor.member.name, user_path(contributor.member) %>
+                          <% end %>
+                      <% end %>
+                    </small>
+                <% end %>
+                <br>
+                <small class="description text-center"><%= truncate(tutorial.description, length: 60) %></small>
+              </div>
             </div>
           </div>
-          <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could </p>
-        </li>
-      </ul>
+      <% end %>
     </div>
-    </div>
-<% end %>
+  </div>
+</div>

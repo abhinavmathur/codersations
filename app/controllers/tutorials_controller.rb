@@ -84,12 +84,12 @@ class TutorialsController < ApplicationController
 
   def publish
     @tutorial.update(publish: true)
-    redirect_to category_tutorial_path(@category, @tutorial)
+    redirect_to category_tutorial_path(@category, @tutorial, anchor: 'mini-tutorial-dashboard')
   end
 
   def unpublish
     @tutorial.update(publish: false)
-    redirect_to category_tutorial_path(@category, @tutorial)
+    redirect_to category_tutorial_path(@category, @tutorial, anchor: 'mini-tutorial-dashboard')
   end
 
   def add_member
@@ -99,7 +99,6 @@ class TutorialsController < ApplicationController
       flash[:danger] = 'User once denied cannot be added again. Sorry.'
     else
       Contributor.create!(tutorial: @tutorial, access: true, member: temp_user)
-      @tutorial.members << temp_user
       flash[:success] = "#{temp_user.name} been added as a contributor to the tutorial"
     end
     redirect_to category_tutorial_path(@category, @tutorial)

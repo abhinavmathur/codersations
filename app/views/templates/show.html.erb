@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <h2 class="text-center text-info"><%= @template.name %></h2>
   <div class="row">
-    <h4 class="text-center"> <%= gravatar_tag(@template.author.email, size: 35, d: :identicon) %>&nbsp;<%= link_to @template.author.name, user_path(@template.author) %> </h4>
+    <h4 class="text-center"> <%= gravatar_tag(@template.author.email, size: 40, d: :identicon, html: {class: 'img-circle'}) %>&nbsp;<%= link_to @template.author.name, user_path(@template.author) %> </h4>
   </div>
   <% if current_user == @template.author %>
       <hr>
@@ -33,7 +33,7 @@
         <div class="col-md-3">
           <p>Manage the template. You need Admin permission to delete the template</p>
           <%= link_to 'Edit Template', [:edit, @category, @template], class: 'btn btn-info btn-sm' %>
-          <% if current_user.admin? %>
+          <% if current_user.try(:admin) %>
               <%= link_to 'Delete Template', [@category, @template], method: :delete, class: 'btn btn-danger btn-sm' %>
           <% else %>
               <%= link_to 'Delete Template', [@category, @template], class: 'btn btn-danger btn-sm disabled' %>
@@ -46,42 +46,43 @@
 
 
 
-
-<div class="row">
-  <div class="col-md-4">
-    <h3 class="text-center text-info">Description</h3>
-    <p class="description"><%= simple_format(@template.description) %></p>
-    <hr>
-    <h3 class="text-center text-info">Points Covered</h3>
-    <p class="points-covered"><%= simple_format(@template.points_covered) %></p>
-  </div>
-  <div class="col-md-4">
-    <h3 class="text-center text-info">Index</h3>
-    <% if @template.infopages.any? %>
-        <ol class="rectangle-list">
-          <% @template.infopages.each do |infopage| %>
-              <%= link_to truncate(infopage.title, length: 30), category_template_infopage_path(@category, @template, infopage) %>
-          <% end %>
-        </ol>
-    <% end %>
-  </div>
-  <div class="col-md-4">
-    <h3 class="text-center text-info">Snippets</h3>
-    <% if @template.snippets.any? %>
-        <div class="list-group">
-          <% @snippets.each do |snippet| %>
-              <%= link_to category_snippet_path(@category, snippet), class: 'list-group-item' do %>
-                  <h4 class="list-group-item-heading text-center"><%= snippet.title %></h4>
-                  <small><%= "By - #{snippet.author.name}" %></small>
-                  <p class="list-group-item-text"><%= simple_format(truncate(sanitize(snippet.content, length: 50 ))) %></p>
-              <% end %>
-          <% end %>
-          <% if @template.snippets.count > 3  %>
-              <%= link_to 'See all snippets in this category', category_snippets_path(@category) %>
-          <% end %>
-    <% else %>
-        <p>There seems to be no snippet connected to this template</p>
-    <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <h3 class="text-center text-info">Description</h3>
+      <p class="description"><%= simple_format(@template.description) %></p>
+      <hr>
+      <h3 class="text-center text-info">Points Covered</h3>
+      <p class="points-covered"><%= simple_format(@template.points_covered) %></p>
+    </div>
+    <div class="col-md-4">
+      <h3 class="text-center text-info">Index</h3>
+      <% if @template.infopages.any? %>
+          <ol class="rectangle-list">
+            <% @template.infopages.each do |infopage| %>
+                <%= link_to truncate(infopage.title, length: 30), category_template_infopage_path(@category, @template, infopage) %>
+            <% end %>
+          </ol>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h3 class="text-center text-info">Snippets</h3>
+      <% if @template.snippets.any? %>
+          <div class="list-group">
+            <% @snippets.each do |snippet| %>
+                <%= link_to category_snippet_path(@category, snippet), class: 'list-group-item' do %>
+                    <h4 class="list-group-item-heading text-center"><%= snippet.title %></h4>
+                    <small><%= "By - #{snippet.author.name}" %></small>
+                    <p class="list-group-item-text"><%= simple_format(truncate(sanitize(snippet.content, length: 50 ))) %></p>
+                <% end %>
+            <% end %>
+            <% if @template.snippets.count > 3  %>
+                <%= link_to 'See all snippets in this category', category_snippets_path(@category) %>
+            <% end %>
+      <% else %>
+          <p>There seems to be no snippet connected to this template</p>
+      <% end %>
+      </div>
     </div>
   </div>
 </div>
@@ -89,24 +90,25 @@
 
 <h2 class="text-center text-info">Tutorials belonging to this template</h2>
 <br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="panel panel-default">
 
-<div class="row">
-  <div class="col-md-3">
-    <div class="panel panel-default">
-
-      <span class="label label-success pull-left template-tag">Template</span>
-      <span class="label label-danger pull-right category-tag">Ruby</span>
-      <div class="panel-body">
-        <h4 class="text-center text-info">Rails Authentication Basics</h4>
-        <br>
-        <small>Author: <a href="#">Oskar Niburski</a></small>
-        <br>
-        <small>Contributors: <a href="#">Abhinav Mathur&nbsp;</a></small>
-        <p class="description">Learn about the nitty griity details on authentication and how to implement it in a Rails app.</p>
-        <ul class="nav nav-pills">
-          <li><a href="#" class="btn btn-success btn-xs">Beginner</a></li>
-          <li class="pull-right"><a href="#" class="btn btn-default btn-xs">Tutorials&nbsp;<span class="badge">13</span></a></li>
-        </ul>
+        <span class="label label-success pull-left template-tag">Template</span>
+        <span class="label label-danger pull-right category-tag">Ruby</span>
+        <div class="panel-body">
+          <h4 class="text-center text-info">Rails Authentication Basics</h4>
+          <br>
+          <small>Author: <a href="#">Oskar Niburski</a></small>
+          <br>
+          <small>Contributors: <a href="#">Abhinav Mathur&nbsp;</a></small>
+          <p class="description">Learn about the nitty griity details on authentication and how to implement it in a Rails app.</p>
+          <ul class="nav nav-pills">
+            <li><a href="#" class="btn btn-success btn-xs">Beginner</a></li>
+            <li class="pull-right"><a href="#" class="btn btn-default btn-xs">Tutorials&nbsp;<span class="badge">13</span></a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

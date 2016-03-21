@@ -1,139 +1,169 @@
-<% if @tutorial.author == current_user || current_user.try(:admin) %>
-    <% if @tutorial.publish %>
-        <%= link_to 'Hide Tutorial', unpublish_category_tutorial_path(@category, @tutorial), class: 'btn btn-danger', method: :put, remote: true %>
-    <% else %>
-        <%= link_to 'Publish Tutorial', publish_category_tutorial_path(@category, @tutorial), class: 'btn btn-success', method: :put, remote: true%>
-    <% end %>
-<% end %>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <h1 class="text-center text-info"><%= @tutorial.title %></h1>
 
-<% if current_user.purchases.exists?(tutorial_id: @tutorial.id) || current_user.stripe_subscription_id? || @tutorial.author == current_user%>
-    <%= link_to 'Questions Page', category_tutorial_questions_path(@category, @tutorial) %>
-<% else %>
-    <%= link_to 'Questions Page', subscriptions_path %>
-<% end %>
-
-<h1 class="text-primary text-center"><bold><%= @tutorial.title %></bold></h1>
-
-<div class="row">
-  <div class="col-md-6 text-center">
-    <h3>By <%= link_to @tutorial.author.name, user_path(@tutorial.author) %> in category <%= link_to @tutorial.category.name, category_path(@tutorial.category) %></h3>
-  </div>
-  <div class="col-md-6 text-center">
-    <% if @tutorial.marked_as_favorite? by: current_user %>
-        <%= link_to 'Remove from bookmarks', dislike_category_tutorial_path(@category, @tutorial), method: :put %>
-    <% else %>
-        <%= link_to 'Add to bookmarks', like_category_tutorial_path(@category, @tutorial), method: :put %>
-    <% end %>
-  </div>
-</div>
-<% if user_signed_in? %>
-    <% if @tutorial.price > 0 %>
-        <p class="text-primary"><%= "#{number_to_currency(@tutorial.price)}" %></p>
-        <% if !current_user.purchases.exists?(tutorial_id: @tutorial.id)  %>
-            <% if current_user.stripe_id? %>
-                <%= link_to 'Quick Buy', quick_buy_category_tutorial_path(@category, @tutorial), method: :put %>
-            <% else %>
-                <%= link_to 'Buy', payment_category_tutorial_path, method: :get %>
-            <% end %>
-        <% else %>
-            <%= "Purchased" %>
-        <% end %>
-    <% else %>
-        <p class="text-info">Free Tutorial</p>
-    <% end %>
-<% end %>
-<div class="row">
-  <div class="col-md-6">
-    <h3>Contributors</h3>
-    <% list_contributors(@tutorial.contributors, @tutorial).each do |user| %>
-        <% user = User.find_by_name(user) %>
-        <div class="contributor">
-          <%= gravatar_tag user.email, size: 40 %>
-          <%= link_to user.name, user_path(user), class: 'well' %>
-        </div>
-        <br>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-    <h3>Description</h3>
-    <p><%= @tutorial.description.html_safe %></p>
-
-    <hr>
-    <h3>Points covered</h3>
-    <p><%= @tutorial.points_covered.html_safe %></p>
-  </div>
-  <div class="col-md-6">
-    <h3>Pages in this tutorial</h3>
-    <ol class="rectangle-list">
-      <% @infos.each do |info| %>
-          <li><%= link_to info.title, category_tutorial_info_path(@category, @tutorial, info) %></li>
-      <% end %>
-    </ol>
-  </div>
-</div>
-
-<% if @tutorial.author == current_user %>
-    <hr>
-    <div class="row">
-      <h3>Users to add to tutorial</h3>
-      <table class="table">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th>People who follow you</th>
-          <th>Add or Remove</th>
-          <% if current_user.try(:admin) %>
-              <th>Revoke user access</th>
-          <% end %>
-        </tr>
-        </thead>
-        <tbody>
-
-        <% current_user.users_have_marked_as_follow.each do |user| %>
-            <tr>
-              <th>#</th>
-              <th><%= link_to user.email, user_path(user) %></th>
-              <% if Contributor.exists?(tutorial: @tutorial, member: user, access: true) %>
-                  <th>
-                    <%= link_to 'Remove member', remove_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-danger' %>
-                  </th>
+    <h4 class="text-center text-info">Author -
+      <%= gravatar_tag @tutorial.author.email, size: 40, d: :identicon, html: {class: 'img-circle'} %>
+      <%= link_to @tutorial.author.name, user_path(@tutorial.author) %></h4>
+    <% if @tutorial.contributors.any? %>
+        <h4 class="text-info text-center">Contributors/Editors -
+          <% count = 0 %>
+          <% @tutorial.contributors.each do |contributor| %>
+              <% count = count + 1 %>
+              <% if count == @tutorial.contributors.count - 1 %>
+                  <%= gravatar_tag contributor.member.email, size: 40, d: :identicon, html: { class: 'img-circle'} %>
+                  <%= link_to contributor.member.name, user_path(contributor.member) %>,
               <% else %>
-                  <th>
-                    <%= link_to 'Add member', add_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-success' %>
-                  </th>
+                  <%= gravatar_tag contributor.member.email, size: 40, d: :identicon, html: { class: 'img-circle'} %>
+                  <%= link_to contributor.member.name, user_path(contributor.member) %>
               <% end %>
-              <% if current_user.admin %>
-                  <th><%= link_to 'Revoke User Access', admin_remove_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-warning' %></th>
-              <% end %>
-            </tr>
-        <% end %>
-        </tbody>
-      </table>
-    </div>
-<% end %>
-
-<% if policy(@tutorial.infos.new).create? %>
-    <%= link_to 'Add an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-success' %>
-<% end %>
-<% if policy(@tutorial).destroy? %>
-    <% if @template == nil %>
-        <%= link_to 'Add a template', add_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm' %>
-    <% else %>
-        <%= show_template_name(@template) do %>
-            <%= link_to @template.name, category_template_path(@category, @template)%>
-            <%= link_to 'Replace this template', add_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', class: 'btn btn-success btn-sm' %>
-            <%= link_to 'Remove this template', remove_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', class: 'btn btn-success btn-sm', method: :put %>
-        <% end %>
+          <% end %>
+        </h4>
     <% end %>
-<% end %>
+  </div>
+  <hr>
+  <% if policy(@tutorial).destroy? %>
+      <div class="row">
+        <h3 class="text-center text-info" id="mini-tutorial-dashboard">Mini Dashboard</h3>
+        <div class="col-md-3">
+          <p>Publish/Hide this tutorial</p>
+          <% if policy(@tutorial).destroy? %>
+              <% if @tutorial.publish %>
+                  <%= link_to 'Hide Tutorial', unpublish_category_tutorial_path(@category, @tutorial), class: 'btn btn-danger btn-sm', method: :put%>
+              <% else %>
+                  <%= link_to 'Publish Tutorial', publish_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', method: :put%>
+              <% end %>
+          <% end %>
+          <hr>
+          <p>Edit tutorial information</p>
+          <%= link_to 'Edit Tutorial', [:edit, @category, @tutorial], class: 'btn btn-success btn-sm' %>
+          <% if current_user.try(:admin) %>
+              <%= link_to 'Delete Tutorial', [@category, @tutorial], method: :delete, data: {confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-sm' %>
+          <% else %>
+              <%= link_to 'Delete Tutorial', [@category, @tutorial], data: {confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-sm disabled' %>
+          <% end %>
+        </div>
+        <div class="col-md-3">
+          <p>References</p>
+          <p>Templates :-</p>
+          <% if @template == nil %>
+              <%= link_to 'Add a template', add_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm' %>
+          <% else %>
+              <%= show_template_name(@template) do %>
+                  <%= link_to @template.name, category_template_path(@category, @template)%>
+                  <%= link_to 'Replace this template', add_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', class: 'btn btn-success btn-sm' %>
+                  <%= link_to 'Remove this template', remove_template_category_tutorial_path(@category, @tutorial), class: 'btn btn-success btn-sm', class: 'btn btn-success btn-sm', method: :put %>
+              <% end %>
+          <% end %>
+          <hr>
+          <p>Create a page</p>
+          <%= link_to 'Create an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-primary btn-sm' %>
+        </div>
+        <div class="col-md-6 select-contributors">
+          <p>Search and add a contributor</p>
+          <% if @tutorial.author == current_user %>
+              <hr>
+              <div class="row">
+                <h3>Users to add to tutorial</h3>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>People who follow you</th>
+                    <th>Add or Remove</th>
+                    <% if current_user.try(:admin) %>
+                        <th>Revoke user access</th>
+                    <% end %>
+                  </tr>
+                  </thead>
+                  <tbody>
 
+                  <% current_user.users_have_marked_as_follow.each do |user| %>
+                      <tr>
+                        <th>#</th>
+                        <th><%= link_to user.email, user_path(user) %></th>
+                        <% if Contributor.exists?(tutorial: @tutorial, member: user, access: true) %>
+                            <th>
+                              <%= link_to 'Remove member', remove_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-danger btn-sm' %>
+                            </th>
+                        <% else %>
+                            <th>
+                              <%= link_to 'Add member', add_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-success btn-sm' %>
+                            </th>
+                        <% end %>
+                        <% if current_user.admin %>
+                            <th><%= link_to 'Revoke User Access', admin_remove_member_category_tutorial_path(@category, @tutorial, user: user), method: :put, class: 'btn btn-warning btn-sm' %></th>
+                        <% end %>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+  <% unless current_user == @tutorial.author%>
+      <% if policy(@tutorial.infos.new).create?%>
+          <hr>
+          <div class="row">
+            <p>As a contributor to this tutorial, you have the access to edit and create pages</p>
+            <%= link_to 'Add an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-success' %>
+          </div>
+      <% end %>
+      <hr>
+  <% end %>
 
-<% if policy(@tutorial).destroy? %>
-    <%= link_to 'Delete tutorial', category_tutorial_path(@category, @tutorial), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-lg' %>
-<% end %>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <% if current_user.purchases.exists?(tutorial_id: @tutorial.id) || current_user.stripe_subscription_id? || @tutorial.author == current_user%>
+          <%= link_to 'Questions and Notes', category_tutorial_questions_path(@category, @tutorial) %>
+      <% else %>
+          <%= link_to 'Questions and Notes', subscriptions_path %>
+      <% end %>
+    </div>
+    <div class="col-md-4 text-center">
+      <% if user_signed_in? %>
+          <% if @tutorial.price > 0 %>
+              <h4 class="text-primary text-warning"><%= "#{number_to_currency(@tutorial.price)}" %></h4>
+              <% if !current_user.purchases.exists?(tutorial_id: @tutorial.id)  %>
+                  <% if current_user.stripe_id? %>
+                      <%= link_to 'Quick Buy', quick_buy_category_tutorial_path(@category, @tutorial), method: :put %>
+                  <% else %>
+                      <%= link_to 'Buy', payment_category_tutorial_path, method: :get %>
+                  <% end %>
+              <% else %>
+                  <%= "Purchased" %>
+              <% end %>
+          <% else %>
+              <p class="text-info">Free Tutorial</p>
+          <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-4 text-center">
+      <% if @tutorial.marked_as_favorite? by: current_user %>
+          <%= link_to 'Remove from bookmarks', dislike_category_tutorial_path(@category, @tutorial), method: :put %>
+      <% else %>
+          <%= link_to 'Add to bookmarks', like_category_tutorial_path(@category, @tutorial), method: :put %>
+      <% end %>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center text-info">Description</h3>
+      <p class="text-center"><%= @tutorial.description %></p>
+      <hr>
+      <h3 class="text-info text-center">Points Covered</h3>
+      <p class="text-center"><%= @tutorial.points_covered %></p>
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center text-info"> Index</h3>
+      <ol class="rectangle-list">
+        <% @infos.each do |info| %>
+            <li><%= link_to info.title, category_tutorial_info_path(@category, @tutorial, info) %></li>
+        <% end %>
+      </ol>
+    </div>
+  </div>
+</div>

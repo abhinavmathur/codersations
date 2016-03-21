@@ -13,7 +13,7 @@
             <% end %>
         <% end %>
       </p>
-      <p class="text-center"><%= "#{@user.follow_users.count} followers | #{@user.users_have_marked_as(:follow).count} following" %></p>
+      <p class="text-center"><%= "#{@user.follow_users.count} #{@user.follow_users.count == 1 ? 'follower' : 'followers'} | #{@user.users_have_marked_as(:follow).count} following" %></p>
       <h4 class="text-center">Bio</h4>
       <p class="text-center"><%= @user.description %></p>
       <h3 class="text-center">

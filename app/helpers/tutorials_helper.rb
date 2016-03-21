@@ -23,12 +23,12 @@ module TutorialsHelper
     user.try(:admin) || tutorial.author == user || tutorial.contributors.exists?(member: user, tutorial: tutorial, access: true)
   end
 
+  #lists all the contributors except the tutorial author
   def list_contributors(contributors, tutorial)
     contributors_list = []
     contributors.each do |contributor|
       contributors_list.push User.find_by_id(contributor.member_id).name
     end
-    contributors_list = contributors_list.uniq
     contributors_list.delete(tutorial.author.name)
     contributors_list
   end
@@ -46,6 +46,10 @@ module TutorialsHelper
       end
     end
     false
+  end
+
+  def hide_from_author(tutorial, &block)
+    block.call if list_contributors(tutorial.contributors, tutorial).include? current_user
   end
 
 end

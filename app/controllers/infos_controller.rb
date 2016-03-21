@@ -37,6 +37,10 @@ class InfosController < ApplicationController
 
   def show
     authorize @info, :show?
+    if !current_user.purchases.exists?(tutorial_id: @tutorial.id)
+      flash[:warning] = 'You need to purchase the tutorial to view the pages'
+      redirect_to [@category, @tutorial] and return
+    end
   end
 
   def edit
