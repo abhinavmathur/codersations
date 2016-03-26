@@ -48,9 +48,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:follow, :unfollow]
 
   def show
-    @templates = policy_scope Template.where(author_id: @user.id).all
-    @tutorials = policy_scope Tutorial.where(author: @user).all
-    @snippets = policy_scope Snippet.where(author: @user).all
+    @templates = policy_scope Template.includes(:category).where(author_id: @user.id).all
+    @tutorials = policy_scope Tutorial.includes(:category).where(author: @user).all
+    @snippets = policy_scope Snippet.includes(:category).where(author: @user).all
   end
 
   def follow
