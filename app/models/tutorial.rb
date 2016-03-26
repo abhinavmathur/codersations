@@ -31,12 +31,13 @@ class Tutorial < ActiveRecord::Base
 
   belongs_to :category
   belongs_to :author, class_name: 'User'
-  has_many :contributors
-  has_many :members, through: :contributors
+  has_many :contributors, dependent: :destroy
+  has_many :members, through: :contributors, dependent: :destroy
   has_many :infos, dependent: :delete_all
-  has_many :purchases
-  has_many :questions
-  has_many :snippets
+  has_many :purchases, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :snippets, dependent: :nullify
+
   validates :title, :description, :points_covered, presence: true
 
 

@@ -40,6 +40,7 @@
 #  publishable_key        :string
 #  secret_key             :string
 #  currency               :string
+#  linkedin               :string
 #
 
 require 'test_helper'

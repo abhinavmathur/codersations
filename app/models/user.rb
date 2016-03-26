@@ -40,6 +40,7 @@
 #  publishable_key        :string
 #  secret_key             :string
 #  currency               :string
+#  linkedin               :string
 #
 
 class User < ActiveRecord::Base
@@ -49,15 +50,17 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   acts_as_marker
   markable_as :follow, :by => :user
-  after_save :update_stripe_account_email
   searchkick text_start: [:name]
 
+  after_save :update_stripe_account_email
+
   validates :name, presence: true
-  has_many :templates
-  has_many :tutorials
-  has_many :charges
-  has_many :snippets
-  has_many :purchases
+  has_many :templates, dependent: :nullify
+  has_many :tutorials, dependent: :nullify
+  has_many :charges, dependent: :destroy
+  has_many :snippets, dependent: :nullify
+  has_many :purchases, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   has_many :members, foreign_key: :member_id
   has_many :tutorials, through: :contributors

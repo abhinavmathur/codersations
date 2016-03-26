@@ -9,3 +9,9 @@
 
 <%= @info.title %>
 <%= @info.content.html_safe %>
+<hr>
+<%= link_to 'Create a note', new_category_tutorial_info_note_path(@category, @tutorial, @info) %>
+<h2 class="text-center">My Notes</h2>
+<% @notes.each do |note| %>
+    <%= link_to note.title, note_path(note) %>
+<% end %>

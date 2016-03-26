@@ -20,6 +20,7 @@ class Category < ActiveRecord::Base
   has_many :templates
   has_many :tutorials
   has_many :snippets
+  has_many :notes, dependent: :destroy
 
 
 end

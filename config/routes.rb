@@ -50,7 +50,9 @@ Rails.application.routes.draw do
       resources :questions, shallow: true do
         resources :comments, except: :show
       end
-      resources :infos, except: :index
+      resources :infos, except: :index do
+        resources :notes, shallow: true
+      end
       member do
         put '/add_member' => 'tutorials#add_member'
         put '/remove_member' => 'tutorials#remove_member'

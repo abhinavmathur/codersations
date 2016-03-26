@@ -44,6 +44,7 @@ class InfosController < ApplicationController
       end
     end
     authorize @info, :show?
+    @notes = @info.notes.where(user: current_user)
   end
 
   def edit
