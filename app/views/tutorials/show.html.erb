@@ -21,8 +21,9 @@
         </h4>
     <% end %>
   </div>
-  <hr>
+
   <% if policy(@tutorial).destroy? %>
+      <hr>
       <div class="row">
         <h3 class="text-center text-info" id="mini-tutorial-dashboard">Mini Dashboard</h3>
         <div class="col-md-3">
@@ -116,10 +117,14 @@
 
   <div class="row">
     <div class="col-md-4 text-center">
-      <% if current_user.purchases.exists?(tutorial_id: @tutorial.id) || current_user.stripe_subscription_id? || @tutorial.author == current_user%>
-          <%= link_to 'Questions and Notes', category_tutorial_questions_path(@category, @tutorial) %>
+      <% if user_signed_in? %>
+          <% if current_user.purchases.exists?(tutorial_id: @tutorial.id) || current_user.stripe_subscription_id? || @tutorial.author == current_user%>
+              <%= link_to 'Questions and Notes', category_tutorial_questions_path(@category, @tutorial) %>
+          <% else %>
+              <%= link_to 'Questions and Notes', subscriptions_path %>
+          <% end %>
       <% else %>
-          <%= link_to 'Questions and Notes', subscriptions_path %>
+          <%= link_to 'Questions and Notes', new_user_session_path %>
       <% end %>
     </div>
     <div class="col-md-4 text-center">

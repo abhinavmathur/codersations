@@ -40,7 +40,7 @@ class TemplatesController < ApplicationController
   end
   def show
     authorize @template, :show?
-    @snippets = Snippet.where(template_id: @template.id).take(3)
+    @snippets = Snippet.includes(:author).where(template_id: @template.id).take(3)
   end
 
   def edit

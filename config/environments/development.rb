@@ -39,6 +39,15 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end
+
