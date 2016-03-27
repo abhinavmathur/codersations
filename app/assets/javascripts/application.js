@@ -53,3 +53,9 @@ NProgress.configure({
     ease: 'ease',
     speed: 500
 });
+
+$(document).on('page:load', function(){
+    window['rangy'].initialized = false
+})
+
+$(elem).wysihtml5({ toolbar:{ "fa": true } });

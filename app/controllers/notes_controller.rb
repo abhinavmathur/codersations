@@ -33,17 +33,27 @@ class NotesController < ApplicationController
   end
 
   def show
-
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def edit
-
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def update
     if @note.update(note_params)
+      info_id = @note.info_id
+      info = Info.find_by(id: info_id)
+      tut = info.tutorial
+      cat = tut.category
       flash[:success] = 'Your note was successfully updated'
-      redirect_to note_path(@note)
+      redirect_to category_tutorial_info_path(cat, tut, info)
     else
       flash[:danger] = 'Your note was not updated'
       render :edit
@@ -51,12 +61,18 @@ class NotesController < ApplicationController
   end
 
   def destroy
-    info = @note.info
+    info_id = @note.info_id
+    info = Info.find_by(id: info_id)
     tut = info.tutorial
     cat = tut.category
     @note.destroy
-    flash[:success] = 'Your note was deleted successfully'
-    redirect_to category_tutorial_info_path(cat, tut, info)
+    respond_to do |format|
+      format.html {
+        flash[:success] = 'Your note was deleted successfully'
+        redirect_to category_tutorial_info_path(cat, tut, info)
+      }
+      format.js
+    end
   end
 
   private
