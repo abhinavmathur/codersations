@@ -44,7 +44,7 @@ class InfosController < ApplicationController
       end
     end
     authorize @info, :show?
-    @notes = @info.notes.where(user: current_user)
+    @notes = @info.notes.where(user: current_user).order('created_at DESC')
   end
 
   def edit

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   #Stripe WebHook
   mount StripeEvent::Engine, at: '/stripe/webhook'
 
+  #Judge Engine
+  mount Judge::Engine => '/judge'
+
   #Searchkick Search
   get '/search' => 'static#search', as: 'search'
 

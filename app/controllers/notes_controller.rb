@@ -25,10 +25,10 @@ class NotesController < ApplicationController
     end
     if @note.save
       flash[:success] = 'Your note was successfully created'
-      redirect_to note_path(@note)
+      redirect_to [@category, @tutorial, @info]
     else
-      flash[:danger] = 'Your note was not created'
-      render :new
+      flash[:danger] = 'Your note was not created. Either the title or content were blank'
+      redirect_to [@category, @tutorial, @info]
     end
   end
 
