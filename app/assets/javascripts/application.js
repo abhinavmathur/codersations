@@ -54,7 +54,6 @@ NProgress.configure({
 
 $(document).on('page:load', function(){
     ahoy.trackAll();
-    window['rangy'].initialized = false
 })
 
 $(elem).wysihtml5({ toolbar:{ "fa": true } });

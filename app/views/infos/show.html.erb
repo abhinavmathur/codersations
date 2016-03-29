@@ -40,7 +40,7 @@
               <%= f.input :title, validate: true, autofocus: true, input_html: { class: 'form-control'} %>
             </div>
             <div class="form-group">
-              <%= f.input :content, as: :wysihtml5, input_html: { class: 'form-control'} %>
+              <%= f.input :content, as: :wysihtml5, input_html: { class: 'form-control', id: 'description-textarea'} %>
             </div>
             <%= f.input :task, label: 'Mark if it is a task' %>
           </div>
@@ -52,3 +52,16 @@
       </div>
     </div>
 <% end %>
+<script>
+  $('#description-textarea').wysihtml5({toolbar:
+  {
+    'blockquote': false,
+    'image': false,
+    'lists': false,
+    'emphasis': {
+      'small': false,
+      'underline': false
+    },
+    'link': false
+  }})
+</script>

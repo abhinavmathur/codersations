@@ -16,13 +16,14 @@
  *= require nprogress
  *= require nprogress-bootstrap
  *= require bootstrap.min
- *= require bootstrap-wysihtml5
+ *= require font-awesome
  *= require style
  *= require_self
   */
 
 @import "bootstrap-sprockets";
 @import "font-awesome";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
 @import "summernote";
 @import "codemirror";
 @import "codemirror/themes/solarized";
