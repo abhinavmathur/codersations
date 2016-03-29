@@ -33,6 +33,7 @@ class SubscriptionsController < ApplicationController
           card_exp_year: params[:card_exp_year],
           card_type: params[:card_type]
       )
+      ahoy.track "Subscriptions", title: params[:plan].to_s
     rescue Stripe::CardError => e
       flash[:danger] = e.to_s
       redirect_to root_path and return

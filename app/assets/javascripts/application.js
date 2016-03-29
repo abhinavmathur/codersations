@@ -41,9 +41,7 @@
 //= require nprogress-turbolinks
 //= require subscription
 //= require script
-//= require underscore
-//= require json2
-//= require judge
+//= require ahoy
 //= require_tree .
 //= require turbolinks
 
@@ -55,6 +53,7 @@ NProgress.configure({
 });
 
 $(document).on('page:load', function(){
+    ahoy.trackAll();
     window['rangy'].initialized = false
 })
 
