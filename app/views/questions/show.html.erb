@@ -3,7 +3,7 @@
 <%= "Asked by #{User.find_by_id(@question.user_id).name}" %>
 <% @comments.each do |comment| %>
     <div class="well">
-      <p><%= comment.comment %></p>
+      <p><%= comment.content %></p>
       <% comment_author = User.find_by_id(comment.user_id).name %>
       <p><%= comment_author %></p>
       <%= link_to 'Edit Comment', [:edit, comment], class: 'btn btn-info btn-sm' %>

@@ -3,11 +3,12 @@
 # Table name: comments
 #
 #  id          :integer          not null, primary key
-#  user_id     :integer
-#  comment     :text
-#  question_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  question_id :integer          not null
+#  title       :string
+#  content     :text
+#  user_id     :integer          not null
+#  created_at  :datetime
+#  updated_at  :datetime
 #
 
 class Comment < ActiveRecord::Base
