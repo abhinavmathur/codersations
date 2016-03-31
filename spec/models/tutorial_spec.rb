@@ -17,6 +17,7 @@
 #  template_id       :integer
 #  impressions_count :integer          default("0")
 #  price             :integer          default("0")
+#  published         :boolean          default("false")
 #
 
 require 'rails_helper'

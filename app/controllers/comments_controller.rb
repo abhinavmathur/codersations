@@ -18,6 +18,15 @@ class CommentsController < ApplicationController
     @comment = @question.comments.create(comments_params)
     @comment.user_id = current_user.id
     if @comment.save
+      user_id_arr = [];
+      @question.comments.each do |user|
+        user_id_arr.push(user.user_id)
+      end
+      user_id_arr.delete(current_user.id)
+      user_id_arr.uniq.each do |user|
+        user = User.find_by(id: user)
+        Notification.create(recipient: user, actor: current_user, action: 'posted', notifiable: @comment)
+      end
       flash[:success] = 'Your comment was successfully created'
       redirect_to question_path(@comment.question)
     else
@@ -47,7 +56,7 @@ class CommentsController < ApplicationController
 
   private
   def comments_params
-    params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:content)
   end
 
   def set_question

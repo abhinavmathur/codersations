@@ -1,3 +1,5 @@
+<% ahoy.track 'Viewed Info', track: @info.title %>
+
 <% if policy(@info).update? %>
     <%= link_to 'Edit this page', edit_category_tutorial_info_path(@category, @tutorial, @info),
                 class: 'btn btn-success' %>

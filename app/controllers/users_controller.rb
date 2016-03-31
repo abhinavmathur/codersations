@@ -45,7 +45,7 @@
 class UsersController < ApplicationController
 
   before_action :set_user, only: [:show, :follow, :unfollow]
-  before_action :authenticate_user!, only: [:follow, :unfollow]
+  before_action :authenticate_user!, only: [:follow, :unfollow, :creator_dashboard]
 
   def show
     @templates = policy_scope Template.includes(:category).where(author_id: @user.id).all
@@ -61,6 +61,14 @@ class UsersController < ApplicationController
   def unfollow
     current_user.follow_users.delete @user
     redirect_to user_path(@user)
+  end
+
+  def creator_dashboard
+    if current_user.try(:creator)
+      @tutorials = Tutorial.where(author: current_user)
+      @templates = Template.where(author: current_user)
+      @snippets = Snippet.where(author: current_user)
+    end
   end
 
   private

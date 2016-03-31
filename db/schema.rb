@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329204147) do
+ActiveRecord::Schema.define(version: 20160330070708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160329204147) do
   add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "question_id",      null: false
+    t.integer  "question_id", null: false
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
@@ -99,6 +99,22 @@ ActiveRecord::Schema.define(version: 20160329204147) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "impressions", force: :cascade do |t|
+    t.string   "impressionable_type"
+    t.integer  "impressionable_id"
+    t.integer  "user_id"
+    t.string   "controller_name"
+    t.string   "action_name"
+    t.string   "view_name"
+    t.string   "request_hash"
+    t.string   "ip_address"
+    t.string   "session_hash"
+    t.text     "message"
+    t.text     "referrer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "infopages", force: :cascade do |t|
     t.string   "title"
@@ -152,6 +168,17 @@ ActiveRecord::Schema.define(version: 20160329204147) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "recipient_id"
+    t.integer  "actor_id"
+    t.datetime "read_at"
+    t.string   "action"
+    t.integer  "notifiable_id"
+    t.string   "notifiable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "pages", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
@@ -196,6 +223,20 @@ ActiveRecord::Schema.define(version: 20160329204147) do
 
   add_index "questions", ["tutorial_id"], name: "index_questions_on_tutorial_id", using: :btree
 
+  create_table "redactor_assets", force: :cascade do |t|
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+  end
+
+  create_table "snippetcomments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "comment"
+    t.integer  "snippet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "snippets", force: :cascade do |t|
     t.integer  "category_id"
@@ -260,6 +301,7 @@ ActiveRecord::Schema.define(version: 20160329204147) do
     t.integer  "template_id"
     t.integer  "impressions_count", default: 0
     t.integer  "price",             default: 0
+    t.boolean  "published",         default: false
   end
 
   add_index "tutorials", ["author_id"], name: "index_tutorials_on_author_id", using: :btree
@@ -344,6 +386,21 @@ ActiveRecord::Schema.define(version: 20160329204147) do
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   add_foreign_key "contributors", "tutorials"
   add_foreign_key "contributors", "users", column: "member_id"

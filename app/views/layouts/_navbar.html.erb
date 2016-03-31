@@ -23,9 +23,9 @@
           </li>
         </ul>
         <%= form_tag search_path, class: 'navbar-form navbar-left', role: 'search' , method: :get do %>
-        <div class="form-group">
-          <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search' %>
-        </div>
+            <div class="form-group">
+              <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search' %>
+            </div>
         <% end %>
         <ul class="nav navbar-nav navbar-right">
           <% if user_signed_in? %>
@@ -34,6 +34,13 @@
               <% end %>
               <li style="padding-top: 2%"><%= gravatar_tag current_user.email, :size => 50, d: :identicon, html: {class: 'img-circle'} %></li>
               <li><%= link_to current_user.first_name, current_user %></li>
+
+              <li class="dropdown" id="dropdown_id">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="notification_link"><i class="fa fa-bell"></i><span class="badge"></span></a>
+                <ul class="dropdown-menu" id="items">
+                </ul>
+              </li>
+
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -50,3 +57,46 @@
     </div><!--/.container-fluid -->
   </nav>
 </div>
+<script>
+  if ($('#dropdown_id').length > 0)
+  {
+    setInterval(function() {
+      getNewNotifications();
+    }, 5000);
+
+    $.ajax({
+      dataType: "json",
+      url: '/notifications.json',
+      success: success
+    });
+
+    function getNewNotifications()
+    {
+      $.ajax({
+        dataType: "json",
+        url: '/notifications.json',
+        success: success
+      });
+    }
+
+    function success(data) {
+      if (data.length > 0) {
+        $.map(data, function (key) {
+          $('#items').append("<li><a href=" + key.url + ">" + key.actor + " " + key.action + " " + key.notifiable.type + " to your question</a></li>")
+        });
+        $('.badge').text($('#items').length)
+      }
+    }
+
+    $('#notification_link').on("click", function() {
+      $.ajax({
+        url: "/notifications/mark_as_read",
+        dataType: "JSON",
+        method: "POST",
+        success: function(){
+          $('.badge').text('');
+        }
+      })
+    });
+  }
+</script>

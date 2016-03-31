@@ -2,7 +2,7 @@
 <p><%= @question.content %></p>
 <%= "Asked by #{User.find_by_id(@question.user_id).name}" %>
 <% @comments.each do |comment| %>
-    <div class="well">
+    <div class="well" id=comment.id >
       <p><%= comment.content %></p>
       <% comment_author = User.find_by_id(comment.user_id).name %>
       <p><%= comment_author %></p>

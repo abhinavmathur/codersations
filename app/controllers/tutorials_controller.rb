@@ -83,7 +83,7 @@ class TutorialsController < ApplicationController
   end
 
   def publish
-    @tutorial.update(publish: true)
+    @tutorial.update_attributes(publish: true, published: true)
     redirect_to category_tutorial_path(@category, @tutorial, anchor: 'mini-tutorial-dashboard')
   end
 

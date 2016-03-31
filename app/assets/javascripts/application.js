@@ -55,5 +55,3 @@ NProgress.configure({
 $(document).on('page:load', function(){
     ahoy.trackAll();
 })
-
-$(elem).wysihtml5({ toolbar:{ "fa": true } });

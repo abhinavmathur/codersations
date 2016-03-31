@@ -37,12 +37,13 @@
               <% end %>
           <% end %>
           <hr>
-          <p>Edit tutorial information</p>
+          <p>Edit tutorial information. <b>Once you publish a tutorial, you need admin permission to delete the
+            tutorial.</b></p>
           <%= link_to 'Edit Tutorial', [:edit, @category, @tutorial], class: 'btn btn-success btn-sm' %>
-          <% if current_user.try(:admin) %>
+          <% if current_user.try(:admin) || !@tutorial.published? %>
               <%= link_to 'Delete Tutorial', [@category, @tutorial], method: :delete, data: {confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-sm' %>
           <% else %>
-              <%= link_to 'Delete Tutorial', [@category, @tutorial], data: {confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-sm disabled' %>
+              <%= link_to 'Delete Tutorial', [@category, @tutorial], class: 'btn btn-danger btn-sm disabled' %>
           <% end %>
         </div>
         <div class="col-md-3">
@@ -62,7 +63,11 @@
           <%= link_to 'Create an info sheet', new_category_tutorial_info_path(@category, @tutorial), class: 'btn btn-primary btn-sm' %>
         </div>
         <div class="col-md-6 select-contributors">
-          <p>Search and add a contributor</p>
+          <% if @tutorial.contributors.any? %>
+              <p class="text-center text-info">Add a contributor</p>
+          <% else %>
+              <p class="text-center text-info">You can only add your followers as contributors</p>
+          <% end %>
           <% if @tutorial.author == current_user %>
               <hr>
               <div class="row">
@@ -139,7 +144,7 @@
                       <%= link_to 'Buy', payment_category_tutorial_path, method: :get %>
                   <% end %>
               <% else %>
-                  <%= "Purchased" %>
+                  <%= 'Purchased' %>
               <% end %>
           <% else %>
               <p class="text-info">Free Tutorial</p>

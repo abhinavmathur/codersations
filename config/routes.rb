@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   resource :subscriptions
   resource :card
   resource :charges
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
   namespace :admin do
     root 'dashboard#index'
     resources :categories, except: [:show]
@@ -11,7 +16,6 @@ Rails.application.routes.draw do
   end
   #Stripe WebHook
   mount StripeEvent::Engine, at: '/stripe/webhook'
-
   #Searchkick Search
   get '/search' => 'static#search', as: 'search'
 

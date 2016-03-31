@@ -63,6 +63,7 @@ class User < ActiveRecord::Base
   has_many :notes, dependent: :destroy
   has_many :visits, dependent: :destroy
   has_many :ahoy_events, :class_name => 'Ahoy::Event'
+  has_many :notifications, foreign_key: :recipient_id
 
   has_many :members, foreign_key: :member_id
   has_many :tutorials, through: :contributors

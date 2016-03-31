@@ -1,3 +1,5 @@
+<% ahoy.track 'Viewed Category', track: @category.name %>
+
 <h1>Tutorials and Templates in <%= @category.name %> category</h1>
 <% if policy(@category.templates.new).create? %>
     <%= link_to 'Create a Template', new_category_template_path(@category) %>

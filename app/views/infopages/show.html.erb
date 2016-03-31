@@ -1,3 +1,5 @@
+<% ahoy.track 'Viewed Infopage', track: @infopage.title %>
+
 <%= link_to 'Back to template', category_template_path(@category, @template) %>
 <% if policy(@infopage).update? %>
     <%= link_to 'Edit Page', edit_category_template_infopage_path(@category, @template, @infopage), class: 'btn btn-info' %>

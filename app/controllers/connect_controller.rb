@@ -17,6 +17,7 @@ class ConnectController < ApplicationController
     connector = StripeOauth.new( current_user )
     if params[:code]
       connector.verify!(params[:code])
+      ahoy.track 'Connected to Stripe', track: current_user.name
       flash[:success] = 'You have successfully connected your Stripe Account with Codersations !'
     elsif params[:error]
       flash[:error] = 'There was an error while authorizing the account with Stripe'
