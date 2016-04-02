@@ -1,5 +1,23 @@
-<h1>Edit comment</h1>
-<%= simple_form_for @comment, input_html: {class: 'form-horizontal'} do |f| %>
-    <%= f.input :content, autofocus: true, required: true, class: 'form-control' %>
-    <%= f.button :submit %>
-<% end %>
+<h2 class="text-center text-info">Edit comment</h2>
+<hr>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= simple_form_for @comment, input_html: {class: 'form-horizontal'} do |f| %>
+        <%= f.input :content, as: :wysihtml5, autofocus: true, required: true, class: 'form-control', input_html: { id: 'description-textarea'} %>
+        <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
+<script>
+  $('#description-textarea').wysihtml5({toolbar:
+  {
+    'blockquote': false,
+    'image': false,
+    'lists': false,
+    'emphasis': {
+      'small': false,
+      'underline': false
+    },
+    'link': false
+  }})
+</script>

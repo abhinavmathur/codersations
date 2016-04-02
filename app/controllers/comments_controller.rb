@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
 
   def new
     @comment = @question.comments.new
-
   end
 
   def create

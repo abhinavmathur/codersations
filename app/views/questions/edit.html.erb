@@ -4,7 +4,7 @@
       <%= f.input :title, autofocus: true, required: true, placeholder: 'Type your question here', class: 'form-control' %>
     </div>
     <div class="form-group">
-      <%= f.input :content, rows: 10, class: 'form-control' %>
+      <%= f.input :content, as: :wysihtml5, rows: 10, class: 'form-control', input_html: { id: 'description-textarea'} %>
     </div>
     <div class="form-group">
       <% if current_user == @tutorial.author %>
@@ -20,3 +20,16 @@
       <%= f.button :submit, class: 'btn btn-success' %>
     </div>
 <% end %>
+<script>
+  $('#description-textarea').wysihtml5({toolbar:
+  {
+    'blockquote': false,
+    'image': false,
+    'lists': false,
+    'emphasis': {
+      'small': false,
+      'underline': false
+    },
+    'link': false
+  }})
+</script>
