@@ -110,8 +110,9 @@
         </div>
       </div>
   <% end %>
-  <% unless current_user == @tutorial.author%>
-      <% if policy(@tutorial.infos.new).create?%>
+
+  <% unless current_user == @tutorial.author %>
+      <% if policy(@tutorial.infos.new).create? %>
           <hr>
           <div class="row">
             <p>As a contributor to this tutorial, you have the access to edit and create pages</p>

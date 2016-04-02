@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :dashboards, only: [:index]
     resources :users
   end
+
   #Stripe WebHook
   mount StripeEvent::Engine, at: '/stripe/webhook'
   #Searchkick Search
