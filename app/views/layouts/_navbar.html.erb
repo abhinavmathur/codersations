@@ -57,14 +57,13 @@
     </div><!--/.container-fluid -->
   </nav>
 </div>
+<!--Script for Ajax Notifications-->
 <script>
   if ($('#dropdown_id').length > 0)
   {
     setInterval(function() {
       getNewNotifications();
     }, 5000);
-
-
 
     function getNewNotifications()
     {

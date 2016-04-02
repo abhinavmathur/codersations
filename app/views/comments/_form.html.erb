@@ -1,4 +1,11 @@
-<%= simple_form_for [@question, @comment], input_html: {class: 'form-horizontal'} do |f| %>
-    <%= f.input :content, autofocus: true, required: true, class: 'form-control' %>
-    <%= f.button :submit %>
+<% if controller_name == 'comments' %>
+    <%= simple_form_for [@question, @comment], input_html: {class: 'form-horizontal'} do |f| %>
+        <%= f.input :content, autofocus: true, required: true, class: 'form-control' %>
+        <%= f.button :submit %>
+    <% end %>
+<% else %>
+    <%= simple_form_for [question, comment], input_html: {class: 'form-horizontal'} do |f| %>
+        <%= f.input :content, autofocus: true, required: true, class: 'form-control' %>
+        <%= f.button :submit %>
+    <% end %>
 <% end %>

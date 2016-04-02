@@ -1,0 +1,24 @@
+<div class="col-md-8 col-md-8 col-md-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <%= simple_form_for [@question, Comment.new], input_html: {class: 'form-horizontal'}, remote: true do |f| %>
+          <%= f.input :content, as: :wysihtml5, label: false, placeholder: 'New Comment', autofocus: true, required: true, class: 'form-control', input_html: { id: 'description-textarea'} %>
+          <%= f.button :submit, class: 'btn btn-success' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $('#description-textarea').wysihtml5({toolbar:
+  {
+    'blockquote': false,
+    'image': false,
+    'lists': false,
+    'emphasis': {
+      'small': false,
+      'underline': false
+    },
+    'link': false
+  }})
+</script>

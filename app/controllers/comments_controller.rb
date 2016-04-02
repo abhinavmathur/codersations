@@ -27,11 +27,16 @@ class CommentsController < ApplicationController
         user = User.find_by(id: user)
         Notification.create(recipient: user, actor: current_user, action: 'posted', notifiable: @comment)
       end
-      flash[:success] = 'Your comment was successfully created'
-      redirect_to question_path(@comment.question)
+      respond_to do |format|
+        format.html {
+          flash[:success] = 'Your comment was successfully created'
+        redirect_to question_path(@comment.question)
+        }
+        format.js
+      end
     else
-      flash[:danger] = 'Your comment was not created'
-      render :new
+      flash[:danger] = 'Your comment was not created. The comment body was missing.'
+      redirect_to question_path(@comment.question)
     end
   end
 
@@ -50,8 +55,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    question = @comment.question
     @comment.destroy
-    redirect_to question_path(@comment.question)
+    respond_to do |format|
+      format.html { redirect_to question_path(question) }
+      format.js
+    end
   end
 
   private
