@@ -17,6 +17,7 @@ class QuestionsController < ApplicationController
     @question = @tutorial.questions.create(question_params)
     @question.user_id = current_user.id
     if @question.save
+      Notification.create(recipient: @tutorial.author, actor: current_user, action: 'asked', notifiable: @question)
       flash[:success] = 'Your question was successfully created !'
       redirect_to question_path(@question)
     else

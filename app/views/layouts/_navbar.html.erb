@@ -57,3 +57,64 @@
     </div><!--/.container-fluid -->
   </nav>
 </div>
+<script>
+  if ($('#dropdown_id').length > 0)
+  {
+    setInterval(function() {
+      getNewNotifications();
+    }, 5000);
+
+
+
+    function getNewNotifications()
+    {
+      $.ajax({
+        dataType: "json",
+        url: '/notifications.json',
+        success: function(data){
+          if(data.length > 0)
+          {
+            $('.badge').text(data.length);
+          }
+          else
+          {
+            $('.badge').text('');
+          }
+        }
+      });
+    }
+
+    function success(data) {
+      $('#items').empty();
+      $.map(data, function (key) {
+        $('#items').append("<li><a href=" + key.url + ">" + key.actor + " " + key.action + " " + key.notifiable.type + "</a></li>")
+      });
+    }
+
+    $('#notification_link').on("click", function() {
+      $.ajax({
+        dataType: "json",
+        url: '/notifications.json',
+        success: function(data){
+          if(data.length > 0)
+          {
+            success(data)
+            $.ajax({
+              url: "/notifications/mark_as_read",
+              dataType: "JSON",
+              method: "POST",
+              success: function(){
+                $('.badge').text('');
+              }
+            })
+          }
+          else
+          {
+            $('#items').empty()
+            $('#items').append("<li><a href=''>There are no new notifications</a></li>")
+          }
+        }
+      });
+    });
+  }
+</script>
