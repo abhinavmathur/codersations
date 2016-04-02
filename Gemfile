@@ -80,3 +80,4 @@ gem 'groupdate'
 gem 'chartkick'
 gem 'rollbar', '~> 2.8.3'
 gem 'rack-attack', group: 'production' #fix rack attack before deploy !
+gem 'omniauth-github'
