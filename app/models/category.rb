@@ -13,9 +13,11 @@ class Category < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   searchkick text_start: [:name]
+
+  after_save :change_case
   #validations
   validates :name, presence: true, uniqueness: true
-  #validates :slug, presence: true, uniqueness: true, format: { with: /\A[a-z]+\z/, message: 'Must be lowercase' }
+  validates :slug, presence: true, uniqueness: true
   #/validations
   has_many :templates
   has_many :tutorials
@@ -23,4 +25,9 @@ class Category < ActiveRecord::Base
   has_many :notes, dependent: :destroy
 
 
+  private
+  def change_case
+    self.name.capitalize!
+    self.slug.downcase!
+  end
 end
