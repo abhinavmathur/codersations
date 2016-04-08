@@ -31,6 +31,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'brakeman'
+  gem 'selenium-webdriver'
+  gem 'chromedriver-helper'
+  gem 'database_cleaner'
   gem 'byebug'
   gem 'factory_girl_rails'
 end
