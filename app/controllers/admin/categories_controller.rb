@@ -36,7 +36,7 @@ class Admin::CategoriesController < Admin::DashboardController
 
   def destroy
     @category.destroy
-    flash[:success] = 'Category was deleted.'
+    flash[:success] = 'Category was successfully deleted.'
     redirect_to root_path
   end
 
