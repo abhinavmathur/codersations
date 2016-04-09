@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70e3f003-6ad1-46ec-a116-e0d5d12e7ec4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codersations.iml" afterPath="$PROJECT_DIR$/.idea/codersations.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="codersations.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -17,7 +17,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/codersations@Run_spec__delete_category_spec___codersations.coverage" NAME="Run spec 'delete_category_spec': codersations Coverage Results" MODIFIED="1460094778290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="codersations" />
+    <SUITE FILE_PATH="coverage/codersations@Run_spec__delete_category_spec___codersations.coverage" NAME="Run spec 'delete_category_spec': codersations Coverage Results" MODIFIED="1460171400738" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="codersations" />
     <SUITE FILE_PATH="coverage/codersations@Run_spec__showing_category_spec___codersations.coverage" NAME="Run spec 'showing_category_spec': codersations Coverage Results" MODIFIED="1460092039666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="codersations" />
     <SUITE FILE_PATH="coverage/codersations@Run_spec__edit_category_spec___codersations.coverage" NAME="Run spec 'edit_category_spec': codersations Coverage Results" MODIFIED="1460094007993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="codersations" />
   </component>
@@ -43,11 +43,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="delete_category_spec.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/spec/features/categories/delete_category_spec.rb">
+      <file leaf-file-name="dashboard_controller.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/creators/dashboard_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82">
-              <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-4.6666665">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_creator.html.erb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/_creator.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6569343">
+              <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -61,9 +81,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/models/notification.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/notifications_controller.rb" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/notifications.coffee" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/script.js" />
         <option value="$PROJECT_DIR$/app/controllers/users_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/users/creator_dashboard.html.erb" />
@@ -97,7 +114,6 @@
         <option value="$PROJECT_DIR$/app/views/comments/edit.html.erb" />
         <option value="$PROJECT_DIR$/config/application.yml" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/config/initializers/devise.rb" />
         <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/controllers/callbacks_controller.rb" />
@@ -110,8 +126,12 @@
         <option value="$PROJECT_DIR$/app/models/category.rb" />
         <option value="$PROJECT_DIR$/spec/features/categories/showing_category_spec.rb" />
         <option value="$PROJECT_DIR$/spec/features/categories/edit_category_spec.rb" />
-        <option value="$PROJECT_DIR$/spec/features/categories/delete_category_spec.rb" />
         <option value="$PROJECT_DIR$/app/controllers/admin/categories_controller.rb" />
+        <option value="$PROJECT_DIR$/spec/features/categories/delete_category_spec.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/views/creators/dashboard/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/controllers/creators/dashboard_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/creators/dashboard/_creator.html.erb" />
       </list>
     </option>
   </component>
@@ -186,38 +206,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spec" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="features" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -239,22 +227,16 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
+              <option name="myItemId" value="creators" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="dashboard" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -271,20 +253,30 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="codersations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codersations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
       <pane id="RailsProjectView" />
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,8 +284,8 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Background" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="js.erb" />
-    <property name="SearchEverywhereHistoryKey" value="rout&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;user&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;rou&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;_nav&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/layouts/_navbar.html.erb&#10;routes&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;route&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;routes.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;c_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/comments_controller.rb&#10;tutor&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;temp&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;snippet&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;Q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;question&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/question.rb&#10;comme&#9;null&#9;null&#10;tutorial/sh&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/tutorials/show.html.erb&#10;t_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/tutorials_controller.rb&#10;views/&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views&#10;user.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;subscription.js&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/assets/javascripts/subscription.js&#10;transfer&#9;null&#9;null&#10;routes.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;tuto&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;snippet.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;snippetco&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/snippets_controller.rb&#10;redactor&#9;null&#9;null&#10;snippet.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;stat&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/static_controller.rb&#10;infopage&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;info.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/migrate/20160303000933_add_publish_to_info.rb&#10;in&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;tem&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tut&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;template&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tutorial&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;tutorial.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;cate&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/category.rb&#10;registrations/ed&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/devise/registrations/edit.html.erb&#10;user.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;reda&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/redactor_asset.rb&#10;schema&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/schema.rb" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
+    <property name="SearchEverywhereHistoryKey" value="routes&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;rout&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;user&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;rou&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;_nav&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/layouts/_navbar.html.erb&#10;route&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;routes.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;c_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/comments_controller.rb&#10;tutor&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;temp&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;snippet&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;Q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;question&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/question.rb&#10;comme&#9;null&#9;null&#10;tutorial/sh&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/tutorials/show.html.erb&#10;t_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/tutorials_controller.rb&#10;views/&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views&#10;user.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;subscription.js&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/assets/javascripts/subscription.js&#10;transfer&#9;null&#9;null&#10;routes.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;tuto&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;snippet.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;snippetco&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/snippets_controller.rb&#10;redactor&#9;null&#9;null&#10;snippet.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;stat&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/static_controller.rb&#10;infopage&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;info.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/migrate/20160303000933_add_publish_to_info.rb&#10;in&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;tem&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tut&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;template&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tutorial&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;tutorial.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;cate&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/category.rb&#10;registrations/ed&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/devise/registrations/edit.html.erb&#10;user.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;reda&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/redactor_asset.rb&#10;schema&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/schema.rb" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../summernote" />
   </component>
   <component name="RecentsManager">
@@ -612,14 +604,14 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Run_spec__delete_category_spec___codersations - 2016.04.08 at 01h 49m 12s.xml">
+    <history-entry file="Run_spec__delete_category_spec___codersations - 2016.04.08 at 23h 08m 15s.xml">
       <configuration name="Run spec 'delete_category_spec': codersations" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_spec__delete_category_spec___codersations - 2016.04.08 at 01h 50m 17s.xml">
+    <history-entry file="Run_spec__delete_category_spec___codersations - 2016.04.08 at 23h 09m 13s.xml">
       <configuration name="Run spec 'delete_category_spec': codersations" configurationId="RSpecRunConfigurationType" />
     </history-entry>
-    <history-entry file="Run_spec__edit_category_spec___codersations - 2016.04.08 at 01h 23m 52s.xml">
-      <configuration name="Run spec 'edit_category_spec': codersations" configurationId="RSpecRunConfigurationType" />
+    <history-entry file="Run_spec__delete_category_spec___codersations - 2016.04.08 at 23h 10m 29s.xml">
+      <configuration name="Run spec 'delete_category_spec': codersations" configurationId="RSpecRunConfigurationType" />
     </history-entry>
     <history-entry file="Run_spec__edit_category_spec___codersations - 2016.04.08 at 01h 27m 00s.xml">
       <configuration name="Run spec 'edit_category_spec': codersations" configurationId="RSpecRunConfigurationType" />
@@ -647,13 +639,13 @@
     <frame x="49" y="24" width="1317" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.305638" sideWeight="0.49724627" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.305638" sideWeight="0.49724627" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296617" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940991" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2675059" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2722266" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.51038575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.51038575" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.50275373" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -662,8 +654,8 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940991" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -680,9 +672,9 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940991" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3076318" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937685" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -719,41 +711,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/static/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="57" selection-start-line="0" selection-start-column="57" selection-end-line="0" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7359413">
-          <caret line="151" column="6" selection-start-line="151" selection-start-column="6" selection-end-line="151" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/info.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7808219">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8252c3ff-31a9-4ce9-8e8c-40570f5dd711/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/infos/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -772,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="6" selection-start-line="49" selection-start-column="6" selection-end-line="49" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,7 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -921,7 +876,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.65753424">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -929,7 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75342464">
           <caret line="266" column="0" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +898,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.26027396">
           <caret line="81" column="77" selection-start-line="81" selection-start-column="77" selection-end-line="81" selection-end-column="77" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.06">
           <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.96">
           <caret line="22" column="67" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,7 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.3186814">
           <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -977,7 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -985,7 +933,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,7 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,7 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1009,7 +954,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1025,7 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66">
           <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,7 +976,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.08">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,7 +983,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32967034">
           <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1053,19 +994,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1">
-          <caret line="79" column="123" selection-start-line="79" selection-start-column="123" selection-end-line="79" selection-end-column="123" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/categories_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.56">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1073,7 +1005,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.84615386">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,7 +1012,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.66">
           <caret line="38" column="49" selection-start-line="38" selection-start-column="49" selection-end-line="38" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1089,14 +1019,61 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.06">
           <caret line="22" column="21" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/features/categories/delete_category_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82">
-          <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.69863015">
+          <caret line="17" column="65" selection-start-line="17" selection-start-column="65" selection-end-line="17" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/users_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/admin/dashboard_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68550366">
+          <caret line="18" column="26" selection-start-line="18" selection-start-column="26" selection-end-line="18" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6666665">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/creators/dashboard_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/_creator.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6569343">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
           <folding />
         </state>
       </provider>

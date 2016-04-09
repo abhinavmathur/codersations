@@ -1,0 +1,2 @@
+module Creators::DashboardHelper
+end
