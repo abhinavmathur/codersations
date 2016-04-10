@@ -4,6 +4,15 @@ class Creators::DashboardController < ApplicationController
 
   def index
     @new_creators = User.where(creator: true).last(4)
+    @categories = Category.all
+  end
+
+  def category_information
+    if Category.find_by(name: params[:category]).nil?
+      flash[:danger] = 'The category you looked for could not be found'
+    else
+      @category = Category.find_by(name: params[:category])
+    end
   end
 
   private

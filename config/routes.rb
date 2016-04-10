@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :creators do
     root 'dashboard#index'
+    get '/category_information' => 'dashboard#category_information', as: 'information'
   end
 
   #Stripe WebHook

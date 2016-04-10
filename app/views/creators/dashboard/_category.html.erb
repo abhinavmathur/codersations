@@ -1,0 +1,12 @@
+<div class="col-md-3">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <h3 class="text-center text-info"><%= category.name %></h3>
+      <hr>
+      <p><%= "#{category.tutorials.where(publish: true).count} published tutorials" %></p>
+      <p><%= "#{category.tutorials.where(publish: false).count} unpublished tutorials" %></p>
+      <p><%= pluralize(authors_with_category(category), 'author') %></p>
+      <%= link_to 'View all information', creators_information_path(category: category.name), class: 'btn btn-success' %>
+    </div>
+  </div>
+</div>

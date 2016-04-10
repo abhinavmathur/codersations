@@ -1,11 +1,10 @@
 <div class="col-md-3">
-
   <div class="panel panel-default">
     <div class="panel-body">
       <h5 class="text-center text-info"><%= link_to user.name, user_path(user) %></h5>
       <hr>
       <p class="text-center">
-        <%= gravatar_tag(user.email, d: :identicon, input_html: { class: 'img-circle'}) %>
+        <%= gravatar_tag user.email, :size => 80, d: :identicon, html: {class: 'img-circle'} %>
       </p>
       <small class="pull-right">
         <%= truncate(user.description, length: 200) %>
