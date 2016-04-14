@@ -19,4 +19,6 @@ class StaticController < ApplicationController
     all = @categories + @tutorials + @templates + @infopages + @infos + @users + @snippets
     @all = Kaminari.paginate_array(all).page(params[:page]).per(30)
   end
+
+
 end
