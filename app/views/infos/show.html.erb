@@ -12,58 +12,21 @@
 <%= @info.title %>
 <%= @info.content.html_safe %>
 <hr>
-<%= link_to 'Create a note', new_category_tutorial_info_note_path(@category, @tutorial, @info) %>
-<h2 class="text-center">My Notes</h2>
-<% @notes.each do |note| %>
-    <div class="well" id="<%= "note_#{note.id}" %>">
-    <%= link_to note.title, note_path(note), remote: true %>
-      <%= link_to 'Edit', edit_note_path(note), class: 'btn btn-primary btn-xs', remote: true %>
-      <%= link_to 'Delete Note', note_path(note), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-xs', remote: true %>
-    </div>
-<% end %>
+<% if user_signed_in? %>
+    <h2 class="text-center">My Notes</h2>
+    <% @notes.each do |note| %>
+        <div class="well" id="<%= "note_#{note.id}" %>">
+          <%= link_to note.title, note_path(note), remote: true %>
+          <%= link_to 'Edit', edit_note_path(note), class: 'btn btn-primary btn-xs', remote: true %>
+          <%= link_to 'Delete Note', note_path(note), method: :delete, data: { confirm: 'Are you sure ?'}, class: 'btn btn-danger btn-xs', remote: true %>
+        </div>
+    <% end %>
 
-<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newNote">
-  Create a note
-</button>
-<div id="modal_body"></div>
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newNote">
+      Create a note
+    </button>
+    <div id="modal_body"></div>
+<% end %>
 
 <!-- Modal -->
-<%= simple_form_for [@category, @tutorial, @info, Note.new], input_html: { class: 'form-horizontal'} do |f| %>
-    <div class="modal fade" id="newNote" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">New Note</h4>
-          </div>
-          <div class="modal-body">
-            <div id="error_explanation" style="display:none;"></div>
-            <div class="form-group">
-              <%= f.input :title, required: true, autofocus: true, input_html: { class: 'form-control'} %>
-            </div>
-            <div class="form-group">
-              <%= f.input :content, required: true, as: :wysihtml5, input_html: { class: 'form-control', id: 'description-textarea'} %>
-            </div>
-            <%= f.input :task, label: 'Mark if it is a task' %>
-          </div>
-          <div class="modal-footer text-center">
-            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
-            <%= f.button :submit, class: 'btn btn-primary btn-sm' %>
-          </div>
-        </div>
-      </div>
-    </div>
-<% end %>
-<script>
-  $('#description-textarea').wysihtml5({toolbar:
-  {
-    'blockquote': false,
-    'image': false,
-    'lists': false,
-    'emphasis': {
-      'small': false,
-      'underline': false
-    },
-    'link': false
-  }})
-</script>
+<%= render partial: 'notes/form', locals: { category: @category, tutorial: @tutorial, info: @info } %>

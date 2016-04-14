@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_category, only: [:index, :new, :create]
   before_action :set_tutorial, only: [:index, :new, :create]
   before_action :set_info, only: [:index, :new, :create]

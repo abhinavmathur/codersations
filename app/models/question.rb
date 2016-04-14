@@ -16,4 +16,5 @@
 class Question < ActiveRecord::Base
   belongs_to :tutorial
   has_many :comments
+  validates :title, :content, presence: true
 end
