@@ -20,5 +20,20 @@ class StaticController < ApplicationController
     @all = Kaminari.paginate_array(all).page(params[:page]).per(30)
   end
 
-
+  def autocomplete
+    @categories = Category.search(params[:term]).to_a
+    @users = User.search(params[:term]).to_a
+    snippet = policy_scope(Snippet.includes(:tutorial, :template, :category))
+    @snippets = snippet.search(params[:term]).to_a
+    tutorial = policy_scope(Tutorial.includes(:category))
+    @tutorials = tutorial.search(params[:term]).to_a
+    template = policy_scope(Template.includes(:category))
+    @templates = template.search(params[:term]).to_a
+    info = policy_scope(Info.includes(:tutorial, :category))
+    @infos = info.search(params[:term]).to_a
+    infopage = policy_scope(Infopage.includes(:template))
+    @infopages = infopage.search(params[:term]).to_a
+    all = @categories + @tutorials + @templates + @infopages + @infos + @users + @snippets
+    @all = all.take(10)
+  end
 end

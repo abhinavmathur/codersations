@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   mount StripeEvent::Engine, at: '/stripe/webhook'
   #Searchkick Search
   get '/search' => 'static#search', as: 'search'
+  get '/autocomplete' => 'static#autocomplete', as: 'autocomplete'
 
   #Stripe authentication
   get '/connect/oauth' => 'connect#oauth', as: 'stripe_oauth'

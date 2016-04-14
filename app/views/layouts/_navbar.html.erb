@@ -59,35 +59,13 @@
 </div>
 <!--Script for Ajax Notifications-->
 <script>
-  var availableTags = [
-    "",
-    "ActionScriptaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    "AppleScript",
-    "Asp",
-    "BASIC",
-    "C",
-    "C++",
-    "Clojure",
-    "COBOL",
-    "ColdFusion",
-    "Erlang",
-    "Fortran",
-    "Groovy",
-    "Haskell",
-    "Java",
-    "JavaScript",
-    "Lisp",
-    "Perl",
-    "PHP",
-    "Python",
-    "Ruby",
-    "Scala",
-    "Scheme"
-  ];
   $( "#tags" ).autocomplete({
-    source: availableTags
-  });
-
+    source: "/autocomplete",
+    minLength: 2
+  }).autocomplete('instance')._renderItem = function(ul, item)
+  {
+    return $('<li>').append('<a href="http://localhost:3000'+ item.url +'">'+ item.class_name + ' - '+ item.title +'</a>').appendTo(ul);
+  };
 
 
 
@@ -95,7 +73,7 @@
   {
     setInterval(function() {
       getNewNotifications();
-    }, 5000);
+    }, 30000);
 
     function getNewNotifications()
     {

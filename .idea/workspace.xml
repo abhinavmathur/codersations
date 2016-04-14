@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70e3f003-6ad1-46ec-a116-e0d5d12e7ec4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/static_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/static_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" afterPath="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="codersations.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="show.html.erb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/questions/show.html.erb">
+      <file leaf-file-name="autocomplete.json.jbuilder" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/static/autocomplete.json.jbuilder">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="2" column="92" selection-start-line="2" selection-start-column="92" selection-end-line="2" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -59,28 +58,8 @@
       <file leaf-file-name="_navbar.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/_navbar.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.920354">
-              <caret line="199" column="8" selection-start-line="199" selection-start-column="8" selection-end-line="199" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.css.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.740741">
-              <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.28318584">
+              <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -94,9 +73,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/views/comments/_form.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/comments/show.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/questions/_form_for_questions.html.erb" />
         <option value="$PROJECT_DIR$/app/views/questions/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/comments/edit.html.erb" />
         <option value="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" />
@@ -117,7 +93,6 @@
         <option value="$PROJECT_DIR$/app/views/creators/dashboard/_creator.html.erb" />
         <option value="$PROJECT_DIR$/app/views/creators/dashboard/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/creators/dashboard/show.html.erb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/creators/dashboard/_category.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/creators/dashboard_controller.rb" />
         <option value="$PROJECT_DIR$/app/helpers/creators/dashboard_helper.rb" />
@@ -144,6 +119,10 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/ui_autocomplete.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/style.css" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/static/search.html.erb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/static_controller.rb" />
+        <option value="$PROJECT_DIR$/app/views/static/autocomplete.json.jbuilder" />
         <option value="$PROJECT_DIR$/app/views/layouts/_navbar.html.erb" />
       </list>
     </option>
@@ -223,26 +202,8 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="codersations" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -260,7 +221,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codersations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="codersations" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -275,8 +254,8 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Background" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
-    <property name="Ruby.ViewRefParam.DefaultExtension" value="html.erb" />
-    <property name="SearchEverywhereHistoryKey" value="rout&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;routes&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;user&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;rou&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;_nav&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/layouts/_navbar.html.erb&#10;route&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;routes.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;c_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/comments_controller.rb&#10;tutor&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;temp&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;snippet&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;Q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;question&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/question.rb&#10;comme&#9;null&#9;null&#10;tutorial/sh&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/tutorials/show.html.erb&#10;t_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/tutorials_controller.rb&#10;views/&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views&#10;user.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;subscription.js&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/assets/javascripts/subscription.js&#10;transfer&#9;null&#9;null&#10;routes.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;tuto&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;snippet.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;snippetco&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/snippets_controller.rb&#10;redactor&#9;null&#9;null&#10;snippet.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;stat&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/static_controller.rb&#10;infopage&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;info.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/migrate/20160303000933_add_publish_to_info.rb&#10;in&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;tem&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tut&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;template&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tutorial&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;tutorial.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;cate&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/category.rb&#10;registrations/ed&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/devise/registrations/edit.html.erb&#10;user.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;reda&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/redactor_asset.rb&#10;schema&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/schema.rb" />
+    <property name="Ruby.ViewRefParam.DefaultExtension" value="json.jbuilder" />
+    <property name="SearchEverywhereHistoryKey" value="routes&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;routr&#9;FILE&#9;file:///home/raaaaj5000/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/journey/routes.rb&#10;rout&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;user&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;rou&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;_nav&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/layouts/_navbar.html.erb&#10;route&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;routes.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;c_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/comments_controller.rb&#10;tutor&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;temp&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;snippet&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;Q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;q_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/questions_controller.rb&#10;question&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/question.rb&#10;comme&#9;null&#9;null&#10;tutorial/sh&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/tutorials/show.html.erb&#10;t_c&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/tutorials_controller.rb&#10;views/&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views&#10;user.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;subscription.js&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/assets/javascripts/subscription.js&#10;transfer&#9;null&#9;null&#10;routes.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/config/routes.rb&#10;tuto&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;snippet.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;snippetco&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/snippets_controller.rb&#10;redactor&#9;null&#9;null&#10;snippet.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/snippet.rb&#10;stat&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/controllers/static_controller.rb&#10;infopage&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info.r&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;info.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/migrate/20160303000933_add_publish_to_info.rb&#10;in&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;info&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/info.rb&#10;tem&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tut&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;template&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/template.rb&#10;tutorial&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/tutorial.rb&#10;tutorial.rb&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/infopage.rb&#10;cate&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/category.rb&#10;registrations/ed&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/views/devise/registrations/edit.html.erb&#10;user.&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/user.rb&#10;reda&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/app/models/redactor_asset.rb&#10;schema&#9;FILE&#9;file:///home/raaaaj5000/RubymineProjects/codersations/db/schema.rb" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../summernote" />
   </component>
   <component name="RecentsManager">
@@ -739,41 +718,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/controllers/static_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="32" selection-start-line="0" selection-start-column="32" selection-end-line="0" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4380531">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/creators/dashboard/_category.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.3333335">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/helpers/creators/dashboard_helper.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -855,13 +799,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23338735">
           <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/notifications/index.json.jbuilder">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.083850935">
-          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -1064,14 +1001,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/questions/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1096,6 +1025,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/notifications_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/static/search.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4380531">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.rbenv/versions/2.2.3/lib/ruby/gems/2.2.0/gems/actionpack-4.2.6/lib/action_dispatch/journey/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15031315">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.740741">
@@ -1104,10 +1057,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56367433">
+          <caret line="30" column="67" selection-start-line="30" selection-start-column="67" selection-end-line="30" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/notifications/index.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11273486">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/questions/show.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5973451">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/static_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.4655533">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/static/autocomplete.json.jbuilder">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="92" selection-start-line="2" selection-start-column="92" selection-end-line="2" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/_navbar.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.920354">
-          <caret line="199" column="8" selection-start-line="199" selection-start-column="8" selection-end-line="199" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.28318584">
+          <caret line="67" column="3" selection-start-line="67" selection-start-column="3" selection-end-line="67" selection-end-column="3" />
           <folding />
         </state>
       </provider>
