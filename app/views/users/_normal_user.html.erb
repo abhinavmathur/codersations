@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <% ahoy.track 'Viewed User', track: user.name %>
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <%= render partial: 'user_main_frame', locals: { user: user } %>
+    </div>
+  </div>
+  <hr>
+  <% if tutorials.count != 0 %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title text-center">Tutorials created by this user</h3>
+            </div>
+            <div class="panel-body">
+              <% tutorials.each do |tutorial| %>
+                  <%= link_to tutorial.title, category_tutorial_path(tutorial.category, tutorial) %>
+                  <br>
+              <% end %>
+            </div>
+          </div>
+        </div>
+  <% end %>
+  <% if templates.count != 0 %>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">Templates created by this user</h3>
+          </div>
+          <div class="panel-body">
+            <% templates.each do |template| %>
+                <%= link_to template.name, category_template_path(template.category, template) %>
+                <br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  <% if snippets.count != 0  %>
+      <div class="col-md-4">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center">snippetss created by this user</h3>
+          </div>
+          <div class="panel-body">
+            <% snippets.each do |snippet| %>
+                <%= link_to snippet.title, category_snippet_path(snippet.category, snippet) %>
+                <br>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>

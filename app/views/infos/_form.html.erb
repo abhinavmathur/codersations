@@ -1,5 +1,5 @@
 <%= simple_form_for [@category, @tutorial, @info] do |f| %>
-    <%= f.input :title %>
+    <%= f.input :title, required: true, autofocus: true %>
     <%= f.input :content, class: 'summernote' %>
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-success' %>
 <% end %>

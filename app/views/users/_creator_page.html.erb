@@ -1,0 +1,24 @@
+<div class="container-fluid">
+  <div class="row">
+    <h2 class="text-center text-info">Welcome to the creator dashboard !</h2>
+    <br>
+    <div class="col-md-4">
+      <%= render partial: 'user_main_frame', locals: { user: user } %>
+    </div>
+    <% if current_user.stripe_account_id? %>
+        <div class="col-md-8">
+          <h4 class="text-center text-info">You have connected your account to Stripe</h4>
+          <% Stripe.api_key = current_user.secret_key %>
+          <% data = Stripe::Balance.retrieve().to_json %>
+          <%= data['available'] %>
+        </div>
+    <% else %>
+        <p class="text-center text-danger"><b>You need to activate your stripe account to access your page</b></p>
+        <well>
+          <%= link_to image_tag('blue-on-light.png', alt: 'Connect with Stripe'), stripe_oauth_path  %>
+        </well>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>

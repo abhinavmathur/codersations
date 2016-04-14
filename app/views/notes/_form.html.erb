@@ -9,10 +9,10 @@
           <div class="modal-body">
             <div id="error_explanation" style="display:none;"></div>
             <div class="form-group">
-              <%= f.input :title, validate: true, autofocus: true, input_html: { class: 'form-control'} %>
+              <%= f.input :title, required: true, autofocus: true, input_html: { class: 'form-control'} %>
             </div>
             <div class="form-group">
-              <%= f.input :content, as: :wysihtml5, input_html: { class: 'form-control', id: 'description-textarea'} %>
+              <%= f.input :content, required: true, as: :wysihtml5, input_html: { class: 'form-control', id: 'description-textarea'} %>
             </div>
             <%= f.input :task, label: 'Mark if it is a task' %>
           </div>
