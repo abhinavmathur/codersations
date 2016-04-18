@@ -41,6 +41,8 @@
 #  secret_key             :string
 #  currency               :string
 #  linkedin               :string
+#  provider               :string
+#  uid                    :string
 #
 
 class User < ActiveRecord::Base

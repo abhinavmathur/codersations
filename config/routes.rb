@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   #Stripe WebHook
   mount StripeEvent::Engine, at: '/stripe/webhook'
+
   #Searchkick Search
   get '/search' => 'static#search', as: 'search'
   get '/autocomplete' => 'static#autocomplete', as: 'autocomplete'
@@ -59,7 +60,10 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] do
     resources :tutorials, except: :index do
       resources :questions, shallow: true do
-        resources :comments, except: :show
+        resources :comments, except: :show do
+          post '/upvote' => 'comments#upvote'
+          post '/downvote' => 'comments#downvote'
+        end
       end
       resources :infos, except: :index do
         resources :notes, shallow: true

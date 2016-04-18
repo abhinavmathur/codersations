@@ -41,6 +41,8 @@
 #  secret_key             :string
 #  currency               :string
 #  linkedin               :string
+#  provider               :string
+#  uid                    :string
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402061618) do
+ActiveRecord::Schema.define(version: 20160417233352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,13 @@ ActiveRecord::Schema.define(version: 20160402061618) do
   add_index "charges", ["stripe_id"], name: "index_charges_on_stripe_id", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "question_id", null: false
+    t.integer  "question_id",             null: false
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "points",      default: 0
   end
 
   create_table "contributors", force: :cascade do |t|
@@ -404,6 +405,18 @@ ActiveRecord::Schema.define(version: 20160402061618) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  create_table "votings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "votable"
+    t.boolean  "voted",      default: false
+    t.boolean  "upvote",     default: false
+    t.boolean  "downvote",   default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "votings", ["user_id"], name: "index_votings_on_user_id", using: :btree
+
   add_foreign_key "contributors", "tutorials"
   add_foreign_key "contributors", "users", column: "member_id"
   add_foreign_key "infopages", "categories"
@@ -421,4 +434,5 @@ ActiveRecord::Schema.define(version: 20160402061618) do
   add_foreign_key "tutorials", "categories"
   add_foreign_key "tutorials", "users"
   add_foreign_key "tutorials", "users", column: "author_id"
+  add_foreign_key "votings", "users"
 end

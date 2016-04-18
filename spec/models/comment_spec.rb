@@ -9,6 +9,7 @@
 #  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  points      :integer          default("0")
 #
 
 require 'rails_helper'

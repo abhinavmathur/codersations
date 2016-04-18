@@ -9,9 +9,12 @@
 #  user_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
+#  points      :integer          default("0")
 #
 
 class Comment < ActiveRecord::Base
   belongs_to :question
-  validates :title, presence: true
+  has_many :votings
+  validates :content, presence: true
+
 end

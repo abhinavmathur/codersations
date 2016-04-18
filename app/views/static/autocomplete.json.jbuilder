@@ -1,5 +1,5 @@
 json.array! @all do |all|
-  json.class_name all.class.name
+  json.class_name all.class.name.capitalize
   if all.class.name == 'Category' || all.class.name == 'Template' || all.class.name == 'User'
     json.title all.name
   else

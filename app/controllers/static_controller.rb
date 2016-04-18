@@ -31,7 +31,7 @@ class StaticController < ApplicationController
     @templates = template.search(params[:term]).to_a
     info = policy_scope(Info.includes(:tutorial, :category))
     @infos = info.search(params[:term]).to_a
-    infopage = policy_scope(Infopage.includes(:template))
+    infopage = policy_scope(Infopage.includes(:template, :category))
     @infopages = infopage.search(params[:term]).to_a
     all = @categories + @tutorials + @templates + @infopages + @infos + @users + @snippets
     @all = all.take(10)

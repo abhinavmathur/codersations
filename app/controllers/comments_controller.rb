@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
 
 
   def index
-    @comments = @question.comments.all
+    @comments = @question.comments.order('created_at DESC')
   end
 
   def new
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
       respond_to do |format|
         format.html {
           flash[:success] = 'Your comment was successfully created'
-        redirect_to question_path(@comment.question)
+          redirect_to question_path(@comment.question)
         }
         format.js
       end
@@ -48,7 +48,9 @@ class CommentsController < ApplicationController
       flash[:success] = 'Your comment was successfully updated'
       redirect_to question_path(@comment.question)
     else
-      flash[:danger] = 'Your comment was not updated'
+      @comment.errors.full_messages.each do |error|
+        flash[:danger] = error.to_s
+      end
       render :edit
     end
   end
@@ -60,6 +62,19 @@ class CommentsController < ApplicationController
       format.html { redirect_to question_path(question) }
       format.js
     end
+  end
+
+  def upvote
+    @comment = Comment.find_by(id: params[:comment].to_i)
+    previous_points = @comment.points
+    @comment.update(points: previous_points + 1)
+    flash[:success] = 'You successfully upvoted the comment'
+    redirect_to question_path(@comment.question)
+  end
+
+
+  def downvote
+
   end
 
   private
