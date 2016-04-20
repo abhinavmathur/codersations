@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417233352) do
+ActiveRecord::Schema.define(version: 20160418230235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -407,12 +407,14 @@ ActiveRecord::Schema.define(version: 20160417233352) do
 
   create_table "votings", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "votable"
-    t.boolean  "voted",      default: false
-    t.boolean  "upvote",     default: false
-    t.boolean  "downvote",   default: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "voted",        default: false
+    t.boolean  "upvote",       default: false
+    t.boolean  "downvote",     default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "votable_type"
+    t.integer  "votable_id"
+    t.integer  "vote_count",   default: 0
   end
 
   add_index "votings", ["user_id"], name: "index_votings_on_user_id", using: :btree

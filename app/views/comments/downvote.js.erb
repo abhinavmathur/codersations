@@ -1,0 +1,4 @@
+$('.comment_points_for_comment_<%= @comment.id %>').text(<%= get_vote_count(@comment).to_i %>);
+$('.upvote_downvote_buttons_<%= @comment.id %>').fadeOut(function(){
+  $(this).empty().append('<p>You successfully downvoted this comment</p>').fadeIn();
+});

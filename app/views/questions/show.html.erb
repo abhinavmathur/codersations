@@ -4,7 +4,7 @@
 <p>Asked by <%= link_to user.name, user_path(user) %></p>
 <hr>
 <h3 class="text-center text-success">Answer Section</h3>
-
-<%= render partial: 'comments/show', collection: @question.comments.order('created_at DESC'), as: :comment %>
-
+<div class="comment-section">
+  <%= render partial: 'comments/show', collection: @question.comments.order('created_at ASC'), as: :comment %>
+</div>
 <%= render 'form_for_new_comments' %>

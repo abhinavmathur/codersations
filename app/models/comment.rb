@@ -14,7 +14,6 @@
 
 class Comment < ActiveRecord::Base
   belongs_to :question
-  has_many :votings
   validates :content, presence: true
 
 end
